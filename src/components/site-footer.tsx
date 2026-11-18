@@ -42,7 +42,7 @@ export function SiteFooter() {
           <h4 className="text-sm font-bold uppercase tracking-widest text-white">Foundation</h4>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li><Link className="hover:text-[#C59B27]" href="/about">About UPHF & History</Link></li>
-            <li><Link className="hover:text-[#C59B27]" href="/about#leadership">Board of Trustees</Link></li>
+            <li><Link className="hover:text-[#C59B27]" href="/about#governance">Governance &amp; Leadership (2026)</Link></li>
             <li><Link className="hover:text-[#C59B27]" href="/stewardship">Stewardship Charter</Link></li>
             <li><Link className="hover:text-[#C59B27]" href="/stewardship#reports">Audited Reports</Link></li>
             <li><Link className="hover:text-[#C59B27]" href="/admin">Advancement CMS</Link></li>

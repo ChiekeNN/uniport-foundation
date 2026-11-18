@@ -3,6 +3,7 @@ import type {
   LeadershipDTO,
   StewardshipReportDTO,
 } from "@/types/database";
+import { LEADERSHIP_2026 } from "@/lib/constants/leadership";
 
 export const FALLBACK_CAMPAIGNS: CampaignDTO[] = [
   {
@@ -100,14 +101,13 @@ export const FALLBACK_CAMPAIGNS: CampaignDTO[] = [
   },
 ];
 
-export const FALLBACK_LEADERSHIP: LeadershipDTO[] = [
-  { id: "l1", fullName: "Professor Nimi Dimkpa Briggs", role: "Chairman, Board of Trustees", category: "TRUSTEE", bio: "Former Vice-Chancellor of UNIPORT and eminent scholar in Obstetrics & Gynaecology. Provided founding fiduciary leadership to the Foundation.", tenure: "Founding Chairman", imageUrl: null, displayOrder: 1 },
-  { id: "l2", fullName: "Professor Ngozi Odu", role: "Member, Board of Trustees", category: "TRUSTEE", bio: "Distinguished academic and public administrator; former Deputy Vice-Chancellor (Administration) and former Deputy Governor of Rivers State.", tenure: "Trustee", imageUrl: null, displayOrder: 2 },
-  { id: "l3", fullName: "Professor Henry E. Alapiki", role: "Member, Board of Trustees", category: "TRUSTEE", bio: "Professor of Political Science and former Dean, Faculty of Social Sciences. Adviser on governance and advancement ethics.", tenure: "Trustee", imageUrl: null, displayOrder: 3 },
-  { id: "l4", fullName: "Professor Leo Osuji", role: "Director, University Advancement Centre", category: "DIRECTORATE", bio: "Professor of Petroleum & Environmental Chemistry. Leads industry–university R&D structuring.", tenure: "Directorate", imageUrl: null, displayOrder: 4 },
-  { id: "l5", fullName: "Professor Uzoma D. Chima", role: "Director, Advancement & Linkages Programmes", category: "DIRECTORATE", bio: "Professor of Forestry & Environment. Coordinates alumni relations and stewardship reporting.", tenure: "Directorate", imageUrl: null, displayOrder: 5 },
-  { id: "l6", fullName: "Mrs. Gloria O. Jim-Daniels", role: "Secretary / Head, Advancement Operations", category: "DIRECTORATE", bio: "Custodian of donor records, receipting, and quarterly milestone reporting.", tenure: "Directorate", imageUrl: null, displayOrder: 6 },
-];
+/**
+ * 2026 leadership fallback.
+ * Sourced from `src/lib/constants/leadership.ts` so the /about governance page
+ * always renders the current administration even before Postgres/Supabase is
+ * connected or seeded. Deep-cloned to keep the module-level constant immutable.
+ */
+export const FALLBACK_LEADERSHIP: LeadershipDTO[] = LEADERSHIP_2026.map((m) => ({ ...m }));
 
 export const FALLBACK_REPORTS: StewardshipReportDTO[] = [
   { id: "r1", title: "Annual Impact Report 2024 — Advancing Excellence", fiscalYear: "2024", reportType: "ANNUAL_IMPACT", fileUrl: "/reports/uphf-annual-impact-2024.pdf", fileSize: "4.2 MB", summary: "Scholarships disbursed, lab milestones commissioned, and endowment growth.", createdAt: new Date().toISOString() },

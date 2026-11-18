@@ -53,11 +53,21 @@ export interface DonorWallEntry {
   createdAt: string;
 }
 
+export type LeadershipGroup =
+  | "BOARD_OF_TRUSTEES"
+  | "DIRECTORATE"
+  | "PAST_DIRECTORS";
+export type LeadershipCategory = "TRUSTEE" | "DIRECTORATE" | "HERITAGE";
+
 export interface LeadershipDTO {
   id: string;
   fullName: string;
+  /** Post-nominal credentials, e.g. "BDS, FWACS, FMCDS" (null when not published). */
+  credentials: string | null;
   role: string;
-  category: "TRUSTEE" | "DIRECTORATE";
+  category: LeadershipCategory;
+  /** 2026 governance grouping — the authoritative grouping for UI rendering. */
+  group: LeadershipGroup;
   bio: string;
   tenure: string | null;
   imageUrl: string | null;

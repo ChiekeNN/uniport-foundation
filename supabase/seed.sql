@@ -59,17 +59,130 @@ on conflict (slug) do update set
   naming_tiers = excluded.naming_tiers;
 
 -- ============================================================
--- LEADERSHIP (historical + recent)
+-- LEADERSHIP — 2026 INSTITUTIONAL & FOUNDATION UPDATE
 -- ============================================================
-insert into leadership_members (full_name, role, category, bio, tenure, display_order, is_active)
+-- Groups: BOARD_OF_TRUSTEES (institutional patrons & trustees),
+--         DIRECTORATE (University Advancement Centre), PAST_DIRECTORS (heritage archive).
+-- IDs are deterministic so re-running this seed updates in place instead of duplicating.
+-- Requires migration 002_leadership_2026.sql (adds credentials + "group").
+
+-- Clear superseded pre-2026 placeholder records by name (legacy rows had random UUIDs).
+delete from leadership_members
+where full_name in (
+  'Professor Nimi Dimkpa Briggs',
+  'Professor Ngozi Odu',
+  'Professor Henry E. Alapiki',
+  'Professor Leo Osuji',
+  'Professor Uzoma D. Chima',
+  'Mrs. Gloria O. Jim-Daniels'
+);
+
+insert into leadership_members
+  (id, full_name, credentials, role, category, "group", bio, tenure, display_order, is_active)
 values
-  ('Professor Nimi Dimkpa Briggs', 'Chairman, Board of Trustees', 'TRUSTEE', 'Former Vice-Chancellor of the University of Port Harcourt and eminent scholar in Obstetrics & Gynaecology. Provided founding fiduciary leadership to the Foundation, anchoring its governance in academic integrity and public accountability.', 'Founding Chairman', 1, true),
-  ('Professor Ngozi Odu', 'Member, Board of Trustees', 'TRUSTEE', 'Distinguished academic and public administrator; former Deputy Vice-Chancellor (Administration), UNIPORT and former Deputy Governor of Rivers State. Championed scholarship access and women-in-academia advancement.', 'Trustee', 2, true),
-  ('Professor Henry E. Alapiki', 'Member, Board of Trustees', 'TRUSTEE', 'Professor of Political Science and former Dean, Faculty of Social Sciences. Long-standing adviser on governance, institutional linkages, and advancement ethics.', 'Trustee', 3, true),
-  ('Professor Leo Osuji', 'Director, University Advancement Centre', 'DIRECTORATE', 'Professor of Petroleum & Environmental Chemistry. Leads industry–university R&D structuring, including petroleum, environment, and energy-transition partnerships.', 'Directorate', 4, true),
-  ('Professor Uzoma D. Chima', 'Director, Advancement & Linkages Programmes', 'DIRECTORATE', 'Professor of Forestry & Environment. Coordinates alumni relations, class-set reunion giving, and the endowment stewardship reporting cycle.', 'Directorate', 5, true),
-  ('Mrs. Gloria O. Jim-Daniels', 'Secretary / Head, Advancement Operations', 'DIRECTORATE', 'Custodian of donor records, receipting, and quarterly milestone reporting. Oversees the ring-fenced accounts protocol and Donor Wall of Honor verification.', 'Directorate', 6, true)
-on conflict do nothing;
+  -- ── ACTIVE 2026 · INSTITUTIONAL PATRONS & BOARD OF TRUSTEES ──
+  (
+    '20260001-0000-4000-a000-000000000001',
+    'Prof. Chike Princewill Rewhuamwhu Chike',
+    'B.Med.Sc., M.B., B.S., M.Sc., MD (UPH), FAGP, FIIA, DMP, DSSRS',
+    '10th Vice-Chancellor, University of Port Harcourt & Institutional Patron, UPHF',
+    'TRUSTEE', 'BOARD_OF_TRUSTEES',
+    'Professor of Cardiovascular and Tissue Perfusion Physiology and three-time Commissioner for Health in Rivers State. Inaugurated in July 2026 as the 10th Vice-Chancellor of UNIPORT, championing the "Shared Vision for a Globally Respected University" and an Eight-Point Strategic Agenda focused on technological innovation, impactful research, societal relevance, and sustainable development.',
+    'Assumed Office: July 2026', 1, true
+  ),
+  (
+    '20260002-0000-4000-a000-000000000002',
+    'Senator Mao Arukwe Ohuabunwa',
+    'PhD, KSC, DSSRS',
+    'Pro-Chancellor & Chairman, 17th Governing Council',
+    'TRUSTEE', 'BOARD_OF_TRUSTEES',
+    'Pro-Chancellor and Chairman of the 17th Governing Council of the University of Port Harcourt, providing institutional governance and strategic oversight alongside the Foundation''s Board of Trustees.',
+    '17th Governing Council', 2, true
+  ),
+  (
+    '20260003-0000-4000-a000-000000000003',
+    'Prof. Chukwudi Ochi Onyeaso',
+    'BDS, FWACS, FMCDS',
+    'Deputy Vice-Chancellor (Administration & Advancement)',
+    'TRUSTEE', 'BOARD_OF_TRUSTEES',
+    'Oversees university administration, institutional advancement coordination, and external stakeholder linkages in support of UPHF''s resource mobilization mandate.',
+    'Deputy Vice-Chancellor', 3, true
+  ),
+  -- ── ACTIVE 2026 · EXECUTIVE DIRECTORATE ──
+  (
+    '20260004-0000-4000-a000-000000000004',
+    'Prof. Friday Nwafor',
+    'BA, MA, PhD (UPH)',
+    'Director, University of Port Harcourt Foundation (UPHF)',
+    'DIRECTORATE', 'DIRECTORATE',
+    'Leads day-to-day operations of the University of Port Harcourt Foundation at the University Advancement Centre, Delta Park, driving endowment growth, alumni relations, corporate CSR partnerships, and donor stewardship.',
+    'Director, UPHF', 4, true
+  ),
+  -- ── INSTITUTIONAL HERITAGE · FOUNDING STEWARDS & PAST DIRECTORS ──
+  (
+    '20260101-0000-4000-a000-000000000101',
+    'Prof. Nimi Dimkpa Briggs',
+    null,
+    'Founding Board Member & 5th Vice-Chancellor (Late)',
+    'HERITAGE', 'PAST_DIRECTORS',
+    'Founding Board Member of the Foundation and 5th Vice-Chancellor of the University of Port Harcourt. Spearheaded the 2002 MacArthur Foundation Advancement Centre initiative — the intervention still remembered on campus as the "UNIPORT Miracle."',
+    'Vice-Chancellor 2000–2005', 101, true
+  ),
+  (
+    '20260102-0000-4000-a000-000000000102',
+    'Rev. (Dr.) Walter Patrick Eneji',
+    null,
+    'Founding Board Member / Trustee',
+    'HERITAGE', 'PAST_DIRECTORS',
+    'Founding Board Member and Trustee of the University of Port Harcourt Foundation, present at the 2013 CAC incorporation that established the Foundation as an independent fiduciary trust under RC 61670.',
+    'Founding Trustee · 2013 Incorporation', 102, true
+  ),
+  (
+    '20260103-0000-4000-a000-000000000103',
+    'Prof. Ngozi Nma Odu',
+    null,
+    'Former Executive Director, UPHF',
+    'HERITAGE', 'PAST_DIRECTORS',
+    'Former Executive Director of the Foundation and distinguished academic and public administrator; later served as Deputy Governor of Rivers State. Championed scholarship access and women-in-academia advancement.',
+    'Executive Director · later Deputy Governor, Rivers State', 103, true
+  ),
+  (
+    '20260104-0000-4000-a000-000000000104',
+    'Prof. Henry E. Alapiki',
+    null,
+    'Former Director, UPHF',
+    'HERITAGE', 'PAST_DIRECTORS',
+    'Former Director of the Foundation and Professor of Political Science. Expanded the MacArthur and Nigeria Higher Education Foundation (NHEF) partnerships that anchored early advancement capacity building.',
+    'MacArthur & NHEF Partnership Expansion', 104, true
+  ),
+  (
+    '20260105-0000-4000-a000-000000000105',
+    'Prof. Leo C. Osuji',
+    null,
+    'Former Director, UPHF',
+    'HERITAGE', 'PAST_DIRECTORS',
+    'Former Director of the Foundation and Professor of Petroleum & Environmental Chemistry. Represented UPHF on the Governing Board of the Institute of Petroleum and Energy Studies (IPES).',
+    'UPHF Representative, IPES Governing Board', 105, true
+  ),
+  (
+    '20260106-0000-4000-a000-000000000106',
+    'Prof. Uzoma D. Chima',
+    'B.For, MF, PhD',
+    'Former Director, UPHF',
+    'HERITAGE', 'PAST_DIRECTORS',
+    'Former Director of the Foundation, serving through the 35th Convocation cycle. Currently the Senate Representative on the University''s 17th Governing Council.',
+    '35th Convocation Cycle · Senate Rep., 17th Governing Council', 106, true
+  )
+on conflict (id) do update set
+  full_name = excluded.full_name,
+  credentials = excluded.credentials,
+  role = excluded.role,
+  category = excluded.category,
+  "group" = excluded."group",
+  bio = excluded.bio,
+  tenure = excluded.tenure,
+  display_order = excluded.display_order,
+  is_active = excluded.is_active;
 
 -- ============================================================
 -- STEWARDSHIP REPORTS

@@ -7,11 +7,13 @@ import { leadershipMembers } from "@/db/schema";
 
 const schema = z.object({
   fullName: z.string().min(2).max(140),
+  credentials: z.string().max(180).optional().default(""),
   role: z.string().min(2).max(140),
-  category: z.enum(["TRUSTEE", "DIRECTORATE"]),
+  category: z.enum(["TRUSTEE", "DIRECTORATE", "HERITAGE"]),
+  group: z.enum(["BOARD_OF_TRUSTEES", "DIRECTORATE", "PAST_DIRECTORS"]).optional(),
   bio: z.string().max(2000).default(""),
   tenure: z.string().max(120).optional().default(""),
-  displayOrder: z.number().int().min(0).max(100).default(0),
+  displayOrder: z.number().int().min(0).max(1000).default(0),
 });
 
 export async function GET() {
@@ -36,8 +38,16 @@ export async function POST(req: Request) {
   try {
     await db.insert(leadershipMembers).values({
       fullName: parsed.data.fullName,
+      credentials: parsed.data.credentials || null,
       role: parsed.data.role,
       category: parsed.data.category,
+      group:
+        parsed.data.group ??
+        (parsed.data.category === "DIRECTORATE"
+          ? "DIRECTORATE"
+          : parsed.data.category === "HERITAGE"
+            ? "PAST_DIRECTORS"
+            : "BOARD_OF_TRUSTEES"),
       bio: parsed.data.bio,
       tenure: parsed.data.tenure || null,
       displayOrder: parsed.data.displayOrder,

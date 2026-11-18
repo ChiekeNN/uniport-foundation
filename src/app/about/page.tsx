@@ -1,6 +1,21 @@
-import { BookOpen, Eye, Target, Landmark, Users, Handshake, GraduationCap, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import {
+  BookOpen,
+  Eye,
+  Target,
+  Landmark,
+  Users,
+  Handshake,
+  GraduationCap,
+  ShieldCheck,
+  Sparkles,
+  Building2,
+  Microscope,
+  Cpu,
+} from "lucide-react";
 import { getLeadership } from "@/lib/data";
 import { Badge, Card, SectionHeading } from "@/components/ui";
+import { LEADERSHIP_GROUPS, STRATEGIC_2026, leadershipByGroup } from "@/lib/constants/leadership";
 
 export const revalidate = 120;
 export const metadata = { title: "About UPHF" };
@@ -11,25 +26,52 @@ const PILLARS = [
   { icon: BookOpen, title: "Infrastructure & Learning Environments", body: "Milestone-tranched labs, libraries, and lecture wings with QS-certified delivery." },
   { icon: Handshake, title: "Industry & Government Linkages", body: "Structured CSR, R&D chairs, and energy-transition collaborations with global partners." },
   { icon: Users, title: "Alumni Relations & Class Giving", body: "300,000+ Uniques worldwide mobilised through chapters and reunion legacy projects." },
+  { icon: Building2, title: "Host Community & Town-and-Gown Synergy", body: "Bilateral partnerships across Choba, Aluu, and Akpor kingdoms that keep the University socially rooted." },
 ];
+
+/** Fundraising pillars re-aligned to the 10th Vice-Chancellor's Eight-Point Strategic Agenda. */
+const AGENDA_ALIGNMENT = [
+  { icon: Landmark, title: "Endowments", body: "Perpetual capital and professorial chairs that underwrite the University's financial independence." },
+  { icon: Microscope, title: "Research Grants", body: "Competitive research funding aimed at impactful, problem-solving scholarship." },
+  { icon: Cpu, title: "Technological Innovation", body: "Digital fabrication, instrumentation renewal, and innovation infrastructure for a modern Uniport." },
+  { icon: GraduationCap, title: "Scholarships", body: "Need-tested access that keeps talent in the classroom regardless of family income." },
+];
+
+function Initials({ name }: { name: string }) {
+  const clean = name
+    .replace(/^Prof\.\s+/, "")
+    .replace(/^Professor\s+/, "")
+    .replace(/^Senator\s+/, "")
+    .replace(/^Rev\.\s+\(Dr\.\)\s+/, "")
+    .replace(/^Mrs\.\s+/, "")
+    .replace(/^Dr\.\s+/, "");
+  const parts = clean.split(" ").filter(Boolean);
+  return <>{(parts[0]?.charAt(0) ?? "") + (parts[1]?.charAt(0) ?? "")}</>;
+}
 
 export default async function AboutPage() {
   const leaders = await getLeadership();
-  const trustees = leaders.filter((l) => l.category === "TRUSTEE");
-  const directorate = leaders.filter((l) => l.category === "DIRECTORATE");
+  const trustees = leadershipByGroup(leaders, "BOARD_OF_TRUSTEES");
+  const directorate = leadershipByGroup(leaders, "DIRECTORATE");
+  const heritage = leadershipByGroup(leaders, "PAST_DIRECTORS");
 
   return (
     <div>
       <section className="bg-[#003366] text-white">
         <div className="mx-auto max-w-7xl px-4 py-14 md:py-20">
-          <Badge tone="gold">About the Foundation • RC 61670</Badge>
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge tone="gold">About the Foundation • RC 61670</Badge>
+            <Badge tone="green">Golden Jubilee Era • 2026 Administration</Badge>
+          </div>
           <h1 className="mt-4 max-w-3xl font-serif text-4xl md:text-5xl leading-tight">
             From the “UNIPORT Miracle” to a perpetual fiduciary trust.
           </h1>
           <p className="mt-4 max-w-2xl text-white/75 leading-relaxed">
             The University of Port Harcourt Foundation is the official advancement,
             endowment, and alumni relations arm of UNIPORT — born of a 2002
-            philanthropy catalyst and incorporated on June 5, 2013.
+            philanthropy catalyst, incorporated on June 5, 2013, and now aligned with the
+            {" "}<strong className="text-white">“{STRATEGIC_2026.vision}”</strong> of the 10th
+            Vice-Chancellor, {STRATEGIC_2026.viceChancellorShortName}.
           </p>
         </div>
       </section>
@@ -80,7 +122,8 @@ export default async function AboutPage() {
               <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#003366]"><Eye className="h-4 w-4 text-[#C59B27]" /> Vision</p>
               <p className="mt-2 font-serif text-lg text-[#003366] leading-snug">
                 A world-class African university, sustainably resourced by its own
-                community of alumni, friends, and partners.
+                community of alumni, friends, and partners — a{" "}
+                <em>globally respected university</em>.
               </p>
             </Card>
             <Card className="p-6 border-l-4 !border-l-[#0055A5]">
@@ -104,56 +147,167 @@ export default async function AboutPage() {
         </div>
       </section>
 
+      {/* 2026 STRATEGIC ALIGNMENT */}
       <section className="bg-white border-y border-slate-200">
-        <div className="mx-auto max-w-7xl px-4 py-14">
-          <SectionHeading eyebrow="How we work" title="Five operational pillars" />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-            {PILLARS.map((p, i) => (
-              <Card key={p.title} className="p-5">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#003366]/8 text-[#003366] font-serif font-black">
-                  {String(i + 1).padStart(2, "0")}
+        <div className="mx-auto max-w-7xl px-4 py-14 md:py-18">
+          <SectionHeading
+            eyebrow="2026 Strategic Alignment"
+            title="Golden Jubilee, and a shared vision for a globally respected university"
+            lede={`As UNIPORT marks its ${STRATEGIC_2026.milestone} milestone, the Foundation aligns every fundraising pillar with the ${STRATEGIC_2026.agenda} of the 10th Vice-Chancellor — technological innovation, impactful research, societal relevance, and sustainable development.`}
+          />
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {AGENDA_ALIGNMENT.map((a) => (
+              <Card key={a.title} className="p-6 hover:shadow-lg transition">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#003366] text-[#C59B27]">
+                  <a.icon className="h-5 w-5" />
                 </span>
-                <p className="mt-3 flex items-center gap-1.5 text-sm font-bold text-[#003366]"><p.icon className="h-4 w-4 text-[#C59B27]" />{p.title}</p>
-                <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{p.body}</p>
+                <h3 className="mt-4 font-serif text-lg text-[#003366]">{a.title}</h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{a.body}</p>
               </Card>
             ))}
           </div>
+          <Card className="mt-8 border-l-4 !border-l-[#C59B27] p-6">
+            <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#003366]">
+              <Sparkles className="h-4 w-4 text-[#C59B27]" /> Eight-Point Strategic Agenda
+            </p>
+            <p className="mt-2 text-sm text-slate-700 leading-relaxed">
+              The 2026 administration is organised around an{" "}
+              <strong>{STRATEGIC_2026.agenda}</strong> under the{" "}
+              <strong>“{STRATEGIC_2026.vision}”</strong>. The Foundation funds the pillars
+              of that agenda it can move fastest:{" "}
+              {STRATEGIC_2026.agendaPillars.join(" · ")}.
+            </p>
+          </Card>
+          <Card className="mt-5 p-6">
+            <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#003366]">
+              <Building2 className="h-4 w-4 text-[#0055A5]" /> Host Community & Town-and-Gown Synergy
+            </p>
+            <p className="mt-2 text-sm text-slate-700 leading-relaxed">
+              UPHF also supports host-community development and bilateral partnerships
+              across the <strong>{STRATEGIC_2026.hostCommunities.join(", ")}</strong> kingdoms,
+              working alongside corporate and international donors so that the
+              University&apos;s growth remains socially rooted and mutually beneficial.
+            </p>
+            <Link href="/partnerships" className="mt-4 inline-flex text-sm font-bold text-[#0055A5] hover:text-[#003366]">
+              Explore partnership pathways →
+            </Link>
+          </Card>
         </div>
       </section>
 
-      <section id="leadership" className="mx-auto max-w-7xl px-4 py-14 md:py-18 scroll-mt-24">
-        <SectionHeading
-          eyebrow="Governance"
-          title="Board of Trustees & Directorate"
-          lede="Fiduciary leadership drawn from UNIPORT's most distinguished scholars and administrators. Profiles are maintained by the Advancement office and editable via the admin CMS."
-        />
-        <h3 className="mt-12 font-serif text-2xl text-[#003366]">Board of Trustees</h3>
-        <div className="mt-5 grid gap-5 md:grid-cols-3">
-          {trustees.map((m) => (
-            <Card key={m.id} className="p-6 hover:shadow-lg transition">
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#003366] to-[#0055A5] font-serif text-xl font-bold text-[#C59B27]">
-                {m.fullName.replace("Professor ", "").charAt(0)}
+      <section className="mx-auto max-w-7xl px-4 py-14">
+        <SectionHeading eyebrow="How we work" title="Six operational pillars" />
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {PILLARS.map((p, i) => (
+            <Card key={p.title} className="p-5">
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#003366]/8 text-[#003366] font-serif font-black">
+                {String(i + 1).padStart(2, "0")}
               </span>
-              <h4 className="mt-4 font-serif text-lg text-[#003366]">{m.fullName}</h4>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#C59B27]">{m.role}</p>
-              {m.tenure ? <p className="mt-1 text-xs text-slate-500 italic">{m.tenure}</p> : null}
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">{m.bio}</p>
+              <p className="mt-3 flex items-center gap-1.5 text-sm font-bold text-[#003366]"><p.icon className="h-4 w-4 text-[#C59B27]" />{p.title}</p>
+              <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{p.body}</p>
             </Card>
           ))}
         </div>
-        <h3 className="mt-12 font-serif text-2xl text-[#003366]">Directorate — Advancement Centre</h3>
-        <div className="mt-5 grid gap-5 md:grid-cols-3">
-          {directorate.map((m) => (
-            <Card key={m.id} className="p-6 hover:shadow-lg transition">
-              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#C59B27] to-[#8a6d1c] font-serif text-xl font-bold text-white">
-                {m.fullName.replace("Professor ", "").replace("Mrs. ", "").charAt(0)}
-              </span>
-              <h4 className="mt-4 font-serif text-lg text-[#003366]">{m.fullName}</h4>
-              <p className="text-xs font-bold uppercase tracking-wider text-[#0055A5]">{m.role}</p>
-              {m.tenure ? <p className="mt-1 text-xs text-slate-500 italic">{m.tenure}</p> : null}
-              <p className="mt-3 text-sm leading-relaxed text-slate-600">{m.bio}</p>
-            </Card>
-          ))}
+      </section>
+
+      {/* GOVERNANCE */}
+      <span id="leadership" className="block scroll-mt-24" aria-hidden="true" />
+      <section id="governance" className="bg-white border-t border-slate-200 scroll-mt-24">
+        <div className="mx-auto max-w-7xl px-4 py-14 md:py-18">
+          <SectionHeading
+            eyebrow="Governance & Leadership • 2026"
+            title="Institutional Patrons, Executive Directorate & Institutional Heritage"
+            lede="Fiduciary leadership drawn from UNIPORT's most distinguished scholars and administrators. Historic officeholders are preserved in the archive so institutional continuity is visible, not erased. Profiles are maintained by the Advancement office and editable via the admin CMS."
+          />
+
+          {/* Quick-jump tabs */}
+          <div className="mt-8 flex flex-wrap justify-center gap-2">
+            {[
+              { href: "#governance-trustees", label: "Institutional Patrons & Board of Trustees", count: trustees.length },
+              { href: "#governance-directorate", label: "Executive Directorate", count: directorate.length },
+              { href: "#governance-heritage", label: "Founding Stewards & Past Directors", count: heritage.length },
+            ].map((t) => (
+              <a
+                key={t.href}
+                href={t.href}
+                className="rounded-full border border-[#003366]/20 bg-[#003366]/5 px-4 py-2 text-xs font-bold tracking-wide text-[#003366] transition hover:border-[#C59B27] hover:text-[#0055A5]"
+              >
+                {t.label} <span className="ml-1 text-[#C59B27]">{t.count}</span>
+              </a>
+            ))}
+          </div>
+
+          {/* 1 — Institutional Patrons & Board of Trustees */}
+          <div id="governance-trustees" className="mt-12 scroll-mt-28">
+            <h3 className="font-serif text-2xl text-[#003366]">1. Institutional Patrons & Board of Trustees</h3>
+            <p className="mt-2 max-w-3xl text-sm text-slate-600">
+              {LEADERSHIP_GROUPS[0].caption}
+            </p>
+            <div className="mt-6 grid gap-5 md:grid-cols-3">
+              {trustees.map((m) => (
+                <Card key={m.id} className="p-6 hover:shadow-lg transition">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#003366] to-[#0055A5] font-serif text-xl font-bold text-[#C59B27]">
+                    <Initials name={m.fullName} />
+                  </span>
+                  <h4 className="mt-4 font-serif text-lg text-[#003366]">{m.fullName}</h4>
+                  {m.credentials ? (
+                    <p className="mt-1 text-[11px] font-semibold tracking-wide text-slate-500">{m.credentials}</p>
+                  ) : null}
+                  <p className="mt-2 text-xs font-bold uppercase tracking-wider text-[#C59B27]">{m.role}</p>
+                  {m.tenure ? <p className="mt-1 text-xs text-slate-500 italic">{m.tenure}</p> : null}
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{m.bio}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* 2 — Executive Directorate */}
+          <div id="governance-directorate" className="mt-14 scroll-mt-28">
+            <h3 className="font-serif text-2xl text-[#003366]">2. Executive Directorate (University Advancement Centre)</h3>
+            <p className="mt-2 max-w-3xl text-sm text-slate-600">
+              {LEADERSHIP_GROUPS[1].caption}
+            </p>
+            <div className="mt-6 grid gap-5 md:grid-cols-3">
+              {directorate.map((m) => (
+                <Card key={m.id} className="p-6 hover:shadow-lg transition">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#C59B27] to-[#8a6d1c] font-serif text-xl font-bold text-white">
+                    <Initials name={m.fullName} />
+                  </span>
+                  <h4 className="mt-4 font-serif text-lg text-[#003366]">{m.fullName}</h4>
+                  {m.credentials ? (
+                    <p className="mt-1 text-[11px] font-semibold tracking-wide text-slate-500">{m.credentials}</p>
+                  ) : null}
+                  <p className="mt-2 text-xs font-bold uppercase tracking-wider text-[#0055A5]">{m.role}</p>
+                  {m.tenure ? <p className="mt-1 text-xs text-slate-500 italic">{m.tenure}</p> : null}
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{m.bio}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* 3 — Founding Stewards & Past Directors */}
+          <div id="governance-heritage" className="mt-14 scroll-mt-28">
+            <h3 className="font-serif text-2xl text-[#003366]">3. Founding Stewards & Past Directors (2002–Present)</h3>
+            <p className="mt-2 max-w-3xl text-sm text-slate-600">
+              {LEADERSHIP_GROUPS[2].caption}
+            </p>
+            <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {heritage.map((m) => (
+                <Card key={m.id} className="p-6 bg-slate-50 hover:shadow-lg transition">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-[#003366]/20 bg-white font-serif text-lg font-bold text-[#003366]">
+                    <Initials name={m.fullName} />
+                  </span>
+                  <h4 className="mt-4 font-serif text-base text-[#003366]">{m.fullName}</h4>
+                  {m.credentials ? (
+                    <p className="mt-1 text-[11px] font-semibold tracking-wide text-slate-500">{m.credentials}</p>
+                  ) : null}
+                  <p className="mt-2 text-[11px] font-bold uppercase tracking-wider text-slate-500">{m.role}</p>
+                  {m.tenure ? <p className="mt-1 text-xs text-slate-500 italic">{m.tenure}</p> : null}
+                  <p className="mt-3 text-[13px] leading-relaxed text-slate-600">{m.bio}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </div>
