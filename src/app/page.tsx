@@ -8,11 +8,16 @@ import {
   Handshake,
   Landmark,
   ShieldCheck,
+  Sparkles,
+  Microscope,
+  Cpu,
+  Quote,
 } from "lucide-react";
 import { getFeaturedCampaigns, getStats, getCampaigns } from "@/lib/data";
 import { formatNgn } from "@/lib/currency";
 import { CampaignCard } from "@/components/campaign-card";
 import { Badge, Button, SectionHeading, Card } from "@/components/ui";
+import { STRATEGIC_2026 } from "@/lib/constants/leadership";
 
 export const revalidate = 60;
 
@@ -21,6 +26,30 @@ const IMPACT = [
   { value: "RC 61670", label: "Independently Incorporated Fiduciary Trust" },
   { value: "300,000+", label: "Global UNIPORT Alumni Network" },
   { value: "100%", label: "Audited Donor Stewardship" },
+];
+
+/** UPHF fundraising pillars mapped onto the 10th Vice-Chancellor's Eight-Point Strategic Agenda. */
+const AGENDA_ALIGNMENT = [
+  {
+    icon: Landmark,
+    title: "Endowments",
+    body: "Perpetual capital and professorial chairs that underwrite the University's long-term financial independence.",
+  },
+  {
+    icon: Microscope,
+    title: "Research Grants",
+    body: "Competitive research funding directed at impactful scholarship and problem-solving science.",
+  },
+  {
+    icon: Cpu,
+    title: "Technological Innovation",
+    body: "Digital fabrication studios, modern instrumentation, and innovation infrastructure for a 21st-century campus.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Scholarships",
+    body: "Need-tested access that keeps brilliant Uniques in the classroom, irrespective of family income.",
+  },
 ];
 
 const FOCUS = [
@@ -69,6 +98,7 @@ export default async function HomePage() {
             <div className="flex flex-wrap items-center gap-2">
               <Badge tone="gold">RC 61670 • Fiduciary Trust</Badge>
               <Badge tone="green">Est. 2002 • Incorporated 2013</Badge>
+              <Badge tone="slate">Golden Jubilee Era • 2026</Badge>
             </div>
             <h1 className="mt-5 font-serif text-4xl leading-[1.12] md:text-5xl lg:text-[3.4rem]">
               Advancing Academic Excellence Through{" "}
@@ -79,7 +109,11 @@ export default async function HomePage() {
               The University of Port Harcourt Foundation is the official
               advancement, endowment, and alumni relations arm of UNIPORT —
               stewarding every gift in ring-fenced accounts with quarterly
-              milestone reporting and public recognition.
+              milestone reporting and public recognition. In this{" "}
+              <strong className="text-white">{STRATEGIC_2026.milestone}</strong> era we
+              fund the{" "}
+              <strong className="text-white">{STRATEGIC_2026.agenda}</strong> of the 10th
+              Vice-Chancellor, {STRATEGIC_2026.viceChancellorShortName}.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/donate">
@@ -147,6 +181,64 @@ export default async function HomePage() {
               </p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* 2026 INSTITUTIONAL ALIGNMENT — GOLDEN JUBILEE */}
+      <section className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+        <SectionHeading
+          eyebrow={`${STRATEGIC_2026.milestone} • 2026 Administration`}
+          title={`A shared vision for a globally respected university`}
+          lede={`UNIPORT's ${STRATEGIC_2026.milestone} milestone coincides with the inauguration of the 10th Vice-Chancellor. The Foundation's four fundraising pillars are deliberately mapped to the ${STRATEGIC_2026.agenda} — so every naira raised answers a named institutional priority.`}
+        />
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {AGENDA_ALIGNMENT.map((a) => (
+            <Card key={a.title} className="p-6 hover:shadow-[0_12px_40px_rgba(0,51,102,0.12)] hover:-translate-y-1 transition-all">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#003366] text-[#C59B27]">
+                <a.icon className="h-6 w-6" />
+              </span>
+              <h3 className="mt-5 font-serif text-lg text-[#003366]">{a.title}</h3>
+              <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{a.body}</p>
+            </Card>
+          ))}
+        </div>
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <Card className="border-l-4 !border-l-[#C59B27] p-7">
+            <p className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#003366]">
+              <Quote className="h-4 w-4 text-[#C59B27]" /> {STRATEGIC_2026.vision}
+            </p>
+            <p className="mt-3 font-serif text-xl leading-snug text-[#003366]">
+              “A globally respected university — built on technological innovation,
+              impactful research, societal relevance, and sustainable development.”
+            </p>
+            <p className="mt-3 text-sm text-slate-600">
+              — {STRATEGIC_2026.viceChancellor}, {STRATEGIC_2026.viceChancellorOffice} &amp;
+              Institutional Patron, UPHF (assumed office July 2026).
+            </p>
+            <p className="mt-4 text-[13px] leading-relaxed text-slate-600">
+              The {STRATEGIC_2026.agenda}: {STRATEGIC_2026.agendaPillars.join(" · ")}.
+            </p>
+          </Card>
+
+          <Card className="bg-[#003366] !border-[#003366] p-7 text-white">
+            <p className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#C59B27]">
+              <Building2 className="h-4 w-4" /> Host Community & Town-and-Gown Synergy
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-white/85">
+              Alongside corporate and international donors, UPHF supports host-community
+              development and bilateral partnerships across the{" "}
+              <strong className="text-white">{STRATEGIC_2026.hostCommunities.join(", ")}</strong>{" "}
+              kingdoms — so that the University&apos;s growth stays socially rooted and
+              mutually beneficial.
+            </p>
+            <Link
+              href="/partnerships"
+              className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#C59B27] hover:text-white"
+            >
+              Partner with UPHF <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Card>
         </div>
       </section>
 

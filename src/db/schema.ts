@@ -54,8 +54,10 @@ export const donations = pgTable("donations", {
 export const leadershipMembers = pgTable("leadership_members", {
   id: uuid("id").defaultRandom().primaryKey(),
   fullName: text("full_name").notNull(),
+  credentials: text("credentials"),
   role: text("role").notNull(),
-  category: text("category").notNull().default("TRUSTEE"), // TRUSTEE | DIRECTORATE
+  category: text("category").notNull().default("TRUSTEE"), // TRUSTEE | DIRECTORATE | HERITAGE
+  group: text("group").notNull().default("BOARD_OF_TRUSTEES"), // BOARD_OF_TRUSTEES | DIRECTORATE | PAST_DIRECTORS
   bio: text("bio").notNull().default(""),
   tenure: text("tenure"),
   imageUrl: text("image_url"),

@@ -83,16 +83,22 @@ export async function getLeadership(): Promise<LeadershipDTO[]> {
       .where(eq(leadershipMembers.isActive, true))
       .orderBy(asc(leadershipMembers.displayOrder));
     if (!rows.length) return FALLBACK_LEADERSHIP;
-    return rows.map((r) => ({
-      id: r.id,
-      fullName: r.fullName,
-      role: r.role,
-      category: (r.category === "DIRECTORATE" ? "DIRECTORATE" : "TRUSTEE") as LeadershipDTO["category"],
-      bio: r.bio,
-      tenure: r.tenure,
-      imageUrl: r.imageUrl,
-      displayOrder: r.displayOrder ?? 0,
-    }));
+    return rows.map((r) => {
+      const category = (r.category ?? "TRUSTEE") as LeadershipDTO["category"];
+      const group = (r.group ?? (category === "DIRECTORATE" ? "DIRECTORATE" : "BOARD_OF_TRUSTEES")) as LeadershipDTO["group"];
+      return {
+        id: r.id,
+        fullName: r.fullName,
+        credentials: r.credentials ?? null,
+        role: r.role,
+        category: category === "HERITAGE" || category === "DIRECTORATE" ? category : "TRUSTEE",
+        group,
+        bio: r.bio,
+        tenure: r.tenure,
+        imageUrl: r.imageUrl,
+        displayOrder: r.displayOrder ?? 0,
+      };
+    });
   } catch {
     return FALLBACK_LEADERSHIP;
   }
