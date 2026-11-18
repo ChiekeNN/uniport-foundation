@@ -1,0 +1,125 @@
+import type {
+  CampaignDTO,
+  LeadershipDTO,
+  StewardshipReportDTO,
+} from "@/types/database";
+
+export const FALLBACK_CAMPAIGNS: CampaignDTO[] = [
+  {
+    id: "seed-jubilee",
+    slug: "golden-jubilee-endowment-fund",
+    title: "The Golden Jubilee Endowment Fund",
+    category: "ENDOWMENT",
+    shortDescription:
+      "A ₦5 billion perpetual endowment to secure UNIPORT's next 50 years of academic excellence.",
+    description:
+      "Launched ahead of the University of Port Harcourt's Golden Jubilee, this perpetual endowment anchors the University's long-term financial independence. Principal is preserved in ring-fenced fiduciary accounts; only audited investment income funds professorial chairs, library acquisitions, laboratory renewal, and competitive student bursaries. Every gift is receipted, ring-fenced, and reported quarterly.",
+    imageUrl: null,
+    targetAmountNgn: 5000000000,
+    amountRaisedNgn: 1287500000,
+    donorCount: 342,
+    isActive: true,
+    isFeatured: true,
+    namingTiers: [
+      { tier: "Founders Circle", min_ngn: 100000000, benefit: "Named Endowment Window + Founders Gallery inscription + annual Vice-Chancellor's dinner" },
+      { tier: "Gold Laureate", min_ngn: 50000000, benefit: "Named professorial chair support fund + plaque in Advancement Centre" },
+      { tier: "Jubilee Patron", min_ngn: 10000000, benefit: "Named bursary line + certificate + annual impact report dedication" },
+      { tier: "Friend of the Jubilee", min_ngn: 1000000, benefit: "Digital Donor Wall of Honor + jubilee lapel insignia" },
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: "seed-scholars",
+    slug: "unique-uniport-indigent-scholars-fund",
+    title: "Unique UNIPORT Indigent Scholars Fund",
+    category: "SCHOLARSHIP",
+    shortDescription:
+      "Keep brilliant but indigent students in school — full and partial scholarships and upkeep stipends.",
+    description:
+      "No brilliant Unique should drop out for lack of funds. This fund provides full-tuition scholarships, accommodation support, upkeep stipends, and emergency grants to rigorously verified indigent students across all faculties. ₦350,000 keeps one student fully enrolled for an academic year.",
+    imageUrl: null,
+    targetAmountNgn: 750000000,
+    amountRaisedNgn: 214600000,
+    donorCount: 891,
+    isActive: true,
+    isFeatured: true,
+    namingTiers: [
+      { tier: "Full Scholar Patron", min_ngn: 1400000, benefit: "Name one 4-year scholar + annual scholar letter + graduation invitation" },
+      { tier: "Annual Bursary Sponsor", min_ngn: 350000, benefit: "Fund one student for a full session + progress report" },
+      { tier: "Upkeep Partner", min_ngn: 100000, benefit: "Stipend + emergency aid pool + termly impact brief" },
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: "seed-stem",
+    slug: "stem-digital-innovation-labs-upgrade",
+    title: "STEM & Digital Innovation Labs Upgrade",
+    category: "INFRASTRUCTURE",
+    shortDescription:
+      "Re-tool 12 science and engineering laboratories with modern instrumentation and a Fab studio.",
+    description:
+      "In partnership with industry and the Faculties of Science, Engineering, and Computing, this campaign re-tools twelve teaching and research laboratories — instrumentation, power conditioning, fume extraction, high-speed connectivity, and a shared digital fabrication studio at Delta Park. Each lab upgrade is delivered as a milestone tranche with independent certification.",
+    imageUrl: null,
+    targetAmountNgn: 1800000000,
+    amountRaisedNgn: 642300000,
+    donorCount: 187,
+    isActive: true,
+    isFeatured: true,
+    namingTiers: [
+      { tier: "Named Laboratory", min_ngn: 150000000, benefit: "Full lab naming rights for 15 years + commissioning plaque" },
+      { tier: "Innovation Bay", min_ngn: 50000000, benefit: "Named fabrication bay + branding wall" },
+      { tier: "Equipment Patron", min_ngn: 5000000, benefit: "Named equipment line + calibration certificate dedication" },
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: "seed-legacy",
+    slug: "class-of-1998-legacy-research-chairs",
+    title: "Alumni Class Legacy — Research Chairs & Lecture Wing",
+    category: "ALUMNI_CLASS",
+    shortDescription:
+      "Class-set reunion giving: endow two research chairs and refurbish the Delta Park lecture wing.",
+    description:
+      "The reunion-giving vehicle for anniversary class sets (10th, 20th, 25th, 30th). The pilot cohort is endowing two industry-linked Research Chairs (Energy Transition; Public Health & Environment) and refurbishing the Delta Park lecture wing with tiered seating, acoustic treatment, and solar-backed power.",
+    imageUrl: null,
+    targetAmountNgn: 900000000,
+    amountRaisedNgn: 187450000,
+    donorCount: 264,
+    isActive: true,
+    isFeatured: true,
+    namingTiers: [
+      { tier: "Legacy Chair Founder", min_ngn: 75000000, benefit: "Co-name a research chair + inaugural lecture honour" },
+      { tier: "Lecture Wing Patron", min_ngn: 25000000, benefit: "Named row + reunion plaque + convocation recognition" },
+      { tier: "Class Donor", min_ngn: 250000, benefit: "Class legacy roll + reunion yearbook feature" },
+    ],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+];
+
+export const FALLBACK_LEADERSHIP: LeadershipDTO[] = [
+  { id: "l1", fullName: "Professor Nimi Dimkpa Briggs", role: "Chairman, Board of Trustees", category: "TRUSTEE", bio: "Former Vice-Chancellor of UNIPORT and eminent scholar in Obstetrics & Gynaecology. Provided founding fiduciary leadership to the Foundation.", tenure: "Founding Chairman", imageUrl: null, displayOrder: 1 },
+  { id: "l2", fullName: "Professor Ngozi Odu", role: "Member, Board of Trustees", category: "TRUSTEE", bio: "Distinguished academic and public administrator; former Deputy Vice-Chancellor (Administration) and former Deputy Governor of Rivers State.", tenure: "Trustee", imageUrl: null, displayOrder: 2 },
+  { id: "l3", fullName: "Professor Henry E. Alapiki", role: "Member, Board of Trustees", category: "TRUSTEE", bio: "Professor of Political Science and former Dean, Faculty of Social Sciences. Adviser on governance and advancement ethics.", tenure: "Trustee", imageUrl: null, displayOrder: 3 },
+  { id: "l4", fullName: "Professor Leo Osuji", role: "Director, University Advancement Centre", category: "DIRECTORATE", bio: "Professor of Petroleum & Environmental Chemistry. Leads industry–university R&D structuring.", tenure: "Directorate", imageUrl: null, displayOrder: 4 },
+  { id: "l5", fullName: "Professor Uzoma D. Chima", role: "Director, Advancement & Linkages Programmes", category: "DIRECTORATE", bio: "Professor of Forestry & Environment. Coordinates alumni relations and stewardship reporting.", tenure: "Directorate", imageUrl: null, displayOrder: 5 },
+  { id: "l6", fullName: "Mrs. Gloria O. Jim-Daniels", role: "Secretary / Head, Advancement Operations", category: "DIRECTORATE", bio: "Custodian of donor records, receipting, and quarterly milestone reporting.", tenure: "Directorate", imageUrl: null, displayOrder: 6 },
+];
+
+export const FALLBACK_REPORTS: StewardshipReportDTO[] = [
+  { id: "r1", title: "Annual Impact Report 2024 — Advancing Excellence", fiscalYear: "2024", reportType: "ANNUAL_IMPACT", fileUrl: "/reports/uphf-annual-impact-2024.pdf", fileSize: "4.2 MB", summary: "Scholarships disbursed, lab milestones commissioned, and endowment growth.", createdAt: new Date().toISOString() },
+  { id: "r2", title: "Audited Financial Statements FY 2024", fiscalYear: "2024", reportType: "AUDITED_FINANCIAL", fileUrl: "/reports/uphf-audited-financials-2024.pdf", fileSize: "1.8 MB", summary: "Independent external audit opinion and fund-by-fund accounting.", createdAt: new Date().toISOString() },
+  { id: "r3", title: "Q4 2024 Stewardship & Milestone Bulletin", fiscalYear: "2024", reportType: "QUARTERLY", fileUrl: "/reports/uphf-q4-2024-bulletin.pdf", fileSize: "2.1 MB", summary: "Quarterly tranche releases and scholar progression notes.", createdAt: new Date().toISOString() },
+  { id: "r4", title: "Annual Impact Report 2023 — The Stewardship Year", fiscalYear: "2023", reportType: "ANNUAL_IMPACT", fileUrl: "/reports/uphf-annual-impact-2023.pdf", fileSize: "3.9 MB", summary: "Foundations of the ring-fenced reporting protocol.", createdAt: new Date().toISOString() },
+  { id: "r5", title: "Audited Financial Statements FY 2023", fiscalYear: "2023", reportType: "AUDITED_FINANCIAL", fileUrl: "/reports/uphf-audited-financials-2023.pdf", fileSize: "1.6 MB", summary: "Prior-year audited statements.", createdAt: new Date().toISOString() },
+  { id: "r6", title: "Endowment Performance Statement H1 2025", fiscalYear: "2025", reportType: "ENDOWMENT_STATEMENT", fileUrl: "/reports/uphf-endowment-h1-2025.pdf", fileSize: "0.9 MB", summary: "Interim endowment principal, yield, and disbursement.", createdAt: new Date().toISOString() },
+];
+
+export const FALLBACK_WALL = [
+  { id: "w1", donorName: "Engr. Tamunoemi Horsfall", organization: "Horsfall Energy Ltd", amountNgnEquivalent: 5000000, currency: "NGN" as const, campaignTitle: "The Golden Jubilee Endowment Fund", createdAt: new Date().toISOString() },
+  { id: "w2", donorName: "Dr. (Mrs.) Adaeze Okonkwo", organization: null, amountNgnEquivalent: 3750000, currency: "USD" as const, campaignTitle: "The Golden Jubilee Endowment Fund", createdAt: new Date().toISOString() },
+  { id: "w3", donorName: "Class of 1998 Reunion Committee", organization: "UNIPORT Alumni — Class of 1998", amountNgnEquivalent: 12000000, currency: "NGN" as const, campaignTitle: "The Golden Jubilee Endowment Fund", createdAt: new Date().toISOString() },
+];
