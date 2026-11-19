@@ -96,6 +96,26 @@ export default async function AboutPage() {
                 obligations, not courtesies.
               </p>
               <p>
+                The register of <strong>Incorporated Trustees</strong> was signed by
+                {" "}Prof. Nimi Dimkpa Briggs (5th Vice-Chancellor), Prof. Joseph
+                Atubokiki Ajienka (7th Vice-Chancellor), Dr. Emmanuel Egbogah
+                (benefactor), Rev. (Dr.) Walter Patrick Eneji and Mrs. Matilda
+                Nnodim (Former Registrar).
+              </p>
+              <h3 className="font-serif text-2xl text-[#003366] pt-2">2013 to today: the directors</h3>
+              <p>
+                Six directors have carried the Foundation since incorporation:{" "}
+                <strong>Prof. (Mrs.) Ngozi Nma Odu</strong> as the first Acting
+                Executive Director, then <strong>Prof. Henry E. Alapiki</strong>,{" "}
+                <strong>Prof. Chukwudi Ochi Onyeaso</strong>,{" "}
+                <strong>Prof. Leo C. Osuji</strong> and{" "}
+                <strong>Prof. Uzoma D. Chima</strong> — with{" "}
+                <strong>Prof. Friday Nwafor</strong> as the current Director, listed
+                in the University&apos;s 36th Combined Convocation Brochure (June
+                2026). Terms before 2020 are approximate, drawn from convocation
+                brochures and official institutional briefings.
+              </p>
+              <p>
                 Today the Foundation operates from the{" "}
                 <strong>University Advancement Centre, Delta Park</strong>,
                 coordinating endowments, scholarships, industry linkages, and a

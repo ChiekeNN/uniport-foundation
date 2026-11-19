@@ -62,7 +62,8 @@ on conflict (slug) do update set
 -- LEADERSHIP — 2026 INSTITUTIONAL & FOUNDATION UPDATE
 -- ============================================================
 -- Groups: BOARD_OF_TRUSTEES (institutional patrons & trustees),
---         DIRECTORATE (University Advancement Centre), PAST_DIRECTORS (heritage archive).
+--         DIRECTORATE (University Advancement Centre), PAST_DIRECTORS (heritage archive:
+--         founding incorporated trustees from RC 61670 + the directors' line of succession).
 -- IDs are deterministic so re-running this seed updates in place instead of duplicating.
 -- Requires migration 002_leadership_2026.sql (adds credentials + "group").
 
@@ -116,63 +117,100 @@ values
     'BA, MA, PhD (UPH)',
     'Director, University of Port Harcourt Foundation (UPHF)',
     'DIRECTORATE', 'DIRECTORATE',
-    'Leads day-to-day operations of the University of Port Harcourt Foundation at the University Advancement Centre, Delta Park, driving endowment growth, alumni relations, corporate CSR partnerships, and donor stewardship.',
-    'Director, UPHF', 4, true
+    'Professor of Drama, Theatre and Film Studies (BA, MA, PhD, UPH). Listed as the current Director of the University of Port Harcourt Foundation in the University''s 36th Combined Convocation Brochure (June 2026). Leads day-to-day operations at the University Advancement Centre, Delta Park, driving endowment growth, alumni relations, corporate CSR partnerships, and donor stewardship.',
+    'Director, UPHF · 2025/2026 – present', 4, true
   ),
-  -- ── INSTITUTIONAL HERITAGE · FOUNDING STEWARDS & PAST DIRECTORS ──
+-- ── INSTITUTIONAL HERITAGE · FOUNDING INCORPORATED TRUSTEES (RC 61670) ──
   (
     '20260101-0000-4000-a000-000000000101',
     'Prof. Nimi Dimkpa Briggs',
     null,
-    'Founding Board Member & 5th Vice-Chancellor (Late)',
+    'Founding Incorporated Trustee & 5th Vice-Chancellor (Late)',
     'HERITAGE', 'PAST_DIRECTORS',
-    'Founding Board Member of the Foundation and 5th Vice-Chancellor of the University of Port Harcourt. Spearheaded the 2002 MacArthur Foundation Advancement Centre initiative — the intervention still remembered on campus as the "UNIPORT Miracle."',
-    'Vice-Chancellor 2000–2005', 101, true
+    'Founding Incorporated Trustee of the Foundation and 5th Vice-Chancellor of the University of Port Harcourt. Spearheaded the 2002 MacArthur Foundation Advancement Centre initiative — the intervention still remembered on campus as the “UNIPORT Miracle” — and signed the Foundation into being at its CAC incorporation on 5 June 2013.',
+    'Vice-Chancellor 2000–2005 · Trustee from 2013', 101, true
   ),
   (
     '20260102-0000-4000-a000-000000000102',
     'Rev. (Dr.) Walter Patrick Eneji',
     null,
-    'Founding Board Member / Trustee',
+    'Founding Incorporated Trustee',
     'HERITAGE', 'PAST_DIRECTORS',
-    'Founding Board Member and Trustee of the University of Port Harcourt Foundation, present at the 2013 CAC incorporation that established the Foundation as an independent fiduciary trust under RC 61670.',
-    'Founding Trustee · 2013 Incorporation', 102, true
+    'Founding Incorporated Trustee of the University of Port Harcourt Foundation, named in the CAC registry at the 2013 incorporation that established the Foundation as an independent fiduciary trust under RC 61670.',
+    'Trustee from 2013', 102, true
   ),
   (
-    '20260103-0000-4000-a000-000000000103',
-    'Prof. Ngozi Nma Odu',
+    '20260107-0000-4000-a000-000000000107',
+    'Prof. Joseph Atubokiki Ajienka',
     null,
-    'Former Executive Director, UPHF',
+    'Founding Incorporated Trustee & 7th Vice-Chancellor',
     'HERITAGE', 'PAST_DIRECTORS',
-    'Former Executive Director of the Foundation and distinguished academic and public administrator; later served as Deputy Governor of Rivers State. Championed scholarship access and women-in-academia advancement.',
-    'Executive Director · later Deputy Governor, Rivers State', 103, true
+    '7th Vice-Chancellor of the University of Port Harcourt (2010–2015) and a founding Incorporated Trustee of the Foundation, presiding over the University at the moment UPHF was incorporated on 5 June 2013.',
+    'Vice-Chancellor 2010–2015 · Trustee from 2013', 107, true
+  ),
+  (
+    '20260108-0000-4000-a000-000000000108',
+    'Dr. Emmanuel Egbogah',
+    null,
+    'Founding Incorporated Trustee & Benefactor',
+    'HERITAGE', 'PAST_DIRECTORS',
+    'Petroleum geologist, benefactor of the University and founding Incorporated Trustee of the Foundation, listed as a board member in the public CAC registry for RC 61670.',
+    'Trustee from 2013', 108, true
+  ),
+  (
+    '20260109-0000-4000-a000-000000000109',
+    'Mrs. Matilda Nnodim',
+    null,
+    'Founding Incorporated Trustee & Former Registrar',
+    'HERITAGE', 'PAST_DIRECTORS',
+    'Former Registrar of the University of Port Harcourt and a founding Incorporated Trustee of the Foundation, named in the public CAC registry for RC 61670.',
+    'Trustee from 2013', 109, true
+  ),
+  -- ── INSTITUTIONAL HERITAGE · DIRECTORS OF THE FOUNDATION (LINE OF SUCCESSION) ──
+  (
+    '20260103-0000-4000-a000-000000000103',
+    'Prof. (Mrs.) Ngozi Nma Odu',
+    null,
+    'Pioneer / First Acting Executive Director, UPHF',
+    'HERITAGE', 'PAST_DIRECTORS',
+    'Professor of Food and Public Health Microbiology who served as the Foundation''s first Acting Executive Director following its establishment. Later Deputy Governor of Rivers State.',
+    'Pioneer term · from the 2013 incorporation', 110, true
   ),
   (
     '20260104-0000-4000-a000-000000000104',
     'Prof. Henry E. Alapiki',
     null,
-    'Former Director, UPHF',
+    'Executive Director / Director, UPHF',
     'HERITAGE', 'PAST_DIRECTORS',
-    'Former Director of the Foundation and Professor of Political Science. Expanded the MacArthur and Nigeria Higher Education Foundation (NHEF) partnerships that anchored early advancement capacity building.',
-    'MacArthur & NHEF Partnership Expansion', 104, true
+    'Professor of Political Science and former Dean of the Faculty of Social Sciences. Listed as Executive Director / Director of UPHF in the University''s 31st Convocation Brochure (2014/2015 & 2015/2016 sessions) and on the Institute of Petroleum Studies (IPS) Governing Board. Expanded the MacArthur and Nigeria Higher Education Foundation (NHEF) partnerships that anchored early advancement capacity building.',
+    'c. 2015–2017', 111, true
+  ),
+  (
+    '20260110-0000-4000-a000-000000000110',
+    'Prof. Chukwudi Ochi Onyeaso',
+    'BDS, FWACS, FMCDS',
+    'Director, UPHF (2020–2022)',
+    'HERITAGE', 'PAST_DIRECTORS',
+    'Professor of Orthodontics and Dentistry who served as Director of the Foundation during the 2021 administration, as documented in official UNIPORT/OWSD institutional briefings. Subsequently appointed Deputy Vice-Chancellor (Administration & Advancement) and now sits on the Board of Trustees.',
+    'c. 2020–2022 · now DVC (Administration & Advancement)', 112, true
   ),
   (
     '20260105-0000-4000-a000-000000000105',
     'Prof. Leo C. Osuji',
     null,
-    'Former Director, UPHF',
+    'Director, UPHF (2022–2024)',
     'HERITAGE', 'PAST_DIRECTORS',
-    'Former Director of the Foundation and Professor of Petroleum & Environmental Chemistry. Represented UPHF on the Governing Board of the Institute of Petroleum and Energy Studies (IPES).',
-    'UPHF Representative, IPES Governing Board', 105, true
+    'Professor of Industrial and Environmental Chemistry. Served as Director of the Foundation and represented UPHF on the Governing Board of the Institute of Petroleum and Energy Studies (IPES).',
+    'c. 2022–2024', 113, true
   ),
   (
     '20260106-0000-4000-a000-000000000106',
     'Prof. Uzoma D. Chima',
     'B.For, MF, PhD',
-    'Former Director, UPHF',
+    'Director, UPHF (2024–2025)',
     'HERITAGE', 'PAST_DIRECTORS',
-    'Former Director of the Foundation, serving through the 35th Convocation cycle. Currently the Senate Representative on the University''s 17th Governing Council.',
-    '35th Convocation Cycle · Senate Rep., 17th Governing Council', 106, true
+    'Professor of Forestry and Wildlife Management. Listed as Director of the University of Port Harcourt Foundation in the University''s 35th Convocation Brochure (published July 2025 for the 2021/2022 & 2022/2023 sessions). Currently the Senate Representative on the University''s 17th Governing Council.',
+    '2024–2025 · 35th Convocation cycle', 114, true
   )
 on conflict (id) do update set
   full_name = excluded.full_name,
