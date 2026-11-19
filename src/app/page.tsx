@@ -13,11 +13,12 @@ import {
   Cpu,
   Quote,
 } from "lucide-react";
-import { getFeaturedCampaigns, getStats, getCampaigns } from "@/lib/data";
+import { getFeaturedCampaigns, getStats, getCampaigns, getLeadership } from "@/lib/data";
 import { formatNgn } from "@/lib/currency";
 import { CampaignCard } from "@/components/campaign-card";
 import { Badge, Button, SectionHeading, Card } from "@/components/ui";
 import { STRATEGIC_2026 } from "@/lib/constants/leadership";
+import { GovernanceSection } from "@/components/governance-section";
 
 export const revalidate = 60;
 
@@ -74,10 +75,11 @@ const FOCUS = [
 ];
 
 export default async function HomePage() {
-  const [featured, stats, all] = await Promise.all([
+  const [featured, stats, all, leaders] = await Promise.all([
     getFeaturedCampaigns(3),
     getStats(),
     getCampaigns("ALL"),
+    getLeadership(),
   ]);
   const display = featured.length ? featured : all.slice(0, 3);
 
@@ -283,6 +285,18 @@ export default async function HomePage() {
               <CampaignCard key={c.id} campaign={c} currency="NGN" />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* GOVERNANCE & LEADERSHIP — 2026 */}
+      <section id="governance" className="border-t border-slate-200 bg-white scroll-mt-24">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
+          <GovernanceSection
+            leaders={leaders}
+            ctaHref="/about#governance"
+            ctaLabel="See the full governance profile on the About page"
+            idPrefix="home-"
+          />
         </div>
       </section>
 
