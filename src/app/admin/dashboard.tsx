@@ -3,10 +3,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
-  BadgeCheck, Building2, FileText, LogOut, Megaphone, RefreshCw, Users,
+  BadgeCheck, Building2, FileText, LayoutDashboard, LogOut, Megaphone, RefreshCw, Users,
 } from "lucide-react";
 import { Button, Card, Field, inputCls, selectCls } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import { BoardBriefing } from "./briefing";
 
 interface Overview {
   campaigns: number;
@@ -24,11 +25,11 @@ interface Overview {
   recentInquiries: Array<{ id: string; fullName: string; email: string; category: string; subject: string | null }>;
 }
 
-const TABS = ["Overview", "Campaigns", "Pledges", "Leadership", "Reports"] as const;
+const TABS = ["Board briefing", "Live operations", "Campaigns", "Pledges", "Leadership", "Reports"] as const;
 
 export function AdminDashboard() {
   const router = useRouter();
-  const [tab, setTab] = useState<(typeof TABS)[number]>("Overview");
+  const [tab, setTab] = useState<(typeof TABS)[number]>("Board briefing");
   const [data, setData] = useState<Overview | null>(null);
   const [loading, setLoading] = useState(true);
   const [msg, setMsg] = useState("");
@@ -74,15 +75,22 @@ export function AdminDashboard() {
     load();
   }
 
-  if (loading)
+  // The board briefing runs on the illustrative demo dataset, so it renders
+  // immediately; only the live tabs wait on the database.
+  if (loading && tab !== "Board briefing")
     return <div className="mx-auto max-w-6xl px-4 py-16 text-slate-500">Loading Advancement CMS…</div>;
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-10">
+    <section className="mx-auto max-w-7xl px-4 py-8 md:py-10">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#C59B27]">Protected • Advancement CMS</p>
+          <p className="flex items-center gap-1.5 text-xs font-bold tracking-[0.22em] uppercase text-[#C59B27]">
+            <LayoutDashboard className="h-3.5 w-3.5" /> Protected • Advancement CMS
+          </p>
           <h1 className="mt-1 font-serif text-3xl text-[#003366]">Foundation Operations Dashboard</h1>
+          <p className="mt-1 text-sm text-slate-500">
+            University Advancement Centre, Delta Park — board and management reporting.
+          </p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" onClick={load}><RefreshCw className="h-4 w-4" /> Refresh</Button>
@@ -100,7 +108,9 @@ export function AdminDashboard() {
         ))}
       </div>
 
-      {tab === "Overview" && data && (
+      {tab === "Board briefing" && <div className="mt-6"><BoardBriefing /></div>}
+
+      {tab === "Live operations" && data && (
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { icon: Megaphone, l: "Campaigns", v: String(data.campaigns) },
