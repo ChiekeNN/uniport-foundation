@@ -11,7 +11,7 @@ import type { LeadershipDTO, LeadershipGroup } from "@/types/database";
  *
  * Order of precedence inside the UI is `displayOrder`, then `fullName`.
  * Within the Board, the Pro-Chancellor (Chairman of Council) is seated first,
- * followed by the Vice-Chancellor (Institutional Patron), then the DVC.
+ * followed by the Vice-Chancellor (Institutional Patron).
  * Do not renumber historical records below 100 — the archive is intentionally
  * sorted after the active 2026 officeholders.
  */
@@ -67,19 +67,6 @@ export const LEADERSHIP_2026: LeadershipDTO[] = [
     imageUrl: null,
     displayOrder: 2,
   },
-  {
-    id: "20260003-0000-4000-a000-000000000003",
-    fullName: "Prof. Chukwudi Ochi Onyeaso",
-    credentials: "BDS, FWACS, FMCDS",
-    role: "Deputy Vice-Chancellor (Administration & Advancement)",
-    category: "TRUSTEE",
-    group: "BOARD_OF_TRUSTEES",
-    bio: "Oversees university administration, institutional advancement coordination, and external stakeholder linkages in support of UPHF's resource mobilization mandate.",
-    tenure: "Deputy Vice-Chancellor",
-    imageUrl: null,
-    displayOrder: 3,
-  },
-
   // ───────────────────────── ACTIVE 2026 — EXECUTIVE DIRECTORATE ─────────────────────────
   {
     id: "20260004-0000-4000-a000-000000000004",
@@ -191,7 +178,7 @@ export const LEADERSHIP_2026: LeadershipDTO[] = [
     role: "Director, UPHF (2020–2022)",
     category: "HERITAGE",
     group: "PAST_DIRECTORS",
-    bio: "Professor of Orthodontics and Dentistry who served as Director of the Foundation during the 2021 administration, as documented in official UNIPORT/OWSD institutional briefings. Subsequently appointed Deputy Vice-Chancellor (Administration & Advancement) and now sits on the Board of Trustees.",
+    bio: "Professor of Orthodontics and Dentistry who served as Director of the Foundation during the 2021 administration, as documented in official UNIPORT/OWSD institutional briefings. Subsequently appointed Deputy Vice-Chancellor (Administration & Advancement) of the University.",
     tenure: "c. 2020–2022 · now DVC (Administration & Advancement)",
     imageUrl: null,
     displayOrder: 112,

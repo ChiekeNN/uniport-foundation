@@ -82,7 +82,7 @@ insert into leadership_members
   (id, full_name, credentials, role, category, "group", bio, tenure, display_order, is_active)
 values
   -- ── ACTIVE 2026 · INSTITUTIONAL PATRONS & BOARD OF TRUSTEES ──
-  -- Order: Pro-Chancellor (Chairman of Council) → Vice-Chancellor (Institutional Patron) → DVC
+  -- Order: Pro-Chancellor (Chairman of Council) → Vice-Chancellor (Institutional Patron)
   (
     '20260002-0000-4000-a000-000000000002',
     'Senator Mao Arukwe Ohuabunwa',
@@ -100,15 +100,6 @@ values
     'TRUSTEE', 'BOARD_OF_TRUSTEES',
     'Professor of Cardiovascular and Tissue Perfusion Physiology and three-time Commissioner for Health in Rivers State. Inaugurated in July 2026 as the 10th Vice-Chancellor of UNIPORT, championing the "Shared Vision for a Globally Respected University" and an Eight-Point Strategic Agenda focused on technological innovation, impactful research, societal relevance, and sustainable development.',
     'Assumed Office: July 2026', 2, true
-  ),
-  (
-    '20260003-0000-4000-a000-000000000003',
-    'Prof. Chukwudi Ochi Onyeaso',
-    'BDS, FWACS, FMCDS',
-    'Deputy Vice-Chancellor (Administration & Advancement)',
-    'TRUSTEE', 'BOARD_OF_TRUSTEES',
-    'Oversees university administration, institutional advancement coordination, and external stakeholder linkages in support of UPHF''s resource mobilization mandate.',
-    'Deputy Vice-Chancellor', 3, true
   ),
   -- ── ACTIVE 2026 · EXECUTIVE DIRECTORATE ──
   (
@@ -191,7 +182,7 @@ values
     'BDS, FWACS, FMCDS',
     'Director, UPHF (2020–2022)',
     'HERITAGE', 'PAST_DIRECTORS',
-    'Professor of Orthodontics and Dentistry who served as Director of the Foundation during the 2021 administration, as documented in official UNIPORT/OWSD institutional briefings. Subsequently appointed Deputy Vice-Chancellor (Administration & Advancement) and now sits on the Board of Trustees.',
+    'Professor of Orthodontics and Dentistry who served as Director of the Foundation during the 2021 administration, as documented in official UNIPORT/OWSD institutional briefings. Subsequently appointed Deputy Vice-Chancellor (Administration & Advancement) of the University.',
     'c. 2020–2022 · now DVC (Administration & Advancement)', 112, true
   ),
   (
@@ -222,6 +213,9 @@ on conflict (id) do update set
   tenure = excluded.tenure,
   display_order = excluded.display_order,
   is_active = excluded.is_active;
+
+-- Retired from the Board of Trustees — not an Institutional Patron.
+delete from leadership_members where id = '20260003-0000-4000-a000-000000000003';
 
 -- ============================================================
 -- STEWARDSHIP REPORTS
