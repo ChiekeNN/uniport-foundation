@@ -222,12 +222,12 @@ delete from leadership_members where id = '20260003-0000-4000-a000-000000000003'
 -- ============================================================
 insert into stewardship_reports (title, fiscal_year, report_type, file_url, file_size, summary)
 values
-  ('Annual Impact Report 2024 — Advancing Excellence', '2024', 'ANNUAL_IMPACT', '/reports/uphf-annual-impact-2024.pdf', '4.2 MB', 'Scholarships disbursed, lab milestones commissioned, and endowment growth with audited highlights.'),
-  ('Audited Financial Statements FY 2024', '2024', 'AUDITED_FINANCIAL', '/reports/uphf-audited-financials-2024.pdf', '1.8 MB', 'Independent external audit opinion, statement of financial position, and fund-by-fund accounting.'),
-  ('Q4 2024 Stewardship & Milestone Bulletin', '2024', 'QUARTERLY', '/reports/uphf-q4-2024-bulletin.pdf', '2.1 MB', 'Quarterly tranche releases, lab commissioning photos, and scholar progression notes.'),
-  ('Annual Impact Report 2023 — The Stewardship Year', '2023', 'ANNUAL_IMPACT', '/reports/uphf-annual-impact-2023.pdf', '3.9 MB', 'Foundations of the ring-fenced reporting protocol and class-set reunion giving pilots.'),
-  ('Audited Financial Statements FY 2023', '2023', 'AUDITED_FINANCIAL', '/reports/uphf-audited-financials-2023.pdf', '1.6 MB', 'Prior-year audited statements and comparative fund performance.'),
-  ('Endowment Performance Statement H1 2025', '2025', 'ENDOWMENT_STATEMENT', '/reports/uphf-endowment-h1-2025.pdf', '0.9 MB', 'Interim endowment principal, yield, and disbursement schedule.')
+  ('Annual Impact Report 2024 — Advancing Excellence', '2024', 'ANNUAL_IMPACT', '/reports/uphf-annual-impact-2024.pdf', '70 KB', 'Scholarships disbursed, lab milestones commissioned, and endowment growth with audited highlights.'),
+  ('Audited Financial Statements FY 2024', '2024', 'AUDITED_FINANCIAL', '/reports/uphf-audited-financials-2024.pdf', '64 KB', 'Independent external audit opinion, statement of financial position, and fund-by-fund accounting.'),
+  ('Q4 2024 Stewardship & Milestone Bulletin', '2024', 'QUARTERLY', '/reports/uphf-q4-2024-bulletin.pdf', '63 KB', 'Quarterly tranche releases, lab commissioning photos, and scholar progression notes.'),
+  ('Annual Impact Report 2023 — The Stewardship Year', '2023', 'ANNUAL_IMPACT', '/reports/uphf-annual-impact-2023.pdf', '64 KB', 'Foundations of the ring-fenced reporting protocol and class-set reunion giving pilots.'),
+  ('Audited Financial Statements FY 2023', '2023', 'AUDITED_FINANCIAL', '/reports/uphf-audited-financials-2023.pdf', '58 KB', 'Prior-year audited statements and comparative fund performance.'),
+  ('Endowment Performance Statement H1 2025', '2025', 'ENDOWMENT_STATEMENT', '/reports/uphf-endowment-h1-2025.pdf', '62 KB', 'Interim endowment principal, yield, and disbursement schedule.')
 on conflict do nothing;
 
 -- ============================================================

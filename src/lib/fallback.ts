@@ -110,12 +110,12 @@ export const FALLBACK_CAMPAIGNS: CampaignDTO[] = [
 export const FALLBACK_LEADERSHIP: LeadershipDTO[] = LEADERSHIP_2026.map((m) => ({ ...m }));
 
 export const FALLBACK_REPORTS: StewardshipReportDTO[] = [
-  { id: "r1", title: "Annual Impact Report 2024 — Advancing Excellence", fiscalYear: "2024", reportType: "ANNUAL_IMPACT", fileUrl: "/reports/uphf-annual-impact-2024.pdf", fileSize: "4.2 MB", summary: "Scholarships disbursed, lab milestones commissioned, and endowment growth.", createdAt: new Date().toISOString() },
-  { id: "r2", title: "Audited Financial Statements FY 2024", fiscalYear: "2024", reportType: "AUDITED_FINANCIAL", fileUrl: "/reports/uphf-audited-financials-2024.pdf", fileSize: "1.8 MB", summary: "Independent external audit opinion and fund-by-fund accounting.", createdAt: new Date().toISOString() },
-  { id: "r3", title: "Q4 2024 Stewardship & Milestone Bulletin", fiscalYear: "2024", reportType: "QUARTERLY", fileUrl: "/reports/uphf-q4-2024-bulletin.pdf", fileSize: "2.1 MB", summary: "Quarterly tranche releases and scholar progression notes.", createdAt: new Date().toISOString() },
-  { id: "r4", title: "Annual Impact Report 2023 — The Stewardship Year", fiscalYear: "2023", reportType: "ANNUAL_IMPACT", fileUrl: "/reports/uphf-annual-impact-2023.pdf", fileSize: "3.9 MB", summary: "Foundations of the ring-fenced reporting protocol.", createdAt: new Date().toISOString() },
-  { id: "r5", title: "Audited Financial Statements FY 2023", fiscalYear: "2023", reportType: "AUDITED_FINANCIAL", fileUrl: "/reports/uphf-audited-financials-2023.pdf", fileSize: "1.6 MB", summary: "Prior-year audited statements.", createdAt: new Date().toISOString() },
-  { id: "r6", title: "Endowment Performance Statement H1 2025", fiscalYear: "2025", reportType: "ENDOWMENT_STATEMENT", fileUrl: "/reports/uphf-endowment-h1-2025.pdf", fileSize: "0.9 MB", summary: "Interim endowment principal, yield, and disbursement.", createdAt: new Date().toISOString() },
+  { id: "r1", title: "Annual Impact Report 2024 — Advancing Excellence", fiscalYear: "2024", reportType: "ANNUAL_IMPACT", fileUrl: "/reports/uphf-annual-impact-2024.pdf", fileSize: "70 KB", summary: "Scholarships disbursed, lab milestones commissioned, and endowment growth.", createdAt: new Date().toISOString() },
+  { id: "r2", title: "Audited Financial Statements FY 2024", fiscalYear: "2024", reportType: "AUDITED_FINANCIAL", fileUrl: "/reports/uphf-audited-financials-2024.pdf", fileSize: "64 KB", summary: "Independent external audit opinion and fund-by-fund accounting.", createdAt: new Date().toISOString() },
+  { id: "r3", title: "Q4 2024 Stewardship & Milestone Bulletin", fiscalYear: "2024", reportType: "QUARTERLY", fileUrl: "/reports/uphf-q4-2024-bulletin.pdf", fileSize: "63 KB", summary: "Quarterly tranche releases and scholar progression notes.", createdAt: new Date().toISOString() },
+  { id: "r4", title: "Annual Impact Report 2023 — The Stewardship Year", fiscalYear: "2023", reportType: "ANNUAL_IMPACT", fileUrl: "/reports/uphf-annual-impact-2023.pdf", fileSize: "64 KB", summary: "Foundations of the ring-fenced reporting protocol.", createdAt: new Date().toISOString() },
+  { id: "r5", title: "Audited Financial Statements FY 2023", fiscalYear: "2023", reportType: "AUDITED_FINANCIAL", fileUrl: "/reports/uphf-audited-financials-2023.pdf", fileSize: "58 KB", summary: "Prior-year audited statements.", createdAt: new Date().toISOString() },
+  { id: "r6", title: "Endowment Performance Statement H1 2025", fiscalYear: "2025", reportType: "ENDOWMENT_STATEMENT", fileUrl: "/reports/uphf-endowment-h1-2025.pdf", fileSize: "62 KB", summary: "Interim endowment principal, yield, and disbursement.", createdAt: new Date().toISOString() },
 ];
 
 export const FALLBACK_WALL = [
