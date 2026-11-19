@@ -233,9 +233,10 @@ export default async function HomePage() {
             </p>
             <Link
               href="/partnerships"
-              className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#C59B27] hover:text-white"
+              className="group/link mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#C59B27] transition-colors hover:text-[#EFD79B]"
             >
-              Partner with UPHF <ArrowRight className="h-4 w-4" />
+              Partner with UPHF{" "}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" />
             </Link>
           </Card>
         </div>

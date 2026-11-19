@@ -18,6 +18,21 @@ body {
   font-family: var(--font-sans);
 }
 
+/*
+ * Card surface.
+ * Declared in the `components` layer (not as a `bg-white` utility) so that a
+ * caller's own background utility always wins — e.g. the navy
+ * "Host Community & Town-and-Gown" panel, which is `bg-[#003366] text-white`.
+ * With a hard-coded `bg-white` utility the two rules have equal specificity and
+ * source order decides, so `bg-white` silently beat `bg-[#003366]` and left
+ * white text on a white card.
+ */
+@layer components {
+  .uphf-card {
+    background-color: #ffffff;
+  }
+}
+
 .font-serif {
   font-family: var(--font-serif);
 }
