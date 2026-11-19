@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { GraduationCap, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 
 export function SiteFooter() {
   return (
@@ -7,8 +8,14 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#C59B27] text-[#003366]">
-              <GraduationCap className="h-6 w-6" />
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/95 p-1 shadow">
+              <Image
+                src="/brand/uniport-logo.png"
+                alt="University of Port Harcourt Foundation crest"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
+              />
             </span>
             <div className="leading-tight">
               <p className="font-serif text-lg font-bold text-white">UNIPORT Foundation</p>
