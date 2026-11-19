@@ -43,7 +43,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-slate-200 bg-white shadow-[0_1px_3px_rgba(0,51,102,0.08)]",
+        "uphf-card rounded-2xl border border-slate-200 shadow-[0_1px_3px_rgba(0,51,102,0.08)]",
         className
       )}
     >
