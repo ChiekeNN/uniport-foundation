@@ -343,57 +343,75 @@ export function Donut({
   }, [segments, total, c]);
 
   return (
-    <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:gap-6">
-      <svg viewBox="0 0 120 120" width={size} height={size} className="shrink-0 -rotate-90">
-        <circle cx="60" cy="60" r={r} fill="none" stroke="#eef2f7" strokeWidth="13" />
-        {arcs.map((s, i) => (
-          <circle
-            key={s.label}
-            cx="60"
-            cy="60"
-            r={r}
-            fill="none"
-            stroke={s.color}
-            strokeWidth={active === i ? 16 : 13}
-            strokeLinecap="round"
-            strokeDasharray={`${on ? s.dash : 0} ${c}`}
-            strokeDashoffset={-s.offset}
-            onMouseEnter={() => setActive(i)}
-            onMouseLeave={() => setActive(null)}
-            className="cursor-pointer transition-all duration-700"
-            style={{ transitionDelay: `${i * 120}ms` }}
-          />
-        ))}
-      </svg>
-
-      <div className="w-full space-y-2">
-        {segments.map((s, i) => (
-          <button
-            key={s.label}
-            type="button"
-            onMouseEnter={() => setActive(i)}
-            onMouseLeave={() => setActive(null)}
-            className={cn(
-              "flex w-full items-center justify-between gap-3 rounded-lg px-2 py-1.5 text-left transition",
-              active === i ? "bg-slate-50" : ""
-            )}
-          >
-            <span className="flex items-center gap-2 text-xs font-semibold text-slate-600">
-              <span className="h-2.5 w-2.5 rounded-sm" style={{ background: s.color }} />
-              {s.label}
-            </span>
-            <span className="text-xs font-bold tabular-nums text-[#003366]">
-              {Math.round((s.value / total) * 100)}%
-              <span className="ml-1.5 font-medium text-slate-400">{format(s.value)}</span>
-            </span>
-          </button>
-        ))}
+    <div className="flex flex-col items-center gap-5">
+      {/* Ring — centred, with the total sitting inside the hole */}
+      <div className="relative shrink-0">
+        <svg viewBox="0 0 120 120" width={size} height={size} className="-rotate-90">
+          <circle cx="60" cy="60" r={r} fill="none" stroke="#eef2f7" strokeWidth="13" />
+          {arcs.map((s, i) => (
+            <circle
+              key={s.label}
+              cx="60"
+              cy="60"
+              r={r}
+              fill="none"
+              stroke={s.color}
+              strokeWidth={active === i ? 16 : 13}
+              strokeLinecap="round"
+              strokeDasharray={`${on ? s.dash : 0} ${c}`}
+              strokeDashoffset={-s.offset}
+              onMouseEnter={() => setActive(i)}
+              onMouseLeave={() => setActive(null)}
+              className="cursor-pointer transition-all duration-700"
+              style={{ transitionDelay: `${i * 120}ms` }}
+            />
+          ))}
+        </svg>
         {centerValue ? (
-          <p className="pt-1 text-center text-[11px] uppercase tracking-widest text-slate-400 sm:text-left">
-            {centerLabel} <span className="font-bold text-[#003366]">{centerValue}</span>
-          </p>
+          <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-center">
+            <span className="text-[9.5px] font-bold uppercase tracking-[0.16em] text-slate-400">
+              {centerLabel}
+            </span>
+            <span className="mt-0.5 font-serif text-xl font-bold leading-none text-[#003366]">
+              {centerValue}
+            </span>
+          </div>
         ) : null}
       </div>
+
+      {/* Legend — fixed columns so percentages and amounts line up */}
+      <ul className="w-full">
+        {segments.map((s, i) => (
+          <li key={s.label}>
+            <button
+              type="button"
+              onMouseEnter={() => setActive(i)}
+              onMouseLeave={() => setActive(null)}
+              onFocus={() => setActive(i)}
+              onBlur={() => setActive(null)}
+              className={cn(
+                "flex w-full items-center gap-2 rounded-md px-1.5 py-1.5 text-left transition",
+                active === i ? "bg-slate-50" : "hover:bg-slate-50/70"
+              )}
+            >
+              <span
+                className="h-2.5 w-2.5 shrink-0 rounded-[3px]"
+                style={{ background: s.color }}
+                aria-hidden
+              />
+              <span className="min-w-0 flex-1 truncate text-[11.5px] font-semibold text-slate-600">
+                {s.label}
+              </span>
+              <span className="w-8 shrink-0 text-right text-[11.5px] font-bold tabular-nums text-[#003366]">
+                {Math.round((s.value / total) * 100)}%
+              </span>
+              <span className="w-[62px] shrink-0 text-right text-[11px] font-medium tabular-nums text-slate-400">
+                {format(s.value)}
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
