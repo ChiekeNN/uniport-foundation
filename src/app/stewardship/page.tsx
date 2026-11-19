@@ -57,6 +57,11 @@ export default async function StewardshipPage() {
           </div>
           <p className="text-sm text-slate-500 flex items-center gap-1.5"><Medal className="h-4 w-4 text-[#C59B27]" /> {reports.length} documents • {wall.length} honorees • {formatNgn(wall.reduce((s, w) => s + w.amountNgnEquivalent, 0))} wall-visible</p>
         </div>
+        <p className="mt-3 max-w-3xl text-[13px] leading-relaxed text-slate-500">
+          Every report below is a print-ready PDF — open it in the browser or download it. These are
+          preview editions prepared for this demonstration site: they show exactly how the Foundation
+          reports on a gift, with figures drawn from the giving data on this site.
+        </p>
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {reports.map((r) => (
             <Card key={r.id} className="p-5 hover:shadow-md transition">
@@ -70,7 +75,11 @@ export default async function StewardshipPage() {
               {r.summary ? <p className="mt-1.5 text-[13px] text-slate-600">{r.summary}</p> : null}
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-xs text-slate-500">{r.fileSize ?? "PDF"}</span>
-                <a href={r.fileUrl} className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0055A5] hover:text-[#003366]">
+                <a
+                  href={r.fileUrl}
+                  download
+                  className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0055A5] hover:text-[#003366]"
+                >
                   <Download className="h-4 w-4" /> Download
                 </a>
               </div>
