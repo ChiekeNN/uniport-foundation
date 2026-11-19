@@ -10,6 +10,8 @@ import type { LeadershipDTO, LeadershipGroup } from "@/types/database";
  *      Executive Directorate, and Founding Stewards & Past Directors
  *
  * Order of precedence inside the UI is `displayOrder`, then `fullName`.
+ * Within the Board, the Pro-Chancellor (Chairman of Council) is seated first,
+ * followed by the Vice-Chancellor (Institutional Patron), then the DVC.
  * Do not renumber historical records below 100 — the archive is intentionally
  * sorted after the active 2026 officeholders.
  */
@@ -42,18 +44,6 @@ export const LEADERSHIP_GROUPS: {
 export const LEADERSHIP_2026: LeadershipDTO[] = [
   // ───────────────────────── ACTIVE 2026 — BOARD OF TRUSTEES ─────────────────────────
   {
-    id: "20260001-0000-4000-a000-000000000001",
-    fullName: "Prof. Chike Princewill Rewhuamwhu Chike",
-    credentials: "B.Med.Sc., M.B., B.S., M.Sc., MD (UPH), FAGP, FIIA, DMP, DSSRS",
-    role: "10th Vice-Chancellor, University of Port Harcourt & Institutional Patron, UPHF",
-    category: "TRUSTEE",
-    group: "BOARD_OF_TRUSTEES",
-    bio: "Professor of Cardiovascular and Tissue Perfusion Physiology and three-time Commissioner for Health in Rivers State. Inaugurated in July 2026 as the 10th Vice-Chancellor of UNIPORT, championing the “Shared Vision for a Globally Respected University” and an Eight-Point Strategic Agenda focused on technological innovation, impactful research, societal relevance, and sustainable development.",
-    tenure: "Assumed Office: July 2026",
-    imageUrl: null,
-    displayOrder: 1,
-  },
-  {
     id: "20260002-0000-4000-a000-000000000002",
     fullName: "Senator Mao Arukwe Ohuabunwa",
     credentials: "PhD, KSC, DSSRS",
@@ -62,6 +52,18 @@ export const LEADERSHIP_2026: LeadershipDTO[] = [
     group: "BOARD_OF_TRUSTEES",
     bio: "Pro-Chancellor and Chairman of the 17th Governing Council of the University of Port Harcourt, providing institutional governance and strategic oversight alongside the Foundation's Board of Trustees.",
     tenure: "17th Governing Council",
+    imageUrl: null,
+    displayOrder: 1,
+  },
+  {
+    id: "20260001-0000-4000-a000-000000000001",
+    fullName: "Prof. Chike Princewill Rewhuamwhu Chike",
+    credentials: "B.Med.Sc., M.B., B.S., M.Sc., MD (UPH), FAGP, FIIA, DMP, DSSRS",
+    role: "10th Vice-Chancellor, University of Port Harcourt & Institutional Patron, UPHF",
+    category: "TRUSTEE",
+    group: "BOARD_OF_TRUSTEES",
+    bio: "Professor of Cardiovascular and Tissue Perfusion Physiology and three-time Commissioner for Health in Rivers State. Inaugurated in July 2026 as the 10th Vice-Chancellor of UNIPORT, championing the “Shared Vision for a Globally Respected University” and an Eight-Point Strategic Agenda focused on technological innovation, impactful research, societal relevance, and sustainable development.",
+    tenure: "Assumed Office: July 2026",
     imageUrl: null,
     displayOrder: 2,
   },
