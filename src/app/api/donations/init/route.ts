@@ -6,6 +6,7 @@ import { donationInitSchema } from "@/lib/validations";
 import { toNgn, formatMoney } from "@/lib/currency";
 import { initializePaystackTransaction } from "@/lib/payments/paystack";
 import { createStripeCheckoutSession } from "@/lib/payments/stripe";
+import { DEMO_REF_PREFIX, isDemoPayments } from "@/lib/payments/demo";
 import type { Currency } from "@/types/database";
 
 function pledgeRef(): string {
@@ -86,6 +87,45 @@ export async function POST(req: Request) {
         gatewayReference: ref,
         amountLabel: formatMoney(input.amount, currency),
         campaignTitle,
+      });
+    }
+
+    // DEMO GATEWAY — no live keys (or DEMO_PAYMENTS=true). Persist the gift as
+    // PENDING and send the donor to the simulated checkout, which verifies it.
+    if (isDemoPayments()) {
+      const ref = gatewayRef(DEMO_REF_PREFIX.replace("_", ""));
+      let persisted = false;
+      try {
+        await db.insert(donations).values({
+          campaignId,
+          donorName: input.donorName,
+          donorEmail: input.donorEmail,
+          organization: input.organization || null,
+          amount: String(input.amount),
+          currency,
+          amountNgnEquivalent: amountNgn,
+          isAlumni: input.isAlumni,
+          graduationYear: input.graduationYear ?? null,
+          displayOnDonorWall: input.displayOnDonorWall,
+          paymentStatus: "PENDING",
+          // Stay inside the schema's gateway check constraint; the demo_ prefix
+          // on the reference is what identifies a rehearsal gift.
+          paymentGateway: currency === "NGN" ? "PAYSTACK" : "STRIPE",
+          gatewayReference: ref,
+          pledgeReference: pledge,
+        });
+        persisted = true;
+      } catch (e) {
+        console.error("[donations/init] demo insert failed", e);
+      }
+      return NextResponse.json({
+        mode: "demo",
+        checkoutUrl: `/donate/checkout?reference=${encodeURIComponent(ref)}`,
+        reference: ref,
+        pledgeReference: pledge,
+        amountLabel: formatMoney(input.amount, currency),
+        campaignTitle,
+        persisted,
       });
     }
 
