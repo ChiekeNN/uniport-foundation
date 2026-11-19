@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -20,6 +20,12 @@ import {
   TrendingUp,
   Users,
   Wallet,
+  DatabaseZap,
+  RotateCcw,
+  RefreshCw,
+  Radio,
+  Check,
+  AlertTriangle,
 } from "lucide-react";
 import { Card } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -142,11 +148,105 @@ function prettyDate(iso: string) {
   return new Date(`${iso}T00:00:00`).toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
 }
 
+/* ────────────────────────── live portal gifts ────────────────────────── */
+
+interface LiveGift {
+  id: string;
+  donorName: string;
+  donorEmail: string;
+  organization: string | null;
+  amount: string;
+  currency: string;
+  amountNgnEquivalent: number;
+  displayOnDonorWall: boolean;
+  paymentStatus: string;
+  paymentGateway: string;
+  gatewayReference: string | null;
+  pledgeReference: string | null;
+  createdAt: string;
+  campaignTitle: string | null;
+  isDemo: boolean;
+}
+
+interface LiveStats {
+  total: number;
+  verified: number;
+  pending: number;
+  onWall: number;
+  verifiedNgn: number;
+}
+
+const CHANNEL_LABEL: Record<string, GiftRow["channel"]> = {
+  PAYSTACK: "Paystack",
+  STRIPE: "Stripe",
+  BANK_WIRE: "Bank wire",
+};
+
+function toRow(g: LiveGift): GiftRow & { live?: boolean; demo?: boolean; email?: string } {
+  return {
+    id: g.id,
+    donor: g.donorName,
+    organization: g.organization,
+    campaign: g.campaignTitle ?? "Untied General Endowment Fund",
+    amountNgn: Number(g.amountNgnEquivalent ?? 0),
+    channel: CHANNEL_LABEL[g.paymentGateway] ?? "Paystack",
+    status: g.paymentStatus === "VERIFIED" ? "VERIFIED" : "PENDING",
+    date: (g.createdAt ?? "").slice(0, 10),
+    live: true,
+    demo: g.isDemo,
+    email: g.donorEmail,
+  };
+}
+
+function useLiveGifts() {
+  const [gifts, setGifts] = useState<LiveGift[]>([]);
+  const [stats, setStats] = useState<LiveStats | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [syncing, setSyncing] = useState(false);
+
+  const load = useCallback(async () => {
+    setSyncing(true);
+    try {
+      const res = await fetch("/api/admin/gifts", { cache: "no-store" });
+      if (res.status === 401) {
+        setError("session");
+        return;
+      }
+      const j = await res.json();
+      setGifts(j.gifts ?? []);
+      setStats(j.stats ?? null);
+      setError(j.error ?? null);
+    } catch {
+      setError("offline");
+    } finally {
+      setSyncing(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    let cancelled = false;
+    const tick = async () => {
+      if (cancelled) return;
+      await load();
+      if (!cancelled) timer = setTimeout(tick, 20000);
+    };
+    void tick();
+    return () => {
+      cancelled = true;
+      if (timer) clearTimeout(timer);
+    };
+  }, [load]);
+
+  return { gifts, stats, error, syncing, reload: load };
+}
+
 /* ────────────────────────── the briefing ────────────────────────── */
 
 export function BoardBriefing() {
   const [period, setPeriod] = useState<(typeof PERIODS)[number]>("FY 2026");
   const t = totalsFor(period);
+  const { gifts: liveGifts, stats: liveStats, error: liveError, syncing: syncingLive, reload: reloadLive } = useLiveGifts();
 
   const delta = useMemo(() => {
     if (period === "FY 2026") return { raised: 31.2, donors: 24.8 };
@@ -217,7 +317,13 @@ export function BoardBriefing() {
                 </button>
               ))}
             </div>
-            <p className="text-[11px] text-white/50">Updated {new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}</p>
+            <p className="flex items-center gap-2 text-[11px] text-white/50">
+              Updated {new Date().toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-400/15 px-2 py-0.5 font-bold text-emerald-100">
+                <Radio className="h-3 w-3 animate-pulse" />
+                {liveError ? "ledger offline" : `${liveStats?.total ?? 0} portal gifts`}
+              </span>
+            </p>
           </div>
         </div>
       </div>
@@ -360,7 +466,13 @@ export function BoardBriefing() {
 
       {/* ── gifts + activity ────────────────────────────────────── */}
       <div className="grid gap-5 lg:grid-cols-5">
-        <GiftTable />
+        <GiftTable
+          liveRows={liveGifts.map(toRow)}
+          liveStats={liveStats}
+          liveError={liveError}
+          syncing={syncingLive}
+          onReload={reloadLive}
+        />
         <Card className="p-5 lg:col-span-2">
           <SectionTitle icon={CalendarClock} title="Advancement activity log" hint="Latest recorded activities at the Centre." />
           <ol className="mt-4 space-y-3">
@@ -514,6 +626,8 @@ export function BoardBriefing() {
         </Card>
       </div>
 
+      <DemoControls onChanged={reloadLive} />
+
       <p className="flex flex-wrap items-center gap-2 rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-[11px] text-slate-500">
         <ArrowDownRight className="h-3.5 w-3.5" />
         <strong className="font-bold text-slate-600">Illustrative board briefing.</strong>
@@ -529,35 +643,90 @@ export function BoardBriefing() {
 
 type SortKey = "donor" | "amount" | "date";
 
-function GiftTable() {
-  const [status, setStatus] = useState<"ALL" | GiftRow["status"]>("ALL");
+type RegisterRow = GiftRow & { live?: boolean; demo?: boolean; email?: string };
+
+function GiftTable({
+  liveRows,
+  liveStats,
+  liveError,
+  syncing,
+  onReload,
+}: {
+  liveRows: RegisterRow[];
+  liveStats: LiveStats | null;
+  liveError: string | null;
+  syncing: boolean;
+  onReload: () => void;
+}) {
+  const [status, setStatus] = useState<"ALL" | GiftRow["status"] | "LIVE">("ALL");
   const [q, setQ] = useState("");
   const [sort, setSort] = useState<{ key: SortKey; dir: "asc" | "desc" }>({ key: "date", dir: "desc" });
 
+  const all = useMemo<RegisterRow[]>(() => [...liveRows, ...RECENT_GIFTS], [liveRows]);
+
   const rows = useMemo(() => {
-    const filtered = RECENT_GIFTS.filter((g) => {
-      const okStatus = status === "ALL" || g.status === status;
+    const filtered = all.filter((g) => {
+      const okStatus =
+        status === "ALL" ? true : status === "LIVE" ? Boolean(g.live) : g.status === status;
       const hay = `${g.donor} ${g.organization ?? ""} ${g.campaign}`.toLowerCase();
       return okStatus && hay.includes(q.toLowerCase());
     });
     return [...filtered].sort((a, b) => {
       const dir = sort.dir === "asc" ? 1 : -1;
       if (sort.key === "amount") return (a.amountNgn - b.amountNgn) * dir;
-      if (sort.key === "date") return (a.date < b.date ? -1 : 1) * dir;
+      if (sort.key === "date") return (a.date < b.date ? -1 : a.date > b.date ? 1 : 0) * dir;
       return a.donor.localeCompare(b.donor) * dir;
     });
-  }, [status, q, sort]);
+  }, [all, status, q, sort]);
 
   const toggle = (key: SortKey) =>
     setSort((s) => (s.key === key ? { key, dir: s.dir === "asc" ? "desc" : "asc" } : { key, dir: "desc" }));
 
   const total = rows.reduce((s, r) => s + r.amountNgn, 0);
+  const liveCount = liveRows.length;
 
   return (
     <Card className="p-5 lg:col-span-3">
-      <SectionTitle icon={Wallet} title="Gift register" hint="Search, filter and sort the latest verified and pending gifts." />
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <SectionTitle
+          icon={Wallet}
+          title="Gift register"
+          hint="Gifts completed on the donor portal land here automatically — verified, walled and counted."
+        />
+        <button
+          onClick={onReload}
+          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 transition hover:border-[#C59B27] hover:text-[#003366]"
+        >
+          <RefreshCw className={cn("h-3.5 w-3.5", syncing ? "animate-spin" : "")} /> Sync
+        </button>
+      </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-2">
+      {/* live banner */}
+      <div
+        className={cn(
+          "mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-xl border px-3 py-2 text-[11.5px]",
+          liveError
+            ? "border-amber-200 bg-amber-50 text-amber-900"
+            : "border-emerald-200 bg-emerald-50 text-emerald-900"
+        )}
+      >
+        {liveError ? <AlertTriangle className="h-3.5 w-3.5" /> : <Radio className="h-3.5 w-3.5 animate-pulse" />}
+        <span className="font-bold">
+          {liveError
+            ? "Live ledger unreachable — run “Prepare database” in Demo controls below, then retry."
+            : `${liveCount} gift${liveCount === 1 ? "" : "s"} received from the donor portal`}
+        </span>
+        {!liveError && liveStats ? (
+          <>
+            <span className="text-emerald-800/80">· {liveStats.verified} verified</span>
+            <span className="text-emerald-800/80">· {liveStats.pending} pending</span>
+            <span className="text-emerald-800/80">· {liveStats.onWall} on the Donor Wall</span>
+            <span className="font-bold">· {formatNgn(liveStats.verifiedNgn)} banked</span>
+          </>
+        ) : null}
+      </div>
+
+      <div className="mt-3 flex flex-wrap items-center gap-2">
         <div className="relative flex-1 min-w-[180px]">
           <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
           <input
@@ -567,7 +736,7 @@ function GiftTable() {
             className="w-full rounded-lg border border-slate-200 bg-white py-2 pl-8 pr-3 text-[12.5px] text-slate-700 shadow-sm outline-none transition focus:border-[#0055A5] focus:ring-2 focus:ring-[#0055A5]/15"
           />
         </div>
-        {(["ALL", "VERIFIED", "PENDING"] as const).map((s) => (
+        {(["ALL", "LIVE", "VERIFIED", "PENDING"] as const).map((s) => (
           <button
             key={s}
             onClick={() => setStatus(s)}
@@ -576,13 +745,13 @@ function GiftTable() {
               status === s ? "border-[#003366] bg-[#003366] text-white" : "border-slate-200 bg-white text-slate-600 hover:border-[#C59B27]"
             )}
           >
-            {s === "ALL" ? "All" : s.charAt(0) + s.slice(1).toLowerCase()}
+            {s === "ALL" ? "All" : s === "LIVE" ? "Portal" : s.charAt(0) + s.slice(1).toLowerCase()}
           </button>
         ))}
       </div>
 
       <div className="mt-3 overflow-x-auto">
-        <table className="w-full min-w-[560px] border-collapse text-[12.5px]">
+        <table className="w-full min-w-[620px] border-collapse text-[12.5px]">
           <thead>
             <tr className="border-b border-slate-200 text-left text-[10px] uppercase tracking-wider text-slate-400">
               <th className="cursor-pointer py-2 pr-2 font-bold hover:text-[#003366]" onClick={() => toggle("donor")}>
@@ -602,17 +771,27 @@ function GiftTable() {
             {rows.map((g, i) => (
               <tr
                 key={g.id}
-                className="animate-fade-up border-b border-slate-50 transition hover:bg-slate-50/80"
+                className={cn(
+                  "animate-fade-up border-b border-slate-50 transition hover:bg-slate-50/80",
+                  g.live ? "bg-emerald-50/30" : ""
+                )}
                 style={{ animationDelay: `${Math.min(i, 12) * 35}ms` }}
               >
                 <td className="py-2.5 pr-2">
-                  <p className="font-semibold text-[#003366]">{g.donor}</p>
+                  <p className="flex items-center gap-1.5 font-semibold text-[#003366]">
+                    {g.live ? <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" /> : null}
+                    {g.donor}
+                  </p>
                   {g.organization ? <p className="text-[10.5px] text-slate-400">{g.organization}</p> : null}
+                  {g.email ? <p className="text-[10px] text-slate-400">{g.email}</p> : null}
                 </td>
                 <td className="py-2.5 pr-2 text-slate-600">{g.campaign}</td>
                 <td className="py-2.5 pr-2 text-right font-bold tabular-nums text-[#003366]">{formatNgn(g.amountNgn)}</td>
                 <td className="py-2.5 pr-2">
                   <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-600">{g.channel}</span>
+                  {g.live && g.demo ? (
+                    <span className="ml-1 rounded-md bg-[#C59B27]/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-[#a07c17]">demo</span>
+                  ) : null}
                 </td>
                 <td className="py-2.5 text-right">
                   <span
@@ -629,7 +808,9 @@ function GiftTable() {
             ))}
             {rows.length === 0 ? (
               <tr>
-                <td colSpan={5} className="py-6 text-center text-slate-400">No gifts match that filter.</td>
+                <td colSpan={5} className="py-6 text-center text-slate-400">
+                  No gifts match that filter. Completed portal gifts appear here automatically.
+                </td>
               </tr>
             ) : null}
           </tbody>
@@ -638,12 +819,110 @@ function GiftTable() {
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100 pt-3 text-[11px] text-slate-500">
         <span>
-          Showing <strong className="text-slate-700">{rows.length}</strong> of {RECENT_GIFTS.length} entries
+          Showing <strong className="text-slate-700">{rows.length}</strong> of {all.length} entries
         </span>
         <span>
           Sub-total <strong className="font-bold text-[#003366]">{formatNgn(total)}</strong>
         </span>
       </div>
+    </Card>
+  );
+}
+
+/* ────────────────────────── demo controls ────────────────────────── */
+
+function DemoControls({ onChanged }: { onChanged: () => void }) {
+  const [busy, setBusy] = useState<"" | "setup" | "demo" | "all">("");
+  const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
+
+  async function run(kind: "setup" | "demo" | "all") {
+    setBusy(kind);
+    setMsg(null);
+    try {
+      if (kind === "setup") {
+        const res = await fetch("/api/admin/setup", { method: "POST" });
+        const j = await res.json();
+        setMsg({
+          ok: Boolean(j.ok),
+          text: j.ok
+            ? `Database ready — ${j.campaigns} campaigns, ${j.statementsRun} statements applied${
+                j.warnings?.length ? ` (${j.warnings.length} non-fatal warnings)` : ""
+              }.`
+            : `Setup failed: ${j.error ?? "unknown error"}`,
+        });
+      } else {
+        if (kind === "all" && !window.confirm("Delete EVERY gift in the ledger? This cannot be undone.")) {
+          setBusy("");
+          return;
+        }
+        const res = await fetch("/api/admin/demo-reset", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ scope: kind }),
+        });
+        const j = await res.json();
+        setMsg({
+          ok: Boolean(j.ok),
+          text: j.ok
+            ? `Cleared ${j.cleared} ${kind === "demo" ? "demo" : ""} gift${j.cleared === 1 ? "" : "s"}. Campaign totals have been adjusted.`
+            : `Reset failed: ${j.error ?? "unknown error"}`,
+        });
+      }
+      onChanged();
+    } catch (e) {
+      setMsg({ ok: false, text: e instanceof Error ? e.message : "Request failed" });
+    } finally {
+      setBusy("");
+    }
+  }
+
+  return (
+    <Card className="border-dashed p-5">
+      <p className="flex items-center gap-2 text-sm font-bold text-[#003366]">
+        <DatabaseZap className="h-4 w-4 text-[#C59B27]" /> Demo controls
+      </p>
+      <p className="mt-1 text-xs text-slate-500">
+        Prepare the database before the board tests the donor journey, then wipe the rehearsal
+        gifts once approval is given. Only <span className="font-mono">demo_</span> references are
+        removed by the demo reset — real gifts are never touched.
+      </p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <button
+          onClick={() => run("setup")}
+          disabled={busy !== ""}
+          className="inline-flex items-center gap-1.5 rounded-lg bg-[#003366] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#002244] disabled:opacity-50"
+        >
+          {busy === "setup" ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <DatabaseZap className="h-3.5 w-3.5" />}
+          Prepare database
+        </button>
+        <button
+          onClick={() => run("demo")}
+          disabled={busy !== ""}
+          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-[#003366] transition hover:border-[#C59B27] disabled:opacity-50"
+        >
+          {busy === "demo" ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <RotateCcw className="h-3.5 w-3.5" />}
+          Reset demo gifts
+        </button>
+        <button
+          onClick={() => run("all")}
+          disabled={busy !== ""}
+          className="inline-flex items-center gap-1.5 rounded-lg border border-rose-200 px-3 py-2 text-xs font-bold text-rose-700 transition hover:bg-rose-50 disabled:opacity-50"
+        >
+          {busy === "all" ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <AlertTriangle className="h-3.5 w-3.5" />}
+          Reset all gifts
+        </button>
+      </div>
+      {msg ? (
+        <p
+          className={cn(
+            "mt-3 flex items-start gap-1.5 rounded-lg px-3 py-2 text-[11.5px]",
+            msg.ok ? "bg-emerald-50 text-emerald-800" : "bg-rose-50 text-rose-700"
+          )}
+        >
+          {msg.ok ? <Check className="mt-0.5 h-3.5 w-3.5" /> : <AlertTriangle className="mt-0.5 h-3.5 w-3.5" />}
+          {msg.text}
+        </p>
+      ) : null}
     </Card>
   );
 }

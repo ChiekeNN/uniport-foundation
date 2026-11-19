@@ -7,16 +7,22 @@ export const metadata = { title: "Gift confirmed" };
 export const dynamic = "force-dynamic";
 
 function SuccessBody({ gateway, reference, demo }: { gateway: string; reference: string; demo: string }) {
+  const simulated = demo === "1" || gateway === "demo";
   return (
     <section className="mx-auto max-w-2xl px-4 py-14">
       <Card className="p-8 md:p-10 text-center border-emerald-200">
         <CheckCircle2 className="mx-auto h-14 w-14 text-emerald-600" />
         <h1 className="mt-4 font-serif text-3xl md:text-4xl text-[#003366]">Thank you. Your gift is being stewarded.</h1>
         <p className="mt-3 text-slate-600 leading-relaxed">
-          {demo === "1"
-            ? "Demo mode: no live charge was made. In production this page follows verified Paystack / Stripe confirmation and your receipt arrives by email within minutes."
+          {simulated
+            ? "Simulated payment confirmed — no real money moved. Your gift has been marked verified, so it now counts toward the campaign, appears on the Donor Wall if you opted in, and is listed in the Advancement Centre's gift register."
             : "Your payment was received and your receipt is on its way by email. Verified gifts post to campaign totals and the Donor Wall (if you opted in) automatically."}
         </p>
+        {simulated ? (
+          <p className="mt-2 rounded-lg border border-[#C59B27]/40 bg-[#C59B27]/10 px-3 py-2 text-[11.5px] font-semibold text-[#7a5f14]">
+            Demo run · this entry is tagged for a one-click reset from the admin dashboard.
+          </p>
+        ) : null}
         <div className="mx-auto mt-6 grid max-w-md gap-2 rounded-2xl bg-slate-50 border border-slate-200 p-5 text-sm text-left">
           <p><span className="font-semibold text-slate-500">Channel:</span> <strong className="text-[#003366] uppercase">{gateway || "—"}</strong></p>
           <p className="break-all"><span className="font-semibold text-slate-500">Reference:</span> <strong className="font-mono text-[#003366]">{reference || "—"}</strong></p>

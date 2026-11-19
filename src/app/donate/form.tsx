@@ -76,6 +76,11 @@ export function DonateForm({ campaigns }: { campaigns: CampaignDTO[] }) {
         setWire({ pledgeReference: j.pledgeReference, amountLabel: j.amountLabel });
         window.scrollTo({ top: 0, behavior: "smooth" });
       } else if (j.checkoutUrl) {
+        if (j.mode === "demo") {
+          // Simulated gateway: show the donor what is about to happen.
+          window.location.href = j.checkoutUrl as string;
+          return;
+        }
         window.location.href = j.checkoutUrl as string;
       } else {
         throw new Error("No checkout URL returned");
