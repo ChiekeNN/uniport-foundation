@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { GraduationCap, Menu, X, Mail, MapPin, ShieldCheck } from "lucide-react";
+import { Menu, X, Mail, MapPin, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -47,9 +48,14 @@ export function SiteHeader() {
       <div className="border-b border-[#C59B27]/30 bg-white/95 backdrop-blur shadow-[0_2px_16px_rgba(0,51,102,0.08)]">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
           <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#003366] text-[#C59B27] shadow">
-              <GraduationCap className="h-6 w-6" />
-            </span>
+            <Image
+              src="/brand/uniport-logo.png"
+              alt="University of Port Harcourt Foundation crest"
+              width={44}
+              height={44}
+              priority
+              className="h-11 w-11 shrink-0 object-contain drop-shadow-sm"
+            />
             <span className="leading-tight">
               <span className="block font-serif text-base sm:text-lg font-bold text-[#003366]">
                 UNIPORT Foundation
