@@ -124,10 +124,7 @@ export default async function HomePage() {
                 </Button>
               </Link>
               <Link href="/campaigns">
-                <Button
-                  variant="outline"
-                  className="border-white/30 bg-white/10 px-7 py-3.5 text-base text-white hover:bg-white hover:text-[#003366]"
-                >
+                <Button variant="onDarkGlass" className="px-7 py-3.5 text-base">
                   Explore Campaigns
                 </Button>
               </Link>
@@ -324,7 +321,7 @@ export default async function HomePage() {
                 <Button variant="gold" className="w-full justify-center">View Stewardship Reports</Button>
               </Link>
               <Link href="/donate">
-                <Button variant="outline" className="w-full justify-center border-white/40 bg-transparent text-white hover:bg-white hover:text-[#003366]">
+                <Button variant="onDark" className="w-full justify-center">
                   Make a gift today
                 </Button>
               </Link>

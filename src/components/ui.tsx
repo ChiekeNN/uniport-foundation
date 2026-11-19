@@ -8,7 +8,7 @@ export function Button({
   ...props
 }: {
   children: ReactNode;
-  variant?: "primary" | "gold" | "outline" | "ghost" | "navy";
+  variant?: "primary" | "gold" | "outline" | "ghost" | "navy" | "onDark" | "onDarkGlass";
   className?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   const base =
@@ -19,6 +19,12 @@ export function Button({
     gold: "bg-[#C59B27] text-[#003366] hover:bg-[#b08a22] hover:text-white shadow-sm hover:shadow-md font-bold",
     outline: "border border-[#003366]/25 bg-white text-[#003366] hover:border-[#C59B27] hover:text-[#0055A5]",
     ghost: "text-[#003366] hover:bg-[#003366]/5",
+    // Use on navy/photo backgrounds. Declared as complete variants so the base
+    // `outline` styles (bg-white) never collide with an override in `className`.
+    onDark:
+      "border border-white/50 bg-transparent text-white hover:bg-white hover:text-[#003366] hover:border-white",
+    onDarkGlass:
+      "border border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white hover:text-[#003366] hover:border-white",
   };
   return (
     <button className={cn(base, variants[variant], className)} {...props}>
