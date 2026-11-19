@@ -57,8 +57,8 @@ export function SiteHeader() {
               className="h-11 w-11 shrink-0 object-contain drop-shadow-sm"
             />
             <span className="leading-tight">
-              <span className="block font-serif text-base sm:text-lg font-bold text-[#003366]">
-                UNIPORT Foundation
+              <span className="block max-w-[190px] font-serif text-[13px] font-bold leading-snug text-[#003366] sm:max-w-[240px] sm:text-[15px] lg:max-w-none lg:text-base">
+                University of Port Harcourt Foundation
               </span>
               <span className="block text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] uppercase text-[#C59B27]">
                 Advancement • Endowment • Alumni
