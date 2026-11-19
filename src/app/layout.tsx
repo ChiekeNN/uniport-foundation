@@ -12,19 +12,19 @@ const sans = Inter({ subsets: ["latin"], variable: "--font-sans" });
 // og:image themselves, so a relative path (or a domain that does not resolve)
 // silently produces a preview with no picture at all.
 const SITE_URL =
-  process.env.NEXT_PUBLIC_APP_URL ??
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "https://uniport-foundation.vercel.app");
+    : null) ??
+  process.env.NEXT_PUBLIC_APP_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ??
+  "https://uniport-foundation.vercel.app";
 
 /**
  * Bumped whenever the artwork changes. Messengers cache a preview against the
  * exact image URL, so a new query string is the only reliable way to make them
  * refetch instead of showing the old (or missing) thumbnail.
  */
-const OG_VERSION = "2";
+const OG_VERSION = "3";
 const SITE_NAME = "University of Port Harcourt Foundation";
 const SHARE_DESCRIPTION =
   "The official advancement, endowment, and alumni relations arm of the University of Port Harcourt. Strategic philanthropy, audited stewardship, and global partnerships. RC 61670.";
@@ -63,30 +63,26 @@ export const metadata: Metadata = {
     url: "/",
     siteName: SITE_NAME,
     locale: "en_NG",
+    // Exactly one image, square, JPEG. Messengers render a 1:1 image as the
+    // crest beside the description; a single unambiguous tag avoids the
+    // "first or last og:image wins" ambiguity across crawlers.
     images: [
-      // Square first: WhatsApp renders a 1:1 image as the small logo beside the
-      // description, which is what most people expect to see in a chat.
       {
-        url: `/og-square.png?v=${OG_VERSION}`,
-        width: 800,
-        height: 800,
-        type: "image/png",
-        alt: "University of Port Harcourt Foundation crest",
-      },
-      {
-        url: `/og-image.png?v=${OG_VERSION}`,
-        width: 1200,
-        height: 630,
-        type: "image/png",
+        url: `/og-square.jpg?v=${OG_VERSION}`,
+        width: 1000,
+        height: 1000,
+        type: "image/jpeg",
         alt: "University of Port Harcourt Foundation crest — For Enlightenment and Self-Reliance",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    // `summary` renders a square thumbnail — the crest — rather than cropping a
+    // landscape banner.
+    card: "summary",
     title: "University of Port Harcourt Foundation",
     description: "Strategic philanthropy & global partnerships for UNIPORT. RC 61670.",
-    images: [`/og-image.png?v=${OG_VERSION}`],
+    images: [`/og-square.jpg?v=${OG_VERSION}`],
   },
   alternates: { canonical: "/" },
   other: {
