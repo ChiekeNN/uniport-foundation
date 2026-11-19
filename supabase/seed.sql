@@ -81,15 +81,7 @@ insert into leadership_members
   (id, full_name, credentials, role, category, "group", bio, tenure, display_order, is_active)
 values
   -- ── ACTIVE 2026 · INSTITUTIONAL PATRONS & BOARD OF TRUSTEES ──
-  (
-    '20260001-0000-4000-a000-000000000001',
-    'Prof. Chike Princewill Rewhuamwhu Chike',
-    'B.Med.Sc., M.B., B.S., M.Sc., MD (UPH), FAGP, FIIA, DMP, DSSRS',
-    '10th Vice-Chancellor, University of Port Harcourt & Institutional Patron, UPHF',
-    'TRUSTEE', 'BOARD_OF_TRUSTEES',
-    'Professor of Cardiovascular and Tissue Perfusion Physiology and three-time Commissioner for Health in Rivers State. Inaugurated in July 2026 as the 10th Vice-Chancellor of UNIPORT, championing the "Shared Vision for a Globally Respected University" and an Eight-Point Strategic Agenda focused on technological innovation, impactful research, societal relevance, and sustainable development.',
-    'Assumed Office: July 2026', 1, true
-  ),
+  -- Order: Pro-Chancellor (Chairman of Council) → Vice-Chancellor (Institutional Patron) → DVC
   (
     '20260002-0000-4000-a000-000000000002',
     'Senator Mao Arukwe Ohuabunwa',
@@ -97,7 +89,16 @@ values
     'Pro-Chancellor & Chairman, 17th Governing Council',
     'TRUSTEE', 'BOARD_OF_TRUSTEES',
     'Pro-Chancellor and Chairman of the 17th Governing Council of the University of Port Harcourt, providing institutional governance and strategic oversight alongside the Foundation''s Board of Trustees.',
-    '17th Governing Council', 2, true
+    '17th Governing Council', 1, true
+  ),
+  (
+    '20260001-0000-4000-a000-000000000001',
+    'Prof. Chike Princewill Rewhuamwhu Chike',
+    'B.Med.Sc., M.B., B.S., M.Sc., MD (UPH), FAGP, FIIA, DMP, DSSRS',
+    '10th Vice-Chancellor, University of Port Harcourt & Institutional Patron, UPHF',
+    'TRUSTEE', 'BOARD_OF_TRUSTEES',
+    'Professor of Cardiovascular and Tissue Perfusion Physiology and three-time Commissioner for Health in Rivers State. Inaugurated in July 2026 as the 10th Vice-Chancellor of UNIPORT, championing the "Shared Vision for a Globally Respected University" and an Eight-Point Strategic Agenda focused on technological innovation, impactful research, societal relevance, and sustainable development.',
+    'Assumed Office: July 2026', 2, true
   ),
   (
     '20260003-0000-4000-a000-000000000003',
