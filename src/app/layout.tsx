@@ -24,7 +24,7 @@ const SITE_URL =
  * exact image URL, so a new query string is the only reliable way to make them
  * refetch instead of showing the old (or missing) thumbnail.
  */
-const OG_VERSION = "3";
+const OG_VERSION = "4";
 const SITE_NAME = "University of Port Harcourt Foundation";
 const SHARE_DESCRIPTION =
   "The official advancement, endowment, and alumni relations arm of the University of Port Harcourt. Strategic philanthropy, audited stewardship, and global partnerships. RC 61670.";
