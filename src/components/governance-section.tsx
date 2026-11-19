@@ -2,7 +2,13 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { LeadershipDTO } from "@/types/database";
 import { Card, SectionHeading } from "@/components/ui";
-import { LEADERSHIP_GROUPS, leadershipByGroup } from "@/lib/constants/leadership";
+import {
+  INCORPORATION,
+  LEADERSHIP_GROUPS,
+  directorsSuccession,
+  isFoundingTrustee,
+  leadershipByGroup,
+} from "@/lib/constants/leadership";
 
 const GROUP_ANCHORS = {
   BOARD_OF_TRUSTEES: "governance-trustees",
@@ -97,11 +103,13 @@ export function GovernanceSection({
   const trustees = leadershipByGroup(leaders, "BOARD_OF_TRUSTEES");
   const directorate = leadershipByGroup(leaders, "DIRECTORATE");
   const heritage = leadershipByGroup(leaders, "PAST_DIRECTORS");
+  const founding = heritage.filter(isFoundingTrustee);
+  const succession = directorsSuccession(leaders);
 
   const tabs = [
     { key: "BOARD_OF_TRUSTEES" as const, label: "Institutional Patrons & Board of Trustees", count: trustees.length },
     { key: "DIRECTORATE" as const, label: "Executive Directorate", count: directorate.length },
-    { key: "PAST_DIRECTORS" as const, label: "Founding Stewards & Past Directors", count: heritage.length },
+    { key: "PAST_DIRECTORS" as const, label: "Founding Trustees & Directors", count: heritage.length },
   ];
 
   return (
@@ -155,17 +163,79 @@ export function GovernanceSection({
         </div>
       ) : null}
 
-      {/* 3 — Founding Stewards & Past Directors */}
+      {/* 3 — Founding Trustees & Directors */}
       {heritage.length ? (
         <div id={anch("PAST_DIRECTORS")} className="mt-14 scroll-mt-28">
           <h3 className="font-serif text-2xl text-[#003366]">
-            3. Founding Stewards & Past Directors (2002–Present)
+            3. Founding Trustees &amp; Directors of the Foundation (2013–Present)
           </h3>
           <p className="mt-2 max-w-3xl text-sm text-slate-600">{LEADERSHIP_GROUPS[2].caption}</p>
-          <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {heritage.map((m) => (
-              <MemberCard key={m.id} member={m} tone="heritage" />
-            ))}
+
+          {/* 3a — line of succession */}
+          <div className="mt-8">
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#C59B27]">
+                Line of succession — directors of UPHF
+              </p>
+              <p className="text-[11px] text-slate-400">
+                Chronological · “c.” marks terms reconstructed from convocation brochures
+              </p>
+            </div>
+            <ol className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {succession.map((m, i) => {
+                const sitting = m.group === "DIRECTORATE";
+                return (
+                  <li key={m.id}>
+                    <Card
+                      className={`h-full rounded-xl p-5 ${
+                        sitting ? "!border-[#C59B27]/60 bg-[#FFFBEB]/40" : "border-slate-200"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <p className="text-[10px] font-bold uppercase tracking-widest text-[#C59B27]">
+                          {m.tenure?.split(" · ")[0] ?? `Term ${i + 1}`}
+                        </p>
+                        <span className="text-[10px] font-bold tabular-nums text-slate-300">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <p className="mt-2 font-serif text-base leading-snug text-[#003366]">
+                        {m.fullName}
+                      </p>
+                      <p className="mt-1 text-[10.5px] font-semibold uppercase tracking-wide text-slate-500">
+                        {m.role}
+                      </p>
+                      <p className="mt-2.5 text-[12.5px] leading-relaxed text-slate-600">{m.bio}</p>
+                      {sitting ? (
+                        <span className="mt-3 inline-flex rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700">
+                          In office
+                        </span>
+                      ) : null}
+                    </Card>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
+          {/* 3b — incorporated trustees (RC 61670) */}
+          <div className="mt-10">
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#C59B27]">
+                Incorporated Trustees — {INCORPORATION.rcNumber}
+              </p>
+              <p className="text-[11px] text-slate-400">
+                Registered with the {INCORPORATION.body} on {INCORPORATION.date}
+              </p>
+            </div>
+            <div className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {founding.map((m) => (
+                <MemberCard key={m.id} member={m} tone="heritage" />
+              ))}
+            </div>
+            <p className="mt-4 max-w-3xl text-[11px] leading-relaxed text-slate-400">
+              {INCORPORATION.note}
+            </p>
           </div>
         </div>
       ) : null}

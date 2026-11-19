@@ -35,9 +35,9 @@ export const LEADERSHIP_GROUPS: {
   },
   {
     id: "PAST_DIRECTORS",
-    label: "Founding Stewards & Past Directors (2002–Present)",
+    label: "Founding Trustees & Past Directors (2002–Present)",
     caption:
-      "Institutional heritage archive: the founding trustees and past directors whose stewardship carried the Advancement model from the 2002 MacArthur catalyst to the 2013 incorporation and beyond.",
+      "Institutional heritage archive: the Incorporated Trustees named in the CAC registry at the 2013 incorporation, and the directors whose stewardship carried the Advancement model from the 2002 MacArthur catalyst to the present day.",
   },
 ];
 
@@ -88,22 +88,23 @@ export const LEADERSHIP_2026: LeadershipDTO[] = [
     role: "Director, University of Port Harcourt Foundation (UPHF)",
     category: "DIRECTORATE",
     group: "DIRECTORATE",
-    bio: "Leads day-to-day operations of the University of Port Harcourt Foundation at the University Advancement Centre, Delta Park, driving endowment growth, alumni relations, corporate CSR partnerships, and donor stewardship.",
-    tenure: "Director, UPHF",
+    bio: "Professor of Drama, Theatre and Film Studies (BA, MA, PhD, UPH). Listed as the current Director of the University of Port Harcourt Foundation in the University's 36th Combined Convocation Brochure (June 2026). Leads day-to-day operations at the University Advancement Centre, Delta Park, driving endowment growth, alumni relations, corporate CSR partnerships, and donor stewardship.",
+    tenure: "Director, UPHF · 2025/2026 – present",
     imageUrl: null,
     displayOrder: 4,
   },
 
-  // ───────────────────────── INSTITUTIONAL HERITAGE — FOUNDING STEWARDS & PAST DIRECTORS ─────────────────────────
+  // ───────────────────────── INSTITUTIONAL HERITAGE — FOUNDING INCORPORATED TRUSTEES ─────────────────────────
+  // Named in the CAC registry at incorporation on 5 June 2013 (RC 61670).
   {
     id: "20260101-0000-4000-a000-000000000101",
     fullName: "Prof. Nimi Dimkpa Briggs",
     credentials: null,
-    role: "Founding Board Member & 5th Vice-Chancellor (Late)",
+    role: "Founding Incorporated Trustee & 5th Vice-Chancellor (Late)",
     category: "HERITAGE",
     group: "PAST_DIRECTORS",
-    bio: "Founding Board Member of the Foundation and 5th Vice-Chancellor of the University of Port Harcourt. Spearheaded the 2002 MacArthur Foundation Advancement Centre initiative — the intervention still remembered on campus as the “UNIPORT Miracle.”",
-    tenure: "Vice-Chancellor 2000–2005",
+    bio: "Founding Incorporated Trustee of the Foundation and 5th Vice-Chancellor of the University of Port Harcourt. Spearheaded the 2002 MacArthur Foundation Advancement Centre initiative — the intervention still remembered on campus as the “UNIPORT Miracle” — and signed the Foundation into being at its CAC incorporation on 5 June 2013.",
+    tenure: "Vice-Chancellor 2000–2005 · Trustee from 2013",
     imageUrl: null,
     displayOrder: 101,
   },
@@ -111,61 +112,113 @@ export const LEADERSHIP_2026: LeadershipDTO[] = [
     id: "20260102-0000-4000-a000-000000000102",
     fullName: "Rev. (Dr.) Walter Patrick Eneji",
     credentials: null,
-    role: "Founding Board Member / Trustee",
+    role: "Founding Incorporated Trustee",
     category: "HERITAGE",
     group: "PAST_DIRECTORS",
-    bio: "Founding Board Member and Trustee of the University of Port Harcourt Foundation, present at the 2013 CAC incorporation that established the Foundation as an independent fiduciary trust under RC 61670.",
-    tenure: "Founding Trustee · 2013 Incorporation",
+    bio: "Founding Incorporated Trustee of the University of Port Harcourt Foundation, named in the CAC registry at the 2013 incorporation that established the Foundation as an independent fiduciary trust under RC 61670.",
+    tenure: "Trustee from 2013",
     imageUrl: null,
     displayOrder: 102,
   },
   {
-    id: "20260103-0000-4000-a000-000000000103",
-    fullName: "Prof. Ngozi Nma Odu",
+    id: "20260107-0000-4000-a000-000000000107",
+    fullName: "Prof. Joseph Atubokiki Ajienka",
     credentials: null,
-    role: "Former Executive Director, UPHF",
+    role: "Founding Incorporated Trustee & 7th Vice-Chancellor",
     category: "HERITAGE",
     group: "PAST_DIRECTORS",
-    bio: "Former Executive Director of the Foundation and distinguished academic and public administrator; later served as Deputy Governor of Rivers State. Championed scholarship access and women-in-academia advancement.",
-    tenure: "Executive Director · later Deputy Governor, Rivers State",
+    bio: "7th Vice-Chancellor of the University of Port Harcourt (2010–2015) and a founding Incorporated Trustee of the Foundation, presiding over the University at the moment UPHF was incorporated on 5 June 2013.",
+    tenure: "Vice-Chancellor 2010–2015 · Trustee from 2013",
     imageUrl: null,
-    displayOrder: 103,
+    displayOrder: 107,
+  },
+  {
+    id: "20260108-0000-4000-a000-000000000108",
+    fullName: "Dr. Emmanuel Egbogah",
+    credentials: null,
+    role: "Founding Incorporated Trustee & Benefactor",
+    category: "HERITAGE",
+    group: "PAST_DIRECTORS",
+    bio: "Petroleum geologist, benefactor of the University and founding Incorporated Trustee of the Foundation, listed as a board member in the public CAC registry for RC 61670.",
+    tenure: "Trustee from 2013",
+    imageUrl: null,
+    displayOrder: 108,
+  },
+  {
+    id: "20260109-0000-4000-a000-000000000109",
+    fullName: "Mrs. Matilda Nnodim",
+    credentials: null,
+    role: "Founding Incorporated Trustee & Former Registrar",
+    category: "HERITAGE",
+    group: "PAST_DIRECTORS",
+    bio: "Former Registrar of the University of Port Harcourt and a founding Incorporated Trustee of the Foundation, named in the public CAC registry for RC 61670.",
+    tenure: "Trustee from 2013",
+    imageUrl: null,
+    displayOrder: 109,
+  },
+
+  // ───────────────────────── INSTITUTIONAL HERITAGE — DIRECTORS OF THE FOUNDATION ─────────────────────────
+  // Line of succession, oldest first. `leadershipByGroup` sorts on displayOrder,
+  // so 110–114 stays in chronological order ahead of nothing else in this group.
+  {
+    id: "20260103-0000-4000-a000-000000000103",
+    fullName: "Prof. (Mrs.) Ngozi Nma Odu",
+    credentials: null,
+    role: "Pioneer / First Acting Executive Director, UPHF",
+    category: "HERITAGE",
+    group: "PAST_DIRECTORS",
+    bio: "Professor of Food and Public Health Microbiology who served as the Foundation's first Acting Executive Director following its establishment. Later Deputy Governor of Rivers State.",
+    tenure: "Pioneer term · from the 2013 incorporation",
+    imageUrl: null,
+    displayOrder: 110,
   },
   {
     id: "20260104-0000-4000-a000-000000000104",
     fullName: "Prof. Henry E. Alapiki",
     credentials: null,
-    role: "Former Director, UPHF",
+    role: "Executive Director / Director, UPHF",
     category: "HERITAGE",
     group: "PAST_DIRECTORS",
-    bio: "Former Director of the Foundation and Professor of Political Science. Expanded the MacArthur and Nigeria Higher Education Foundation (NHEF) partnerships that anchored early advancement capacity building.",
-    tenure: "MacArthur & NHEF Partnership Expansion",
+    bio: "Professor of Political Science and former Dean of the Faculty of Social Sciences. Listed as Executive Director / Director of UPHF in the University's 31st Convocation Brochure (2014/2015 & 2015/2016 sessions) and on the Institute of Petroleum Studies (IPS) Governing Board. Expanded the MacArthur and Nigeria Higher Education Foundation (NHEF) partnerships that anchored early advancement capacity building.",
+    tenure: "c. 2015–2017",
     imageUrl: null,
-    displayOrder: 104,
+    displayOrder: 111,
+  },
+  {
+    id: "20260110-0000-4000-a000-000000000110",
+    fullName: "Prof. Chukwudi Ochi Onyeaso",
+    credentials: "BDS, FWACS, FMCDS",
+    role: "Director, UPHF (2020–2022)",
+    category: "HERITAGE",
+    group: "PAST_DIRECTORS",
+    bio: "Professor of Orthodontics and Dentistry who served as Director of the Foundation during the 2021 administration, as documented in official UNIPORT/OWSD institutional briefings. Subsequently appointed Deputy Vice-Chancellor (Administration & Advancement) and now sits on the Board of Trustees.",
+    tenure: "c. 2020–2022 · now DVC (Administration & Advancement)",
+    imageUrl: null,
+    displayOrder: 112,
   },
   {
     id: "20260105-0000-4000-a000-000000000105",
     fullName: "Prof. Leo C. Osuji",
     credentials: null,
-    role: "Former Director, UPHF",
+    role: "Director, UPHF (2022–2024)",
     category: "HERITAGE",
     group: "PAST_DIRECTORS",
-    bio: "Former Director of the Foundation and Professor of Petroleum & Environmental Chemistry. Represented UPHF on the Governing Board of the Institute of Petroleum and Energy Studies (IPES).",
-    tenure: "UPHF Representative, IPES Governing Board",
+    bio: "Professor of Industrial and Environmental Chemistry. Served as Director of the Foundation and represented UPHF on the Governing Board of the Institute of Petroleum and Energy Studies (IPES).",
+    tenure: "c. 2022–2024",
     imageUrl: null,
-    displayOrder: 105,
+    displayOrder: 113,
   },
   {
     id: "20260106-0000-4000-a000-000000000106",
     fullName: "Prof. Uzoma D. Chima",
     credentials: "B.For, MF, PhD",
-    role: "Former Director, UPHF",
+    role: "Director, UPHF (2024–2025)",
     category: "HERITAGE",
     group: "PAST_DIRECTORS",
-    bio: "Former Director of the Foundation, serving through the 35th Convocation cycle. Currently the Senate Representative on the University's 17th Governing Council.",
-    tenure: "35th Convocation Cycle · Senate Rep., 17th Governing Council",
+    bio: "Professor of Forestry and Wildlife Management. Listed as Director of the University of Port Harcourt Foundation in the University's 35th Convocation Brochure (published July 2025 for the 2021/2022 & 2022/2023 sessions). Currently the Senate Representative on the University's 17th Governing Council.",
+    tenure: "2024–2025 · 35th Convocation cycle",
     imageUrl: null,
-    displayOrder: 106,
+    displayOrder: 114,
   },
 ];
 
@@ -178,6 +231,33 @@ export function leadershipByGroup(
     .filter((m) => m.group === group)
     .sort((a, b) => a.displayOrder - b.displayOrder || a.fullName.localeCompare(b.fullName));
 }
+
+/**
+ * Heritage split: the archive holds two different populations, and they read
+ * better apart — the Incorporated Trustees who called the Foundation into being
+ * in 2013, and the directors who have run it since.
+ */
+export function isFoundingTrustee(member: LeadershipDTO): boolean {
+  return /founding/i.test(member.role);
+}
+
+/**
+ * Directors of the Foundation in chronological order, ending with the sitting
+ * Director (who lives in the DIRECTORATE group, not the archive).
+ */
+export function directorsSuccession(leaders: LeadershipDTO[]): LeadershipDTO[] {
+  const past = leadershipByGroup(leaders, "PAST_DIRECTORS").filter((m) => !isFoundingTrustee(m));
+  const sitting = leadershipByGroup(leaders, "DIRECTORATE");
+  return [...past, ...sitting];
+}
+
+/** Corporate Affairs Commission record referenced across the governance UI. */
+export const INCORPORATION = {
+  body: "Corporate Affairs Commission",
+  rcNumber: "RC 61670",
+  date: "5 June 2013",
+  note: "Registered as an independent, non-profit fiduciary trust — ring-fenced accounts, external audit and public reporting as constitutional obligations.",
+} as const;
 
 /** 2026 strategic framing shared by the homepage and /about. */
 export const STRATEGIC_2026 = {
