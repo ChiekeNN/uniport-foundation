@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     ],
     shortcut: ["/favicon.ico"],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
-    other: [{ rel: "mask-icon", url: "/icons/icon-maskable-512.png", color: "#003366" }],
+    other: [{ rel: "mask-icon", url: "/icons/icon-maskable-512.png", color: "#26206B" }],
   },
   appleWebApp: {
     capable: true,
@@ -94,8 +94,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#003366" },
-    { media: "(prefers-color-scheme: dark)", color: "#00284f" },
+    { media: "(prefers-color-scheme: light)", color: "#26206B" },
+    { media: "(prefers-color-scheme: dark)", color: "#1B1650" },
   ],
   width: "device-width",
   initialScale: 1,

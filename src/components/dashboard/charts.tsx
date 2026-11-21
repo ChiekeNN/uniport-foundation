@@ -53,7 +53,7 @@ export function shortNgn(value: number): string {
 export function Sparkline({
   values,
   className,
-  stroke = "#C59B27",
+  stroke = "#D6A419",
   height = 34,
 }: {
   values: number[];
@@ -155,13 +155,13 @@ export function AreaTrend({
       >
         <defs>
           <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#0055A5" stopOpacity="0.32" />
-            <stop offset="100%" stopColor="#0055A5" stopOpacity="0.02" />
+            <stop offset="0%" stopColor="#0C76B4" stopOpacity="0.32" />
+            <stop offset="100%" stopColor="#0C76B4" stopOpacity="0.02" />
           </linearGradient>
           <linearGradient id="areaStroke" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#003366" />
-            <stop offset="60%" stopColor="#0055A5" />
-            <stop offset="100%" stopColor="#C59B27" />
+            <stop offset="0%" stopColor="#26206B" />
+            <stop offset="60%" stopColor="#0C76B4" />
+            <stop offset="100%" stopColor="#D6A419" />
           </linearGradient>
         </defs>
 
@@ -180,8 +180,8 @@ export function AreaTrend({
 
         {targetY ? (
           <>
-            <line x1={padX} x2={W - padX} y1={targetY} y2={targetY} stroke="#C59B27" strokeDasharray="6 4" strokeWidth="1.2" />
-            <text x={W - padX} y={targetY - 6} textAnchor="end" className="fill-[#a07c17] text-[11px] font-semibold">
+            <line x1={padX} x2={W - padX} y1={targetY} y2={targetY} stroke="#D6A419" strokeDasharray="6 4" strokeWidth="1.2" />
+            <text x={W - padX} y={targetY - 6} textAnchor="end" className="fill-[#96700F] text-[11px] font-semibold">
               {targetLabel ?? "Board target pace"}
             </text>
           </>
@@ -208,7 +208,7 @@ export function AreaTrend({
               cy={p.y}
               r={hover === i ? 5 : 3}
               fill="#fff"
-              stroke={hover === i ? "#C59B27" : "#0055A5"}
+              stroke={hover === i ? "#D6A419" : "#0C76B4"}
               strokeWidth={hover === i ? 3 : 2}
               className="transition-all duration-150"
             />
@@ -219,7 +219,7 @@ export function AreaTrend({
         ))}
 
         {marker ? (
-          <line x1={marker.x} x2={marker.x} y1={padTop} y2={padTop + innerH} stroke="#003366" strokeOpacity="0.18" strokeDasharray="3 3" />
+          <line x1={marker.x} x2={marker.x} y1={padTop} y2={padTop + innerH} stroke="#26206B" strokeOpacity="0.18" strokeDasharray="3 3" />
         ) : null}
       </svg>
 
@@ -231,7 +231,7 @@ export function AreaTrend({
             transform: `translateX(${marker.x / W > 0.75 ? "-105%" : marker.x / W < 0.15 ? "5%" : "-50%"})`,
           }}
         >
-          <p className="font-bold text-[#003366]">{format(marker.value)}</p>
+          <p className="font-bold text-[#26206B]">{format(marker.value)}</p>
           <p className="text-[10px] uppercase tracking-wider text-slate-500">{marker.label}</p>
         </div>
       ) : null}
@@ -272,7 +272,7 @@ export function StackedBars({
             >
               {active ? (
                 <div className="pointer-events-none absolute -top-1 left-1/2 z-10 w-max -translate-x-1/2 rounded-lg border border-slate-200 bg-white/95 px-2.5 py-1.5 text-[11px] shadow-lg">
-                  <p className="font-bold text-[#003366]">{format(total)}</p>
+                  <p className="font-bold text-[#26206B]">{format(total)}</p>
                   {series.map((s, si) => (
                     <p key={s.name} className="flex items-center gap-1 text-slate-600">
                       <span className="inline-block h-1.5 w-1.5 rounded-full" style={{ background: s.color }} />
@@ -372,7 +372,7 @@ export function Donut({
             <span className="text-[9.5px] font-bold uppercase tracking-[0.16em] text-slate-400">
               {centerLabel}
             </span>
-            <span className="mt-0.5 font-serif text-xl font-bold leading-none text-[#003366]">
+            <span className="mt-0.5 font-serif text-xl font-bold leading-none text-[#26206B]">
               {centerValue}
             </span>
           </div>
@@ -402,7 +402,7 @@ export function Donut({
               <span className="min-w-0 flex-1 truncate text-[11.5px] font-semibold text-slate-600">
                 {s.label}
               </span>
-              <span className="w-8 shrink-0 text-right text-[11.5px] font-bold tabular-nums text-[#003366]">
+              <span className="w-8 shrink-0 text-right text-[11.5px] font-bold tabular-nums text-[#26206B]">
                 {Math.round((s.value / total) * 100)}%
               </span>
               <span className="w-[62px] shrink-0 text-right text-[11px] font-medium tabular-nums text-slate-400">
@@ -428,15 +428,15 @@ export function Funnel({ steps }: { steps: Array<{ stage: string; count: number;
         return (
           <li key={s.stage}>
             <div className="flex items-baseline justify-between gap-2">
-              <p className="text-xs font-bold uppercase tracking-wider text-[#003366]">{s.stage}</p>
-              <p className="text-sm font-bold tabular-nums text-[#003366]">
+              <p className="text-xs font-bold uppercase tracking-wider text-[#26206B]">{s.stage}</p>
+              <p className="text-sm font-bold tabular-nums text-[#26206B]">
                 {s.count}
                 <span className="ml-1 text-[10px] font-semibold text-slate-400">{((s.count / top) * 100).toFixed(0)}%</span>
               </p>
             </div>
             <div className="mt-1 h-2.5 overflow-hidden rounded-full bg-slate-100">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-[#003366] via-[#0055A5] to-[#C59B27]"
+                className="h-full rounded-full bg-gradient-to-r from-[#26206B] via-[#0C76B4] to-[#D6A419]"
                 style={{
                   width: on ? `${pct}%` : 0,
                   transition: `width 1000ms cubic-bezier(.22,1,.36,1) ${i * 110}ms`,
@@ -464,8 +464,8 @@ export function ProgressBar({
 }) {
   const on = useMounted();
   const tones = {
-    navy: "bg-gradient-to-r from-[#003366] to-[#0055A5]",
-    gold: "bg-gradient-to-r from-[#C59B27] to-[#e0bb56]",
+    navy: "bg-gradient-to-r from-[#26206B] to-[#0C76B4]",
+    gold: "bg-gradient-to-r from-[#D6A419] to-[#e0bb56]",
     emerald: "bg-gradient-to-r from-emerald-600 to-emerald-400",
   } as const;
   return (

@@ -86,12 +86,12 @@ export default async function HomePage() {
   return (
     <div>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#003366] text-white">
+      <section className="relative overflow-hidden bg-[#26206B] text-white">
         <div
           className="absolute inset-0 opacity-20"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 20%, #C59B27 0, transparent 40%), radial-gradient(circle at 85% 15%, #0055A5 0, transparent 45%), radial-gradient(circle at 60% 90%, #ffffff22 0, transparent 40%)",
+              "radial-gradient(circle at 20% 20%, #D6A419 0, transparent 40%), radial-gradient(circle at 85% 15%, #0C76B4 0, transparent 45%), radial-gradient(circle at 60% 90%, #ffffff22 0, transparent 40%)",
           }}
         />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/30 to-transparent" />
@@ -104,7 +104,7 @@ export default async function HomePage() {
             </div>
             <h1 className="mt-5 font-serif text-4xl leading-[1.12] md:text-5xl lg:text-[3.4rem]">
               Advancing Academic Excellence Through{" "}
-              <span className="text-[#C59B27]">Strategic Philanthropy</span> &amp;
+              <span className="text-[#D6A419]">Strategic Philanthropy</span> &amp;
               Global Partnerships.
             </h1>
             <p className="mt-5 max-w-xl text-white/80 leading-relaxed">
@@ -136,7 +136,7 @@ export default async function HomePage() {
           </div>
 
           <Card className="animate-fade-up-2 border-white/10 bg-white/[0.07] p-6 backdrop-blur text-white !bg-white/10">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#C59B27]">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase text-[#D6A419]">
               Stewardship at a glance
             </p>
             <ul className="mt-4 space-y-4 text-sm">
@@ -146,7 +146,7 @@ export default async function HomePage() {
                 { icon: Globe2, t: "Multi-currency giving", d: "NGN via Paystack • USD/GBP/EUR via Stripe • Bank wire." },
               ].map((r) => (
                 <li key={r.t} className="flex gap-3">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#C59B27]/20 text-[#C59B27]">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#D6A419]/20 text-[#D6A419]">
                     <r.icon className="h-4.5 w-4.5" />
                   </span>
                   <span>
@@ -158,7 +158,7 @@ export default async function HomePage() {
             </ul>
             <Link
               href="/stewardship"
-              className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#C59B27] hover:text-white"
+              className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#D6A419] hover:text-white"
             >
               Read the Stewardship Charter <ArrowRight className="h-4 w-4" />
             </Link>
@@ -174,7 +174,7 @@ export default async function HomePage() {
               key={s.value}
               className={`px-6 py-8 text-center animate-fade-up-${i % 3}`}
             >
-              <p className="font-serif text-3xl md:text-4xl font-black text-[#003366]">{s.value}</p>
+              <p className="font-serif text-3xl md:text-4xl font-black text-[#26206B]">{s.value}</p>
               <p className="mx-auto mt-2 max-w-[240px] text-xs font-semibold leading-relaxed text-slate-600">
                 {s.label}
               </p>
@@ -192,22 +192,22 @@ export default async function HomePage() {
         />
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {AGENDA_ALIGNMENT.map((a) => (
-            <Card key={a.title} className="p-6 hover:shadow-[0_12px_40px_rgba(0,51,102,0.12)] hover:-translate-y-1 transition-all">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#003366] text-[#C59B27]">
+            <Card key={a.title} className="p-6 hover:shadow-[0_12px_40px_rgba(38,32,107,0.12)] hover:-translate-y-1 transition-all">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#26206B] text-[#D6A419]">
                 <a.icon className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 font-serif text-lg text-[#003366]">{a.title}</h3>
+              <h3 className="mt-5 font-serif text-lg text-[#26206B]">{a.title}</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{a.body}</p>
             </Card>
           ))}
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <Card className="border-l-4 !border-l-[#C59B27] p-7">
-            <p className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#003366]">
-              <Quote className="h-4 w-4 text-[#C59B27]" /> {STRATEGIC_2026.vision}
+          <Card className="border-l-4 !border-l-[#D6A419] p-7">
+            <p className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#26206B]">
+              <Quote className="h-4 w-4 text-[#D6A419]" /> {STRATEGIC_2026.vision}
             </p>
-            <p className="mt-3 font-serif text-xl leading-snug text-[#003366]">
+            <p className="mt-3 font-serif text-xl leading-snug text-[#26206B]">
               “A globally respected university — built on technological innovation,
               impactful research, societal relevance, and sustainable development.”
             </p>
@@ -220,8 +220,8 @@ export default async function HomePage() {
             </p>
           </Card>
 
-          <Card className="bg-[#003366] !border-[#003366] p-7 text-white">
-            <p className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#C59B27]">
+          <Card className="bg-[#26206B] !border-[#26206B] p-7 text-white">
+            <p className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#D6A419]">
               <Building2 className="h-4 w-4" /> Host Community & Town-and-Gown Synergy
             </p>
             <p className="mt-3 text-sm leading-relaxed text-white/85">
@@ -233,7 +233,7 @@ export default async function HomePage() {
             </p>
             <Link
               href="/partnerships"
-              className="group/link mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#C59B27] transition-colors hover:text-[#EFD79B]"
+              className="group/link mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#D6A419] transition-colors hover:text-[#F0D488]"
             >
               Partner with UPHF{" "}
               <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" />
@@ -251,13 +251,13 @@ export default async function HomePage() {
         />
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {FOCUS.map((f) => (
-            <Card key={f.title} className="p-7 hover:shadow-[0_12px_40px_rgba(0,51,102,0.12)] hover:-translate-y-1 transition-all">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#003366] text-[#C59B27]">
+            <Card key={f.title} className="p-7 hover:shadow-[0_12px_40px_rgba(38,32,107,0.12)] hover:-translate-y-1 transition-all">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#26206B] text-[#D6A419]">
                 <f.icon className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 font-serif text-xl text-[#003366]">{f.title}</h3>
+              <h3 className="mt-5 font-serif text-xl text-[#26206B]">{f.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">{f.body}</p>
-              <Link href={f.href} className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#0055A5] hover:text-[#003366]">
+              <Link href={f.href} className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#0C76B4] hover:text-[#26206B]">
                 Learn more <ArrowRight className="h-4 w-4" />
               </Link>
             </Card>
@@ -270,8 +270,8 @@ export default async function HomePage() {
         <div className="mx-auto max-w-7xl px-4 py-16 md:py-20">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
-              <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#C59B27]">Featured Active Campaigns</p>
-              <h2 className="mt-3 font-serif text-3xl md:text-4xl text-[#003366]">Give where it moves the needle</h2>
+              <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#D6A419]">Featured Active Campaigns</p>
+              <h2 className="mt-3 font-serif text-3xl md:text-4xl text-[#26206B]">Give where it moves the needle</h2>
               <p className="mt-3 text-slate-600">Live funding progress across NGN & USD. Every campaign page includes naming tiers and a quick-pledge widget.</p>
             </div>
             <Link href="/campaigns">
@@ -300,11 +300,11 @@ export default async function HomePage() {
 
       {/* TRUST BANNER */}
       <section className="mx-auto max-w-7xl px-4 py-16">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#003366] to-[#0055A5] p-8 md:p-12 text-white">
-          <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[#C59B27]/25 blur-3xl" />
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#26206B] to-[#0C76B4] p-8 md:p-12 text-white">
+          <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[#D6A419]/25 blur-3xl" />
           <div className="relative grid gap-8 lg:grid-cols-[1.3fr_0.7fr] items-center">
             <div>
-              <p className="flex items-center gap-2 text-xs font-bold tracking-[0.22em] uppercase text-[#C59B27]">
+              <p className="flex items-center gap-2 text-xs font-bold tracking-[0.22em] uppercase text-[#D6A419]">
                 <Building2 className="h-4 w-4" /> Donor Trust & Fiduciary Governance
               </p>
               <h2 className="mt-3 font-serif text-3xl md:text-4xl leading-tight">

@@ -84,10 +84,10 @@ export function AdminDashboard() {
     <section className="mx-auto max-w-7xl px-4 py-8 md:py-10">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="flex items-center gap-1.5 text-xs font-bold tracking-[0.22em] uppercase text-[#C59B27]">
+          <p className="flex items-center gap-1.5 text-xs font-bold tracking-[0.22em] uppercase text-[#D6A419]">
             <LayoutDashboard className="h-3.5 w-3.5" /> Protected • Advancement CMS
           </p>
-          <h1 className="mt-1 font-serif text-3xl text-[#003366]">Foundation Operations Dashboard</h1>
+          <h1 className="mt-1 font-serif text-3xl text-[#26206B]">Foundation Operations Dashboard</h1>
           <p className="mt-1 text-sm text-slate-500">
             University Advancement Centre, Delta Park — board and management reporting.
           </p>
@@ -102,7 +102,7 @@ export function AdminDashboard() {
 
       <div className="mt-6 flex flex-wrap gap-2">
         {TABS.map((t) => (
-          <button key={t} onClick={() => setTab(t)} className={cn("rounded-full px-4 py-2 text-sm font-bold cursor-pointer border transition", tab === t ? "bg-[#003366] text-white border-[#003366]" : "bg-white text-slate-600 border-slate-200 hover:border-[#C59B27]")}>
+          <button key={t} onClick={() => setTab(t)} className={cn("rounded-full px-4 py-2 text-sm font-bold cursor-pointer border transition", tab === t ? "bg-[#26206B] text-white border-[#26206B]" : "bg-white text-slate-600 border-slate-200 hover:border-[#D6A419]")}>
             {t}
           </button>
         ))}
@@ -119,13 +119,13 @@ export function AdminDashboard() {
             { icon: Users, l: "Alumni / Inquiries", v: `${data.alumniRecords} / ${data.openInquiries} open` },
           ].map((s) => (
             <Card key={s.l} className="p-5">
-              <s.icon className="h-5 w-5 text-[#C59B27]" />
-              <p className="mt-2 font-serif text-xl text-[#003366]">{s.v}</p>
+              <s.icon className="h-5 w-5 text-[#D6A419]" />
+              <p className="mt-2 font-serif text-xl text-[#26206B]">{s.v}</p>
               <p className="text-xs font-bold uppercase tracking-widest text-slate-500">{s.l}</p>
             </Card>
           ))}
           <Card className="p-5 sm:col-span-2">
-            <p className="text-sm font-bold text-[#003366]">Recent donations</p>
+            <p className="text-sm font-bold text-[#26206B]">Recent donations</p>
             <ul className="mt-2 space-y-1.5 text-[13px] text-slate-600">
               {data.recentDonations.slice(0, 6).map((d) => (
                 <li key={d.id} className="flex justify-between gap-2 border-b border-slate-100 pb-1.5">
@@ -137,11 +137,11 @@ export function AdminDashboard() {
             </ul>
           </Card>
           <Card className="p-5 sm:col-span-2">
-            <p className="text-sm font-bold text-[#003366]">Recent inquiries</p>
+            <p className="text-sm font-bold text-[#26206B]">Recent inquiries</p>
             <ul className="mt-2 space-y-1.5 text-[13px] text-slate-600">
               {data.recentInquiries.slice(0, 6).map((q) => (
                 <li key={q.id} className="border-b border-slate-100 pb-1.5">
-                  <span className="font-semibold text-[#003366]">{q.fullName}</span> • {q.category} • {q.subject ?? "—"}
+                  <span className="font-semibold text-[#26206B]">{q.fullName}</span> • {q.category} • {q.subject ?? "—"}
                 </li>
               ))}
               {data.recentInquiries.length === 0 ? <li className="text-slate-400">No inquiries yet.</li> : null}
@@ -153,13 +153,13 @@ export function AdminDashboard() {
       {tab === "Campaigns" && <CampaignEditor onDone={load} />}
       {tab === "Pledges" && (
         <Card className="mt-6 p-5">
-          <p className="text-sm font-bold text-[#003366]">Verify manual bank-wire pledges ({pledges.length} pending)</p>
+          <p className="text-sm font-bold text-[#26206B]">Verify manual bank-wire pledges ({pledges.length} pending)</p>
           <p className="mt-1 text-xs text-slate-500">Verification flips PENDING → VERIFIED; the database trigger then posts the gift to campaign totals exactly once.</p>
           <div className="mt-4 space-y-2">
             {pledges.map((p) => (
               <div key={p.id} className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-200 p-3 text-sm">
                 <span>
-                  <strong className="text-[#003366]">{p.donorName}</strong> • {p.amount} {p.currency} • {p.paymentGateway}
+                  <strong className="text-[#26206B]">{p.donorName}</strong> • {p.amount} {p.currency} • {p.paymentGateway}
                   <span className="block font-mono text-xs text-slate-500">{p.pledgeReference ?? p.gatewayReference}</span>
                 </span>
                 <span className="flex gap-2">
@@ -213,7 +213,7 @@ function CampaignEditor({ onDone }: { onDone: () => void }) {
 
   return (
     <Card className="mt-6 p-6">
-      <p className="font-serif text-xl text-[#003366]">Create / edit campaign</p>
+      <p className="font-serif text-xl text-[#26206B]">Create / edit campaign</p>
       <p className="text-xs text-slate-500">Same slug = update. New slug = create. Progress totals are trigger-managed — never edited here.</p>
       <form onSubmit={submit} className="mt-4 grid gap-4 sm:grid-cols-2">
         <Field label="Slug (e.g. golden-jubilee-endowment-fund)"><input required className={inputCls} value={form.slug} onChange={set("slug")} /></Field>
@@ -226,8 +226,8 @@ function CampaignEditor({ onDone }: { onDone: () => void }) {
         <Field label="Target (NGN)"><input required inputMode="numeric" className={inputCls} value={form.targetAmountNgn} onChange={set("targetAmountNgn")} /></Field>
         <div className="sm:col-span-2"><Field label="Short description"><input required className={inputCls} value={form.shortDescription} onChange={set("shortDescription")} /></Field></div>
         <div className="sm:col-span-2"><Field label="Full description"><textarea required rows={4} className={inputCls} value={form.description} onChange={set("description")} /></Field></div>
-        <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={form.isActive} onChange={set("isActive")} className="h-4 w-4 accent-[#003366]" /> Active</label>
-        <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={form.isFeatured} onChange={set("isFeatured")} className="h-4 w-4 accent-[#C59B27]" /> Featured on home</label>
+        <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={form.isActive} onChange={set("isActive")} className="h-4 w-4 accent-[#26206B]" /> Active</label>
+        <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={form.isFeatured} onChange={set("isFeatured")} className="h-4 w-4 accent-[#D6A419]" /> Featured on home</label>
         {msg ? <p className="sm:col-span-2 rounded-lg bg-slate-100 px-3 py-2 text-sm">{msg}</p> : null}
         <div className="sm:col-span-2"><Button variant="navy" disabled={busy}>{busy ? "Saving…" : "Save campaign"}</Button></div>
       </form>
@@ -253,7 +253,7 @@ function LeadershipEditor() {
   }
   return (
     <Card className="mt-6 p-6">
-      <p className="flex items-center gap-2 font-serif text-xl text-[#003366]"><Users className="h-5 w-5 text-[#C59B27]" /> Add leadership profile</p>
+      <p className="flex items-center gap-2 font-serif text-xl text-[#26206B]"><Users className="h-5 w-5 text-[#D6A419]" /> Add leadership profile</p>
       <form onSubmit={submit} className="mt-4 grid gap-4 sm:grid-cols-2">
         <Field label="Full name"><input required className={inputCls} value={form.fullName} onChange={set("fullName")} /></Field>
         <Field label="Role"><input required className={inputCls} value={form.role} onChange={set("role")} /></Field>
@@ -284,7 +284,7 @@ function ReportsEditor() {
   }
   return (
     <Card className="mt-6 p-6">
-      <p className="flex items-center gap-2 font-serif text-xl text-[#003366]"><FileText className="h-5 w-5 text-[#C59B27]" /> Upload stewardship report (PDF record)</p>
+      <p className="flex items-center gap-2 font-serif text-xl text-[#26206B]"><FileText className="h-5 w-5 text-[#D6A419]" /> Upload stewardship report (PDF record)</p>
       <p className="text-xs text-slate-500">Host the PDF in Supabase Storage or /public/reports, then register its URL, year, and type here.</p>
       <form onSubmit={submit} className="mt-4 grid gap-4 sm:grid-cols-2">
         <div className="sm:col-span-2"><Field label="Title"><input required className={inputCls} value={form.title} onChange={set("title")} placeholder="Annual Impact Report 2025" /></Field></div>
