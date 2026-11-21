@@ -86,7 +86,7 @@ export default async function HomePage() {
   return (
     <div>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#26206B] text-white">
+      <section className="relative overflow-hidden bg-[#173377] text-white">
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -174,7 +174,7 @@ export default async function HomePage() {
               key={s.value}
               className={`px-6 py-8 text-center animate-fade-up-${i % 3}`}
             >
-              <p className="font-serif text-3xl md:text-4xl font-black text-[#26206B]">{s.value}</p>
+              <p className="font-serif text-3xl md:text-4xl font-black text-[#173377]">{s.value}</p>
               <p className="mx-auto mt-2 max-w-[240px] text-xs font-semibold leading-relaxed text-slate-600">
                 {s.label}
               </p>
@@ -192,11 +192,11 @@ export default async function HomePage() {
         />
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {AGENDA_ALIGNMENT.map((a) => (
-            <Card key={a.title} className="p-6 hover:shadow-[0_12px_40px_rgba(38,32,107,0.12)] hover:-translate-y-1 transition-all">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#26206B] text-[#D6A419]">
+            <Card key={a.title} className="p-6 hover:shadow-[0_12px_40px_rgba(23,51,119,0.12)] hover:-translate-y-1 transition-all">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#173377] text-[#D6A419]">
                 <a.icon className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 font-serif text-lg text-[#26206B]">{a.title}</h3>
+              <h3 className="mt-5 font-serif text-lg text-[#173377]">{a.title}</h3>
               <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{a.body}</p>
             </Card>
           ))}
@@ -204,10 +204,10 @@ export default async function HomePage() {
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <Card className="border-l-4 !border-l-[#D6A419] p-7">
-            <p className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#26206B]">
+            <p className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#173377]">
               <Quote className="h-4 w-4 text-[#D6A419]" /> {STRATEGIC_2026.vision}
             </p>
-            <p className="mt-3 font-serif text-xl leading-snug text-[#26206B]">
+            <p className="mt-3 font-serif text-xl leading-snug text-[#173377]">
               “A globally respected university — built on technological innovation,
               impactful research, societal relevance, and sustainable development.”
             </p>
@@ -220,7 +220,7 @@ export default async function HomePage() {
             </p>
           </Card>
 
-          <Card className="bg-[#26206B] !border-[#26206B] p-7 text-white">
+          <Card className="bg-[#173377] !border-[#173377] p-7 text-white">
             <p className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#D6A419]">
               <Building2 className="h-4 w-4" /> Host Community & Town-and-Gown Synergy
             </p>
@@ -251,13 +251,13 @@ export default async function HomePage() {
         />
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {FOCUS.map((f) => (
-            <Card key={f.title} className="p-7 hover:shadow-[0_12px_40px_rgba(38,32,107,0.12)] hover:-translate-y-1 transition-all">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#26206B] text-[#D6A419]">
+            <Card key={f.title} className="p-7 hover:shadow-[0_12px_40px_rgba(23,51,119,0.12)] hover:-translate-y-1 transition-all">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#173377] text-[#D6A419]">
                 <f.icon className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 font-serif text-xl text-[#26206B]">{f.title}</h3>
+              <h3 className="mt-5 font-serif text-xl text-[#173377]">{f.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">{f.body}</p>
-              <Link href={f.href} className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#0C76B4] hover:text-[#26206B]">
+              <Link href={f.href} className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#0C76B4] hover:text-[#173377]">
                 Learn more <ArrowRight className="h-4 w-4" />
               </Link>
             </Card>
@@ -271,7 +271,7 @@ export default async function HomePage() {
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
               <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#D6A419]">Featured Active Campaigns</p>
-              <h2 className="mt-3 font-serif text-3xl md:text-4xl text-[#26206B]">Give where it moves the needle</h2>
+              <h2 className="mt-3 font-serif text-3xl md:text-4xl text-[#173377]">Give where it moves the needle</h2>
               <p className="mt-3 text-slate-600">Live funding progress across NGN & USD. Every campaign page includes naming tiers and a quick-pledge widget.</p>
             </div>
             <Link href="/campaigns">
@@ -300,7 +300,7 @@ export default async function HomePage() {
 
       {/* TRUST BANNER */}
       <section className="mx-auto max-w-7xl px-4 py-16">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#26206B] to-[#0C76B4] p-8 md:p-12 text-white">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#173377] to-[#0C76B4] p-8 md:p-12 text-white">
           <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[#D6A419]/25 blur-3xl" />
           <div className="relative grid gap-8 lg:grid-cols-[1.3fr_0.7fr] items-center">
             <div>

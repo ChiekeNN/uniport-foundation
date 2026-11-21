@@ -21,7 +21,7 @@ const TOOLKIT = [
 export default function AlumniPage() {
   return (
     <div>
-      <section className="bg-[#26206B] text-white">
+      <section className="bg-[#173377] text-white">
         <div className="mx-auto max-w-7xl px-4 py-14">
           <Badge tone="gold">Global Alumni Hub • 300,000+ Uniques</Badge>
           <h1 className="mt-4 max-w-3xl font-serif text-4xl md:text-5xl leading-tight">Once a Unique, always a Unique.</h1>
@@ -34,7 +34,7 @@ export default function AlumniPage() {
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {CHAPTERS.map((c) => (
             <Card key={c.region} className="p-6">
-              <p className="flex items-center gap-2 font-bold text-[#26206B]"><Globe2 className="h-5 w-5 text-[#D6A419]" /> {c.region}</p>
+              <p className="flex items-center gap-2 font-bold text-[#173377]"><Globe2 className="h-5 w-5 text-[#D6A419]" /> {c.region}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {c.chapters.map((ch) => (
                   <span key={ch} className="rounded-full bg-slate-100 border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-700">{ch}</span>
@@ -50,7 +50,7 @@ export default function AlumniPage() {
         <div className="mx-auto max-w-7xl px-4 py-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-start">
           <div>
             <p className="flex items-center gap-2 text-xs font-bold tracking-[0.22em] uppercase text-[#D6A419]"><Users className="h-4 w-4" /> Alumni record update</p>
-            <h2 className="mt-3 font-serif text-3xl text-[#26206B]">Keep the Foundation in reach</h2>
+            <h2 className="mt-3 font-serif text-3xl text-[#173377]">Keep the Foundation in reach</h2>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">
               Update your graduation record so your chapter, class captain, and the
               Advancement Centre can reach you with reunion plans, mentoring calls,
@@ -72,7 +72,7 @@ export default function AlumniPage() {
         <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white">
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-[#26206B] text-white text-left">
+              <tr className="bg-[#173377] text-white text-left">
                 <th className="px-5 py-3.5">Milestone</th>
                 <th className="px-5 py-3.5">Legacy project</th>
                 <th className="px-5 py-3.5 hidden md:table-cell">Guide ticket</th>
@@ -81,7 +81,7 @@ export default function AlumniPage() {
             <tbody>
               {TOOLKIT.map((t, i) => (
                 <tr key={t.milestone} className={i % 2 ? "bg-slate-50" : "bg-white"}>
-                  <td className="px-5 py-4 font-bold text-[#26206B]"><span className="inline-flex items-center gap-1.5"><PartyPopper className="h-4 w-4 text-[#D6A419]" />{t.milestone}</span></td>
+                  <td className="px-5 py-4 font-bold text-[#173377]"><span className="inline-flex items-center gap-1.5"><PartyPopper className="h-4 w-4 text-[#D6A419]" />{t.milestone}</span></td>
                   <td className="px-5 py-4 text-slate-700">{t.project}</td>
                   <td className="px-5 py-4 font-semibold text-[#7a5f14] hidden md:table-cell">{t.ticket}</td>
                 </tr>

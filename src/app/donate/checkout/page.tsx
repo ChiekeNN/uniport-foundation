@@ -29,7 +29,7 @@ async function Body({
   return (
     <section className="mx-auto max-w-lg px-4 py-12">
       <Card>
-        <div className="rounded-t-2xl bg-gradient-to-r from-[#26206B] to-[#0C76B4] px-6 py-5 text-white">
+        <div className="rounded-t-2xl bg-gradient-to-r from-[#173377] to-[#0C76B4] px-6 py-5 text-white">
           <p className="flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.2em] text-[#D6A419]">
             <span className="flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5" /> Secure checkout</span>
             <span>DEMO</span>
@@ -49,7 +49,7 @@ async function Body({
 
           <Link
             href="/donate"
-            className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#26206B]"
+            className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 hover:text-[#173377]"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> Cancel and return to the giving form
           </Link>
@@ -65,7 +65,7 @@ async function Body({
 
 function Card({ children }: { children: React.ReactNode }) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_40px_rgba(38,32,107,0.10)]">
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_12px_40px_rgba(23,51,119,0.10)]">
       {children}
     </div>
   );

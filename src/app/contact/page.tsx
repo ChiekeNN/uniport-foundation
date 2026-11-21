@@ -7,7 +7,7 @@ export const metadata = { title: "Contact the Advancement Office" };
 export default function ContactPage() {
   return (
     <div>
-      <section className="bg-[#26206B] text-white">
+      <section className="bg-[#173377] text-white">
         <div className="mx-auto max-w-7xl px-4 py-14">
           <Badge tone="gold">Advancement Office & Inquiry Routing</Badge>
           <h1 className="mt-4 font-serif text-4xl md:text-5xl">Talk to the stewards of your gift.</h1>
@@ -18,7 +18,7 @@ export default function ContactPage() {
       <section className="mx-auto max-w-7xl px-4 py-12 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] items-start">
         <div className="space-y-4">
           <Card className="p-6">
-            <h2 className="font-serif text-xl text-[#26206B]">Visit / Write</h2>
+            <h2 className="font-serif text-xl text-[#173377]">Visit / Write</h2>
             <ul className="mt-4 space-y-3 text-sm text-slate-700">
               <li className="flex gap-2.5"><MapPin className="h-5 w-5 shrink-0 text-[#D6A419]" /> <span>University Advancement Centre Building, Delta Park, University of Port Harcourt, East-West Road, PMB 5323, Choba, Port Harcourt, Rivers State, Nigeria</span></li>
               <li className="flex gap-2.5"><Mail className="h-5 w-5 shrink-0 text-[#D6A419]" /> <a className="font-semibold text-[#0C76B4]" href="mailto:advancement@uniport.edu.ng">advancement@uniport.edu.ng</a></li>
@@ -26,7 +26,7 @@ export default function ContactPage() {
               <li className="flex gap-2.5"><Clock className="h-5 w-5 shrink-0 text-[#D6A419]" /> Mon–Fri, 8:00–16:00 WAT (excluding public holidays)</li>
             </ul>
           </Card>
-          <Card className="p-6 bg-[#26206B] !border-[#26206B] text-white">
+          <Card className="p-6 bg-[#173377] !border-[#173377] text-white">
             <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#D6A419]">Routing promise</p>
             <p className="mt-2 text-sm leading-relaxed text-white/85">
               <strong>Major Gift / Endowment</strong> → Director, Advancement Centre<br />

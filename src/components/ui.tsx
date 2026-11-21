@@ -14,17 +14,17 @@ export function Button({
   const base =
     "inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D6A419] disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
   const variants: Record<string, string> = {
-    primary: "bg-[#0C76B4] text-white hover:bg-[#26206B] shadow-sm hover:shadow-md",
-    navy: "bg-[#26206B] text-white hover:bg-[#1B1650] shadow-sm hover:shadow-md",
-    gold: "bg-[#D6A419] text-[#26206B] hover:bg-[#B9860F] hover:text-white shadow-sm hover:shadow-md font-bold",
-    outline: "border border-[#26206B]/25 bg-white text-[#26206B] hover:border-[#D6A419] hover:text-[#0C76B4]",
-    ghost: "text-[#26206B] hover:bg-[#26206B]/5",
+    primary: "bg-[#0C76B4] text-white hover:bg-[#173377] shadow-sm hover:shadow-md",
+    navy: "bg-[#173377] text-white hover:bg-[#10275C] shadow-sm hover:shadow-md",
+    gold: "bg-[#D6A419] text-[#173377] hover:bg-[#B9860F] hover:text-white shadow-sm hover:shadow-md font-bold",
+    outline: "border border-[#173377]/25 bg-white text-[#173377] hover:border-[#D6A419] hover:text-[#0C76B4]",
+    ghost: "text-[#173377] hover:bg-[#173377]/5",
     // Use on navy/photo backgrounds. Declared as complete variants so the base
     // `outline` styles (bg-white) never collide with an override in `className`.
     onDark:
-      "border border-white/50 bg-transparent text-white hover:bg-white hover:text-[#26206B] hover:border-white",
+      "border border-white/50 bg-transparent text-white hover:bg-white hover:text-[#173377] hover:border-white",
     onDarkGlass:
-      "border border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white hover:text-[#26206B] hover:border-white",
+      "border border-white/30 bg-white/10 text-white backdrop-blur hover:bg-white hover:text-[#173377] hover:border-white",
   };
   return (
     <button className={cn(base, variants[variant], className)} {...props}>
@@ -43,7 +43,7 @@ export function Card({
   return (
     <div
       className={cn(
-        "uphf-card rounded-2xl border border-slate-200 shadow-[0_1px_3px_rgba(38,32,107,0.08)]",
+        "uphf-card rounded-2xl border border-slate-200 shadow-[0_1px_3px_rgba(23,51,119,0.08)]",
         className
       )}
     >
@@ -62,7 +62,7 @@ export function Badge({
   className?: string;
 }) {
   const tones: Record<string, string> = {
-    navy: "bg-[#26206B]/10 text-[#26206B] border-[#26206B]/20",
+    navy: "bg-[#173377]/10 text-[#173377] border-[#173377]/20",
     gold: "bg-[#D6A419]/15 text-[#7a5f14] border-[#D6A419]/40",
     slate: "bg-slate-100 text-slate-700 border-slate-200",
     green: "bg-emerald-50 text-emerald-700 border-emerald-200",
@@ -94,11 +94,11 @@ export function SectionHeading({
   return (
     <div className={cn("max-w-3xl", align === "center" ? "mx-auto text-center" : "text-left")}>
       <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#D6A419]">{eyebrow}</p>
-      <h2 className="mt-3 font-serif text-3xl md:text-4xl text-[#26206B] leading-tight">{title}</h2>
+      <h2 className="mt-3 font-serif text-3xl md:text-4xl text-[#173377] leading-tight">{title}</h2>
       {lede ? <p className="mt-4 text-slate-600 leading-relaxed">{lede}</p> : null}
       <div
         className={cn(
-          "mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-[#26206B] via-[#0C76B4] to-[#D6A419]",
+          "mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-[#173377] via-[#0C76B4] to-[#D6A419]",
           align === "center" ? "mx-auto" : ""
         )}
       />
