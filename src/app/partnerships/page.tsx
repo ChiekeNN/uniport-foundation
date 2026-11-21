@@ -18,7 +18,7 @@ const PARTNERS = [
 export default function PartnershipsPage() {
   return (
     <div>
-      <section className="bg-[#003366] text-white">
+      <section className="bg-[#26206B] text-white">
         <div className="mx-auto max-w-7xl px-4 py-14">
           <Badge tone="gold">University–Industry–Government Linkages</Badge>
           <h1 className="mt-4 max-w-3xl font-serif text-4xl md:text-5xl leading-tight">
@@ -45,8 +45,8 @@ export default function PartnershipsPage() {
             { icon: FileCheck, t: "Workforce & Talent Pipelines", d: "NHEF-style immersion, SIWES enhancement, and graduate placement tracks that turn CSR into recruitment advantage while funding student upkeep." },
           ].map((c) => (
             <Card key={c.t} className="p-7">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#003366] text-[#C59B27]"><c.icon className="h-6 w-6" /></span>
-              <h3 className="mt-4 font-serif text-lg text-[#003366]">{c.t}</h3>
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#26206B] text-[#D6A419]"><c.icon className="h-6 w-6" /></span>
+              <h3 className="mt-4 font-serif text-lg text-[#26206B]">{c.t}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{c.d}</p>
             </Card>
           ))}
@@ -58,19 +58,19 @@ export default function PartnershipsPage() {
           <SectionHeading eyebrow="Track record" title="Institutional partnerships that endure" />
           <div className="mt-10 grid gap-5 md:grid-cols-2">
             {PARTNERS.map((p) => (
-              <Card key={p.name} className="p-6 border-l-4 !border-l-[#C59B27]">
+              <Card key={p.name} className="p-6 border-l-4 !border-l-[#D6A419]">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-serif text-lg text-[#003366]">{p.name}</h3>
-                  <span className="shrink-0 rounded-full bg-[#C59B27]/15 border border-[#C59B27]/40 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-[#7a5f14]">{p.tag}</span>
+                  <h3 className="font-serif text-lg text-[#26206B]">{p.name}</h3>
+                  <span className="shrink-0 rounded-full bg-[#D6A419]/15 border border-[#D6A419]/40 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-[#7a5f14]">{p.tag}</span>
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{p.detail}</p>
               </Card>
             ))}
           </div>
 
-          <div className="mt-10 rounded-3xl bg-gradient-to-r from-[#003366] to-[#0055A5] p-8 md:p-10 text-white grid gap-6 lg:grid-cols-[1.2fr_0.8fr] items-center">
+          <div className="mt-10 rounded-3xl bg-gradient-to-r from-[#26206B] to-[#0C76B4] p-8 md:p-10 text-white grid gap-6 lg:grid-cols-[1.2fr_0.8fr] items-center">
             <div>
-              <p className="flex items-center gap-2 text-xs font-bold tracking-[0.22em] uppercase text-[#C59B27]"><Building2 className="h-4 w-4" /> IPES Governance Model</p>
+              <p className="flex items-center gap-2 text-xs font-bold tracking-[0.22em] uppercase text-[#D6A419]"><Building2 className="h-4 w-4" /> IPES Governance Model</p>
               <h3 className="mt-2 font-serif text-2xl md:text-3xl">A template for Nigerian university–industry governance</h3>
               <p className="mt-3 text-white/80 text-sm leading-relaxed">
                 The Institute of Petroleum and Energy Studies demonstrates how
@@ -79,10 +79,10 @@ export default function PartnershipsPage() {
                 with shared curricula, industry faculty, and sponsored facilities.
                 The Foundation replicates this structure for new chairs and labs.
               </p>
-              <a href="/stewardship" className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#C59B27] hover:text-white">See audited outcomes <ArrowRight className="h-4 w-4" /></a>
+              <a href="/stewardship" className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#D6A419] hover:text-white">See audited outcomes <ArrowRight className="h-4 w-4" /></a>
             </div>
             <Card className="p-6 !bg-white/10 !border-white/20 text-white backdrop-blur">
-              <p className="flex items-center gap-2 font-bold"><Handshake className="h-5 w-5 text-[#C59B27]" /> Schedule a Corporate Briefing</p>
+              <p className="flex items-center gap-2 font-bold"><Handshake className="h-5 w-5 text-[#D6A419]" /> Schedule a Corporate Briefing</p>
               <p className="mt-2 text-sm text-white/75">A 30-minute session with the Advancement directorate — CSR structuring, naming inventory, and milestone reporting walkthrough.</p>
               <PartnershipDrawer />
             </Card>

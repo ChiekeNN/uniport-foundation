@@ -94,23 +94,23 @@ function KpiCard({
       <div
         className={cn(
           "absolute inset-x-0 top-0 h-1",
-          tone === "gold" ? "bg-gradient-to-r from-[#C59B27] to-[#e0bb56]" : "bg-gradient-to-r from-[#003366] to-[#0055A5]"
+          tone === "gold" ? "bg-gradient-to-r from-[#D6A419] to-[#e0bb56]" : "bg-gradient-to-r from-[#26206B] to-[#0C76B4]"
         )}
       />
       <div className="flex items-start justify-between">
         <span
           className={cn(
             "flex h-9 w-9 items-center justify-center rounded-lg",
-            tone === "gold" ? "bg-[#C59B27]/12 text-[#a07c17]" : "bg-[#003366]/8 text-[#003366]"
+            tone === "gold" ? "bg-[#D6A419]/12 text-[#96700F]" : "bg-[#26206B]/8 text-[#26206B]"
           )}
         >
           <Icon className="h-4.5 w-4.5" />
         </span>
         {delta != null ? <Delta value={delta} /> : null}
       </div>
-      <p className="mt-3 font-serif text-2xl leading-tight text-[#003366]">{children}</p>
+      <p className="mt-3 font-serif text-2xl leading-tight text-[#26206B]">{children}</p>
       <p className="mt-0.5 text-[11px] font-bold uppercase tracking-widest text-slate-500">{label}</p>
-      {spark ? <Sparkline values={spark} className="mt-2" stroke={tone === "gold" ? "#C59B27" : "#0055A5"} /> : null}
+      {spark ? <Sparkline values={spark} className="mt-2" stroke={tone === "gold" ? "#D6A419" : "#0C76B4"} /> : null}
     </Card>
   );
 }
@@ -119,8 +119,8 @@ function SectionTitle({ icon: Icon, title, hint }: { icon: React.ComponentType<{
   return (
     <div className="flex items-start justify-between gap-3">
       <div>
-        <p className="flex items-center gap-2 text-sm font-bold text-[#003366]">
-          <Icon className="h-4 w-4 text-[#C59B27]" /> {title}
+        <p className="flex items-center gap-2 text-sm font-bold text-[#26206B]">
+          <Icon className="h-4 w-4 text-[#D6A419]" /> {title}
         </p>
         {hint ? <p className="mt-1 text-xs text-slate-500">{hint}</p> : null}
       </div>
@@ -138,9 +138,9 @@ const ACTIVITY_ICON = {
 
 const ACTIVITY_TONE = {
   gift: "bg-emerald-50 text-emerald-700",
-  partnership: "bg-[#0055A5]/10 text-[#0055A5]",
-  programme: "bg-[#C59B27]/15 text-[#a07c17]",
-  governance: "bg-[#003366]/8 text-[#003366]",
+  partnership: "bg-[#0C76B4]/10 text-[#0C76B4]",
+  programme: "bg-[#D6A419]/15 text-[#96700F]",
+  governance: "bg-[#26206B]/8 text-[#26206B]",
   compliance: "bg-violet-50 text-violet-700",
 } as const;
 
@@ -270,18 +270,18 @@ export function BoardBriefing() {
   return (
     <div className="space-y-6">
       {/* ── header strip ─────────────────────────────────────────── */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#00284f] via-[#003366] to-[#0055A5] p-6 text-white shadow-lg animate-fade-up">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1B1650] via-[#26206B] to-[#0C76B4] p-6 text-white shadow-lg animate-fade-up">
         <div
           className="pointer-events-none absolute inset-0 opacity-30"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 12% 20%, #C59B27 0, transparent 38%), radial-gradient(circle at 88% 10%, #ffffff33 0, transparent 42%)",
+              "radial-gradient(circle at 12% 20%, #D6A419 0, transparent 38%), radial-gradient(circle at 88% 10%, #ffffff33 0, transparent 42%)",
           }}
         />
         <div className="relative flex flex-wrap items-start justify-between gap-4">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-[#C59B27]/60 bg-[#C59B27]/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#F3DFA6]">
+              <span className="rounded-full border border-[#D6A419]/60 bg-[#D6A419]/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#F3DFA6]">
                 Board pack · FY2026
               </span>
               <span className="rounded-full border border-emerald-300/40 bg-emerald-400/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-100">
@@ -310,7 +310,7 @@ export function BoardBriefing() {
                   onClick={() => setPeriod(p)}
                   className={cn(
                     "rounded-lg px-3 py-1.5 text-xs font-bold transition",
-                    period === p ? "bg-[#C59B27] text-[#003366] shadow" : "text-white/80 hover:bg-white/10"
+                    period === p ? "bg-[#D6A419] text-[#26206B] shadow" : "text-white/80 hover:bg-white/10"
                   )}
                 >
                   {p}
@@ -369,7 +369,7 @@ export function BoardBriefing() {
               { l: "Bank wire", v: t.wire },
             ].map((c) => (
               <div key={c.l}>
-                <p className="text-sm font-bold text-[#003366]">{shortNgn(c.v)}</p>
+                <p className="text-sm font-bold text-[#26206B]">{shortNgn(c.v)}</p>
                 <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{c.l}</p>
               </div>
             ))}
@@ -383,7 +383,7 @@ export function BoardBriefing() {
               segments={CAMPAIGNS.map((c, i) => ({
                 label: c.category,
                 value: c.raisedNgn,
-                color: ["#003366", "#C59B27", "#0055A5", "#7aa7d4"][i],
+                color: ["#26206B", "#D6A419", "#0C76B4", "#7aa7d4"][i],
               }))}
               centerLabel="Total verified"
               centerValue={shortNgn(TOTAL_RAISED_NGN)}
@@ -391,7 +391,7 @@ export function BoardBriefing() {
           </div>
           <div className="mt-4 rounded-xl bg-slate-50 p-3">
             <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Endowment corpus ring-fenced</p>
-            <p className="mt-0.5 font-serif text-lg text-[#003366]">₦1.15bn</p>
+            <p className="mt-0.5 font-serif text-lg text-[#26206B]">₦1.15bn</p>
             <p className="text-[11px] text-slate-500">Principal untouched — only audited investment income is released.</p>
           </div>
         </Card>
@@ -405,9 +405,9 @@ export function BoardBriefing() {
             <StackedBars
               data={t.months.map((m) => ({ label: m.label, values: [m.online, m.corporate, m.wire] }))}
               series={[
-                { name: "Online", color: "#0055A5" },
-                { name: "Corporate CSR", color: "#C59B27" },
-                { name: "Bank wire", color: "#003366" },
+                { name: "Online", color: "#0C76B4" },
+                { name: "Corporate CSR", color: "#D6A419" },
+                { name: "Bank wire", color: "#26206B" },
               ]}
             />
           </div>
@@ -418,9 +418,9 @@ export function BoardBriefing() {
           <div className="mt-5">
             <Funnel steps={PIPELINE} />
           </div>
-          <div className="mt-4 rounded-xl border border-[#C59B27]/40 bg-[#C59B27]/8 p-3">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-[#a07c17]">Open pipeline value</p>
-            <p className="mt-0.5 font-serif text-lg text-[#003366]">₦486.5m</p>
+          <div className="mt-4 rounded-xl border border-[#D6A419]/40 bg-[#D6A419]/8 p-3">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-[#96700F]">Open pipeline value</p>
+            <p className="mt-0.5 font-serif text-lg text-[#26206B]">₦486.5m</p>
             <p className="text-[11px] text-slate-600">176 pledges awaiting verification or tranche release.</p>
           </div>
         </Card>
@@ -440,11 +440,11 @@ export function BoardBriefing() {
               <div key={c.slug} className="group">
                 <div className="flex flex-wrap items-end justify-between gap-2">
                   <div>
-                    <p className="text-sm font-bold text-[#003366]">{c.name}</p>
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-[#C59B27]">{c.category}</p>
+                    <p className="text-sm font-bold text-[#26206B]">{c.name}</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-[#D6A419]">{c.category}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-bold tabular-nums text-[#003366]">
+                    <p className="text-sm font-bold tabular-nums text-[#26206B]">
                       {shortNgn(c.raisedNgn)} <span className="text-xs font-medium text-slate-400">of {shortNgn(c.targetNgn)}</span>
                     </p>
                     <p className="text-[11px] font-bold text-slate-500">
@@ -488,7 +488,7 @@ export function BoardBriefing() {
                     <Icon className="h-4 w-4" />
                   </span>
                   <div className="min-w-0">
-                    <p className="text-[13px] font-bold leading-snug text-[#003366]">
+                    <p className="text-[13px] font-bold leading-snug text-[#26206B]">
                       {a.title} <span className="ml-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">{prettyDate(a.date)}</span>
                     </p>
                     <p className="text-[11.5px] leading-relaxed text-slate-600">{a.detail}</p>
@@ -503,7 +503,7 @@ export function BoardBriefing() {
               {UPCOMING.map((u) => (
                 <li key={u.label} className="flex items-start justify-between gap-2 text-[12px]">
                   <span className="text-slate-700">
-                    <span className="font-semibold text-[#003366]">{u.label}</span>
+                    <span className="font-semibold text-[#26206B]">{u.label}</span>
                     <span className="block text-[10.5px] text-slate-500">{u.place}</span>
                   </span>
                   <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-600">
@@ -525,7 +525,7 @@ export function BoardBriefing() {
               <div key={u.label}>
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="text-[12px] font-semibold text-slate-700">{u.label}</p>
-                  <p className="text-[12px] font-bold tabular-nums text-[#003366]">{u.value}%</p>
+                  <p className="text-[12px] font-bold tabular-nums text-[#26206B]">{u.value}%</p>
                 </div>
                 <div className="mt-1">
                   <ProgressBar value={u.value} delay={i * 90} tone={i === 0 ? "navy" : i === 1 ? "gold" : "emerald"} />
@@ -545,7 +545,7 @@ export function BoardBriefing() {
               <div key={c.label}>
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="text-[12px] font-semibold text-slate-700">{c.label}</p>
-                  <p className={cn("text-[12px] font-bold tabular-nums", c.value === 100 ? "text-emerald-700" : "text-[#a07c17]")}>
+                  <p className={cn("text-[12px] font-bold tabular-nums", c.value === 100 ? "text-emerald-700" : "text-[#96700F]")}>
                     {c.value}%
                   </p>
                 </div>
@@ -567,7 +567,7 @@ export function BoardBriefing() {
               <li key={p.name}>
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="text-[12px] font-semibold text-slate-700">{p.name}</p>
-                  <p className="text-[12px] font-bold tabular-nums text-[#003366]">{shortNgn(p.amountNgn)}</p>
+                  <p className="text-[12px] font-bold tabular-nums text-[#26206B]">{shortNgn(p.amountNgn)}</p>
                 </div>
                 <div className="mt-1">
                   <ProgressBar
@@ -591,7 +591,7 @@ export function BoardBriefing() {
             {CHAPTERS.map((c, i) => (
               <div key={c.name} className="rounded-xl border border-slate-100 bg-slate-50/60 p-3">
                 <div className="flex items-baseline justify-between">
-                  <p className="text-[12px] font-bold text-[#003366]">{c.name}</p>
+                  <p className="text-[12px] font-bold text-[#26206B]">{c.name}</p>
                   <p className="text-[12px] font-bold tabular-nums text-slate-600">{c.donors}</p>
                 </div>
                 <div className="mt-1.5">
@@ -602,8 +602,8 @@ export function BoardBriefing() {
           </div>
         </Card>
 
-        <Card className="relative overflow-hidden bg-[#003366] p-5 text-white !border-[#003366]">
-          <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#C59B27]">
+        <Card className="relative overflow-hidden bg-[#26206B] p-5 text-white !border-[#26206B]">
+          <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#D6A419]">
             <FlaskConical className="h-4 w-4" /> Programme delivery
           </p>
           <ul className="mt-3 space-y-2.5 text-sm">
@@ -616,12 +616,12 @@ export function BoardBriefing() {
             ].map((s) => (
               <li key={s.l} className="flex items-baseline justify-between gap-2 border-b border-white/10 pb-2 last:border-0">
                 <span className="text-white/75">{s.l}</span>
-                <span className="font-serif text-base font-bold text-[#C59B27]">{s.v}</span>
+                <span className="font-serif text-base font-bold text-[#D6A419]">{s.v}</span>
               </li>
             ))}
           </ul>
           <p className="mt-4 flex items-center gap-1.5 text-[11px] text-white/60">
-            <ArrowUpRight className="h-3.5 w-3.5 text-[#C59B27]" /> Host-community synergy across Choba, Aluu and Akpor.
+            <ArrowUpRight className="h-3.5 w-3.5 text-[#D6A419]" /> Host-community synergy across Choba, Aluu and Akpor.
           </p>
         </Card>
       </div>
@@ -632,7 +632,7 @@ export function BoardBriefing() {
         <ArrowDownRight className="h-3.5 w-3.5" />
         <strong className="font-bold text-slate-600">Illustrative board briefing.</strong>
         Figures on this tab are a demonstration dataset for presentation purposes; the
-        <em className="mx-1 not-italic font-semibold text-[#003366]">Live operations</em> tab always reflects the
+        <em className="mx-1 not-italic font-semibold text-[#26206B]">Live operations</em> tab always reflects the
         connected database.
       </p>
     </div>
@@ -695,7 +695,7 @@ function GiftTable({
         />
         <button
           onClick={onReload}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 transition hover:border-[#C59B27] hover:text-[#003366]"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 transition hover:border-[#D6A419] hover:text-[#26206B]"
         >
           <RefreshCw className={cn("h-3.5 w-3.5", syncing ? "animate-spin" : "")} /> Sync
         </button>
@@ -733,7 +733,7 @@ function GiftTable({
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search donor, company or fund…"
-            className="w-full rounded-lg border border-slate-200 bg-white py-2 pl-8 pr-3 text-[12.5px] text-slate-700 shadow-sm outline-none transition focus:border-[#0055A5] focus:ring-2 focus:ring-[#0055A5]/15"
+            className="w-full rounded-lg border border-slate-200 bg-white py-2 pl-8 pr-3 text-[12.5px] text-slate-700 shadow-sm outline-none transition focus:border-[#0C76B4] focus:ring-2 focus:ring-[#0C76B4]/15"
           />
         </div>
         {(["ALL", "LIVE", "VERIFIED", "PENDING"] as const).map((s) => (
@@ -742,7 +742,7 @@ function GiftTable({
             onClick={() => setStatus(s)}
             className={cn(
               "rounded-full border px-3 py-1.5 text-[11px] font-bold transition",
-              status === s ? "border-[#003366] bg-[#003366] text-white" : "border-slate-200 bg-white text-slate-600 hover:border-[#C59B27]"
+              status === s ? "border-[#26206B] bg-[#26206B] text-white" : "border-slate-200 bg-white text-slate-600 hover:border-[#D6A419]"
             )}
           >
             {s === "ALL" ? "All" : s === "LIVE" ? "Portal" : s.charAt(0) + s.slice(1).toLowerCase()}
@@ -754,15 +754,15 @@ function GiftTable({
         <table className="w-full min-w-[620px] border-collapse text-[12.5px]">
           <thead>
             <tr className="border-b border-slate-200 text-left text-[10px] uppercase tracking-wider text-slate-400">
-              <th className="cursor-pointer py-2 pr-2 font-bold hover:text-[#003366]" onClick={() => toggle("donor")}>
+              <th className="cursor-pointer py-2 pr-2 font-bold hover:text-[#26206B]" onClick={() => toggle("donor")}>
                 Donor {sort.key === "donor" ? (sort.dir === "asc" ? "↑" : "↓") : ""}
               </th>
               <th className="py-2 pr-2 font-bold">Fund</th>
-              <th className="cursor-pointer py-2 pr-2 text-right font-bold hover:text-[#003366]" onClick={() => toggle("amount")}>
+              <th className="cursor-pointer py-2 pr-2 text-right font-bold hover:text-[#26206B]" onClick={() => toggle("amount")}>
                 Amount {sort.key === "amount" ? (sort.dir === "asc" ? "↑" : "↓") : ""}
               </th>
               <th className="py-2 pr-2 font-bold">Channel</th>
-              <th className="cursor-pointer py-2 text-right font-bold hover:text-[#003366]" onClick={() => toggle("date")}>
+              <th className="cursor-pointer py-2 text-right font-bold hover:text-[#26206B]" onClick={() => toggle("date")}>
                 Date {sort.key === "date" ? (sort.dir === "asc" ? "↑" : "↓") : ""}
               </th>
             </tr>
@@ -778,7 +778,7 @@ function GiftTable({
                 style={{ animationDelay: `${Math.min(i, 12) * 35}ms` }}
               >
                 <td className="py-2.5 pr-2">
-                  <p className="flex items-center gap-1.5 font-semibold text-[#003366]">
+                  <p className="flex items-center gap-1.5 font-semibold text-[#26206B]">
                     {g.live ? <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" /> : null}
                     {g.donor}
                   </p>
@@ -786,11 +786,11 @@ function GiftTable({
                   {g.email ? <p className="text-[10px] text-slate-400">{g.email}</p> : null}
                 </td>
                 <td className="py-2.5 pr-2 text-slate-600">{g.campaign}</td>
-                <td className="py-2.5 pr-2 text-right font-bold tabular-nums text-[#003366]">{formatNgn(g.amountNgn)}</td>
+                <td className="py-2.5 pr-2 text-right font-bold tabular-nums text-[#26206B]">{formatNgn(g.amountNgn)}</td>
                 <td className="py-2.5 pr-2">
                   <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-600">{g.channel}</span>
                   {g.live && g.demo ? (
-                    <span className="ml-1 rounded-md bg-[#C59B27]/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-[#a07c17]">demo</span>
+                    <span className="ml-1 rounded-md bg-[#D6A419]/15 px-1.5 py-0.5 text-[10px] font-bold uppercase text-[#96700F]">demo</span>
                   ) : null}
                 </td>
                 <td className="py-2.5 text-right">
@@ -822,7 +822,7 @@ function GiftTable({
           Showing <strong className="text-slate-700">{rows.length}</strong> of {all.length} entries
         </span>
         <span>
-          Sub-total <strong className="font-bold text-[#003366]">{formatNgn(total)}</strong>
+          Sub-total <strong className="font-bold text-[#26206B]">{formatNgn(total)}</strong>
         </span>
       </div>
     </Card>
@@ -878,8 +878,8 @@ function DemoControls({ onChanged }: { onChanged: () => void }) {
 
   return (
     <Card className="border-dashed p-5">
-      <p className="flex items-center gap-2 text-sm font-bold text-[#003366]">
-        <DatabaseZap className="h-4 w-4 text-[#C59B27]" /> Demo controls
+      <p className="flex items-center gap-2 text-sm font-bold text-[#26206B]">
+        <DatabaseZap className="h-4 w-4 text-[#D6A419]" /> Demo controls
       </p>
       <p className="mt-1 text-xs text-slate-500">
         Prepare the database before the board tests the donor journey, then wipe the rehearsal
@@ -890,7 +890,7 @@ function DemoControls({ onChanged }: { onChanged: () => void }) {
         <button
           onClick={() => run("setup")}
           disabled={busy !== ""}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-[#003366] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#002244] disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-[#26206B] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#1B1650] disabled:opacity-50"
         >
           {busy === "setup" ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <DatabaseZap className="h-3.5 w-3.5" />}
           Prepare database
@@ -898,7 +898,7 @@ function DemoControls({ onChanged }: { onChanged: () => void }) {
         <button
           onClick={() => run("demo")}
           disabled={busy !== ""}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-[#003366] transition hover:border-[#C59B27] disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-[#26206B] transition hover:border-[#D6A419] disabled:opacity-50"
         >
           {busy === "demo" ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <RotateCcw className="h-3.5 w-3.5" />}
           Reset demo gifts

@@ -3,9 +3,15 @@
 @theme {
   --font-serif: "Merriweather", Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --color-navy: #003366;
-  --color-royal: #0055a5;
-  --color-gold: #c59b27;
+  /* Palette sampled directly from the University crest:
+     indigo book band, ocean blue sea, sun gold, flag green. */
+  --color-navy: #26206B;
+  --color-navy-deep: #1B1650;
+  --color-royal: #0C76B4;
+  --color-ocean: #1AA9E5;
+  --color-gold: #D6A419;
+  --color-sun: #F2B705;
+  --color-green: #049949;
   --color-canvas: #f8fafc;
   --color-ink: #0f172a;
 }
@@ -22,9 +28,9 @@ body {
  * Card surface.
  * Declared in the `components` layer (not as a `bg-white` utility) so that a
  * caller's own background utility always wins — e.g. the navy
- * "Host Community & Town-and-Gown" panel, which is `bg-[#003366] text-white`.
+ * "Host Community & Town-and-Gown" panel, which is `bg-[#26206B] text-white`.
  * With a hard-coded `bg-white` utility the two rules have equal specificity and
- * source order decides, so `bg-white` silently beat `bg-[#003366]` and left
+ * source order decides, so `bg-white` silently beat `bg-[#26206B]` and left
  * white text on a white card.
  */
 @layer components {
@@ -62,6 +68,6 @@ body {
 .animate-fade-up-3 { animation: fade-up 0.6s ease 0.25s both; }
 
 ::selection {
-  background: #c59b27;
-  color: #003366;
+  background: #D6A419;
+  color: #26206B;
 }

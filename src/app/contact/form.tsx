@@ -48,7 +48,7 @@ export function ContactForm() {
     return (
       <Card className="p-8 text-center border-emerald-200 bg-emerald-50/50">
         <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-600" />
-        <h3 className="mt-3 font-serif text-2xl text-[#003366]">Inquiry routed successfully.</h3>
+        <h3 className="mt-3 font-serif text-2xl text-[#26206B]">Inquiry routed successfully.</h3>
         <p className="mt-2 text-sm text-slate-600">Your message is with the right desk. Expect a response within 2 business days.</p>
         <Button variant="outline" className="mt-5" onClick={() => setDone(false)}>Send another inquiry</Button>
       </Card>

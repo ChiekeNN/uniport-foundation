@@ -51,17 +51,17 @@ export function PartnershipDrawer() {
         <CalendarClock className="h-4 w-4" /> Schedule a Corporate Partnership Briefing
       </Button>
       {open && (
-        <div className="fixed inset-0 z-[80] flex items-end sm:items-center justify-center bg-[#003366]/60 backdrop-blur-sm p-0 sm:p-6" onClick={() => setOpen(false)}>
+        <div className="fixed inset-0 z-[80] flex items-end sm:items-center justify-center bg-[#26206B]/60 backdrop-blur-sm p-0 sm:p-6" onClick={() => setOpen(false)}>
           <div
             className="w-full sm:max-w-lg rounded-t-3xl sm:rounded-3xl bg-white p-6 md:p-8 shadow-2xl max-h-[92vh] overflow-y-auto text-[#0F172A]"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="font-serif text-2xl text-[#003366]">Corporate Partnership Briefing</h3>
+                <h3 className="font-serif text-2xl text-[#26206B]">Corporate Partnership Briefing</h3>
                 <p className="mt-1 text-sm text-slate-600">We respond within 2 business days with calendar options.</p>
               </div>
-              <button onClick={() => setOpen(false)} className="rounded-lg border p-1.5 text-slate-500 hover:text-[#003366]" aria-label="Close">
+              <button onClick={() => setOpen(false)} className="rounded-lg border p-1.5 text-slate-500 hover:text-[#26206B]" aria-label="Close">
                 <X className="h-5 w-5" />
               </button>
             </div>

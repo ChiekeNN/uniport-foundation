@@ -22,9 +22,9 @@ import PDFDocument from "pdfkit";
 import fs from "node:fs";
 import path from "node:path";
 
-const NAVY = "#003366";
-const ROYAL = "#0055A5";
-const GOLD = "#C59B27";
+const NAVY = "#26206B";
+const ROYAL = "#0C76B4";
+const GOLD = "#D6A419";
 const INK = "#0F172A";
 const SLATE = "#475569";
 const MUTED = "#94A3B8";

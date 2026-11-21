@@ -96,14 +96,14 @@ export function DonateForm({ campaigns }: { campaigns: CampaignDTO[] }) {
     <section className="mx-auto max-w-4xl px-4 py-10">
       {wire ? (
         <Card className="p-8 border-emerald-200 bg-emerald-50/60">
-          <p className="flex items-center gap-2 font-serif text-2xl text-[#003366]"><BadgeCheck className="h-6 w-6 text-emerald-600" /> Pledge registered</p>
+          <p className="flex items-center gap-2 font-serif text-2xl text-[#26206B]"><BadgeCheck className="h-6 w-6 text-emerald-600" /> Pledge registered</p>
           <p className="mt-2 text-sm text-slate-700">
             Thank you, <strong>{donorName}</strong>. Your pledge of <strong>{wire.amountLabel}</strong> to the{" "}
             <strong>{campaignTitle}</strong> is reserved under reference:
           </p>
-          <p className="mt-4 rounded-xl bg-[#003366] px-5 py-4 text-center font-mono text-xl font-bold tracking-widest text-[#C59B27]">{wire.pledgeReference}</p>
+          <p className="mt-4 rounded-xl bg-[#26206B] px-5 py-4 text-center font-mono text-xl font-bold tracking-widest text-[#D6A419]">{wire.pledgeReference}</p>
           <div className="mt-5 rounded-xl border border-slate-200 bg-white p-5 text-sm leading-relaxed">
-            <p className="font-bold text-[#003366]">Official Foundation Wire Instructions</p>
+            <p className="font-bold text-[#26206B]">Official Foundation Wire Instructions</p>
             <ul className="mt-2 space-y-1 text-slate-700">
               <li><strong>Account Name:</strong> University of Port Harcourt Foundation</li>
               <li><strong>Bank:</strong> [Designated Fiduciary Bank — confirm with Advancement Office]</li>
@@ -112,7 +112,7 @@ export function DonateForm({ campaigns }: { campaigns: CampaignDTO[] }) {
               <li><strong>Narration:</strong> {wire.pledgeReference} — {campaignTitle}</li>
             </ul>
             <p className="mt-3 text-xs text-slate-500">
-              After wiring, forward your transfer advice to <a className="font-bold text-[#0055A5]" href="mailto:advancement@uniport.edu.ng">advancement@uniport.edu.ng</a> quoting
+              After wiring, forward your transfer advice to <a className="font-bold text-[#0C76B4]" href="mailto:advancement@uniport.edu.ng">advancement@uniport.edu.ng</a> quoting
               your pledge reference. The Advancement office verifies and posts your gift within 2 business days, then emails your receipt.
             </p>
           </div>
@@ -126,14 +126,14 @@ export function DonateForm({ campaigns }: { campaigns: CampaignDTO[] }) {
       <form onSubmit={submit} className="space-y-6">
         {/* Currency */}
         <Card className="p-6">
-          <p className="flex items-center gap-2 text-sm font-bold text-[#003366]"><Globe2 className="h-4 w-4 text-[#C59B27]" /> 1 • Choose currency</p>
+          <p className="flex items-center gap-2 text-sm font-bold text-[#26206B]"><Globe2 className="h-4 w-4 text-[#D6A419]" /> 1 • Choose currency</p>
           <div className="mt-3 grid grid-cols-4 gap-2">
             {CURRENCIES.map((c) => (
               <button
                 type="button"
                 key={c}
                 onClick={() => { setCurrency(c); setCustomMode(false); setAmount(String(PRESETS[c][2])); }}
-                className={cn("rounded-xl border px-3 py-3 text-sm font-bold transition cursor-pointer", currency === c ? "border-[#C59B27] bg-[#C59B27]/15 text-[#003366] shadow" : "border-slate-200 bg-white text-slate-600 hover:border-[#0055A5]")}
+                className={cn("rounded-xl border px-3 py-3 text-sm font-bold transition cursor-pointer", currency === c ? "border-[#D6A419] bg-[#D6A419]/15 text-[#26206B] shadow" : "border-slate-200 bg-white text-slate-600 hover:border-[#0C76B4]")}
               >
                 {c}
                 <span className="block text-[11px] font-medium text-slate-500">{c === "NGN" ? "Paystack" : "Stripe"}</span>
@@ -141,7 +141,7 @@ export function DonateForm({ campaigns }: { campaigns: CampaignDTO[] }) {
             ))}
           </div>
 
-          <p className="mt-4 text-sm font-bold text-[#003366]">Select amount {customMode ? "(custom)" : ""}</p>
+          <p className="mt-4 text-sm font-bold text-[#26206B]">Select amount {customMode ? "(custom)" : ""}</p>
           {!customMode ? (
             <div className="mt-2 grid grid-cols-2 sm:grid-cols-5 gap-2">
               {PRESETS[currency].map((p) => (
@@ -149,7 +149,7 @@ export function DonateForm({ campaigns }: { campaigns: CampaignDTO[] }) {
                   type="button"
                   key={p}
                   onClick={() => setAmount(String(p))}
-                  className={cn("rounded-xl border px-2 py-2.5 text-sm font-bold cursor-pointer transition", Number(amount) === p ? "bg-[#003366] text-white border-[#003366]" : "bg-white border-slate-200 text-slate-700 hover:border-[#C59B27]")}
+                  className={cn("rounded-xl border px-2 py-2.5 text-sm font-bold cursor-pointer transition", Number(amount) === p ? "bg-[#26206B] text-white border-[#26206B]" : "bg-white border-slate-200 text-slate-700 hover:border-[#D6A419]")}
                 >
                   {formatMoney(p, currency)}
                 </button>
@@ -165,7 +165,7 @@ export function DonateForm({ campaigns }: { campaigns: CampaignDTO[] }) {
               placeholder="Custom amount"
             />
             {!customMode ? (
-              <button type="button" onClick={() => setCustomMode(true)} className="shrink-0 rounded-lg border border-dashed border-slate-300 px-4 text-sm font-semibold text-slate-600 hover:text-[#003366] cursor-pointer">
+              <button type="button" onClick={() => setCustomMode(true)} className="shrink-0 rounded-lg border border-dashed border-slate-300 px-4 text-sm font-semibold text-slate-600 hover:text-[#26206B] cursor-pointer">
                 Custom
               </button>
             ) : null}
@@ -177,19 +177,19 @@ export function DonateForm({ campaigns }: { campaigns: CampaignDTO[] }) {
 
         {/* Campaign */}
         <Card className="p-6">
-          <p className="text-sm font-bold text-[#003366]">2 • Choose designation</p>
+          <p className="text-sm font-bold text-[#26206B]">2 • Choose designation</p>
           <select className={cn(selectCls, "mt-3")} value={campaignSlug} onChange={(e) => setCampaignSlug(e.target.value)}>
             <option value="">Untied General Endowment Fund (greatest need)</option>
             {campaigns.filter((c) => c.isActive).map((c) => (
               <option key={c.id} value={c.slug}>{c.title}</option>
             ))}
           </select>
-          <p className="mt-2 text-xs text-slate-500">Giving to: <strong className="text-[#003366]">{campaignTitle}</strong></p>
+          <p className="mt-2 text-xs text-slate-500">Giving to: <strong className="text-[#26206B]">{campaignTitle}</strong></p>
         </Card>
 
         {/* Donor */}
         <Card className="p-6">
-          <p className="text-sm font-bold text-[#003366]">3 • Your details & receipt</p>
+          <p className="text-sm font-bold text-[#26206B]">3 • Your details & receipt</p>
           <div className="mt-3 grid gap-4 sm:grid-cols-2">
             <Field label="Full name"><input required className={inputCls} value={donorName} onChange={(e) => setDonorName(e.target.value)} placeholder="Dr. Adaeze Okonkwo" /></Field>
             <Field label="Email (receipt sent here)"><input required type="email" className={inputCls} value={donorEmail} onChange={(e) => setDonorEmail(e.target.value)} placeholder="you@example.com" /></Field>
@@ -200,11 +200,11 @@ export function DonateForm({ campaigns }: { campaigns: CampaignDTO[] }) {
           </div>
           <div className="mt-4 space-y-2.5 text-sm">
             <label className="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked={isAlumni} onChange={(e) => setIsAlumni(e.target.checked)} className="h-4 w-4 accent-[#003366]" />
+              <input type="checkbox" checked={isAlumni} onChange={(e) => setIsAlumni(e.target.checked)} className="h-4 w-4 accent-[#26206B]" />
               I am a UNIPORT alumnus / alumna
             </label>
             <label className="flex items-center gap-2.5 cursor-pointer">
-              <input type="checkbox" checked={displayWall} onChange={(e) => setDisplayWall(e.target.checked)} className="h-4 w-4 accent-[#C59B27]" />
+              <input type="checkbox" checked={displayWall} onChange={(e) => setDisplayWall(e.target.checked)} className="h-4 w-4 accent-[#D6A419]" />
               Display my name on the Donor Wall of Honor
             </label>
           </div>
@@ -212,23 +212,23 @@ export function DonateForm({ campaigns }: { campaigns: CampaignDTO[] }) {
 
         {/* Gateway */}
         <Card className="p-6">
-          <p className="text-sm font-bold text-[#003366]">4 • Payment channel</p>
+          <p className="text-sm font-bold text-[#26206B]">4 • Payment channel</p>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             <button
               type="button"
               onClick={() => setGateway("AUTO")}
-              className={cn("flex items-center gap-3 rounded-xl border p-4 text-left cursor-pointer transition", gateway === "AUTO" ? "border-[#003366] bg-[#003366]/5 shadow" : "border-slate-200 hover:border-[#0055A5]")}
+              className={cn("flex items-center gap-3 rounded-xl border p-4 text-left cursor-pointer transition", gateway === "AUTO" ? "border-[#26206B] bg-[#26206B]/5 shadow" : "border-slate-200 hover:border-[#0C76B4]")}
             >
-              <CreditCard className="h-6 w-6 text-[#0055A5]" />
-              <span><span className="block text-sm font-bold text-[#003366]">Card / Transfer via {routeLabel}</span><span className="block text-xs text-slate-500">Instant verification + receipt</span></span>
+              <CreditCard className="h-6 w-6 text-[#0C76B4]" />
+              <span><span className="block text-sm font-bold text-[#26206B]">Card / Transfer via {routeLabel}</span><span className="block text-xs text-slate-500">Instant verification + receipt</span></span>
             </button>
             <button
               type="button"
               onClick={() => setGateway("BANK_WIRE")}
-              className={cn("flex items-center gap-3 rounded-xl border p-4 text-left cursor-pointer transition", gateway === "BANK_WIRE" ? "border-[#C59B27] bg-[#C59B27]/10 shadow" : "border-slate-200 hover:border-[#C59B27]")}
+              className={cn("flex items-center gap-3 rounded-xl border p-4 text-left cursor-pointer transition", gateway === "BANK_WIRE" ? "border-[#D6A419] bg-[#D6A419]/10 shadow" : "border-slate-200 hover:border-[#D6A419]")}
             >
               <Landmark className="h-6 w-6 text-[#7a5f14]" />
-              <span><span className="block text-sm font-bold text-[#003366]">Direct Bank Wire / Institutional Transfer</span><span className="block text-xs text-slate-500">Pledge reference + manual verification</span></span>
+              <span><span className="block text-sm font-bold text-[#26206B]">Direct Bank Wire / Institutional Transfer</span><span className="block text-xs text-slate-500">Pledge reference + manual verification</span></span>
             </button>
           </div>
           {error ? <p className="mt-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p> : null}

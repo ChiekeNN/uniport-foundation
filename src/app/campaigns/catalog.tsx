@@ -28,8 +28,8 @@ export function CampaignCatalog({ initial }: { initial: CampaignDTO[] }) {
               className={cn(
                 "rounded-full px-4 py-2 text-xs font-bold tracking-wide transition cursor-pointer",
                 filter === f
-                  ? "bg-[#003366] text-white shadow"
-                  : "bg-white text-slate-600 border border-slate-200 hover:border-[#C59B27] hover:text-[#003366]"
+                  ? "bg-[#26206B] text-white shadow"
+                  : "bg-white text-slate-600 border border-slate-200 hover:border-[#D6A419] hover:text-[#26206B]"
               )}
             >
               {f.replace("_", " ")}
@@ -43,7 +43,7 @@ export function CampaignCatalog({ initial }: { initial: CampaignDTO[] }) {
               onClick={() => setCurrency(c)}
               className={cn(
                 "rounded-full px-3.5 py-1.5 text-xs font-bold cursor-pointer transition",
-                currency === c ? "bg-[#C59B27] text-[#003366]" : "text-slate-500 hover:text-[#003366]"
+                currency === c ? "bg-[#D6A419] text-[#26206B]" : "text-slate-500 hover:text-[#26206B]"
               )}
             >
               {c}
@@ -53,7 +53,7 @@ export function CampaignCatalog({ initial }: { initial: CampaignDTO[] }) {
       </div>
 
       <p className="mt-4 text-sm text-slate-500">
-        Showing <strong className="text-[#003366]">{list.length}</strong> campaign{list.length === 1 ? "" : "s"} • amounts in <strong>{currency}</strong>
+        Showing <strong className="text-[#26206B]">{list.length}</strong> campaign{list.length === 1 ? "" : "s"} • amounts in <strong>{currency}</strong>
       </p>
 
       {list.length === 0 ? (

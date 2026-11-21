@@ -18,11 +18,11 @@ export function QuickPledge({
   const [email, setEmail] = useState("");
 
   return (
-    <Card className="p-6 border-t-4 !border-t-[#C59B27]">
-      <p className="flex items-center gap-2 font-serif text-xl text-[#003366]">
-        <Heart className="h-5 w-5 text-[#C59B27]" /> Quick pledge
+    <Card className="p-6 border-t-4 !border-t-[#D6A419]">
+      <p className="flex items-center gap-2 font-serif text-xl text-[#26206B]">
+        <Heart className="h-5 w-5 text-[#D6A419]" /> Quick pledge
       </p>
-      <p className="mt-1 text-xs text-slate-500">You’re giving to: <strong className="text-[#003366]">{campaignTitle}</strong></p>
+      <p className="mt-1 text-xs text-slate-500">You’re giving to: <strong className="text-[#26206B]">{campaignTitle}</strong></p>
       <div className="mt-4 space-y-3">
         <Field label="Amount (NGN)">
           <input

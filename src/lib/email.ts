@@ -26,8 +26,8 @@ export async function sendDonorReceipt(params: ReceiptParams): Promise<void> {
   const subject = `Thank you — your UPHF gift receipt (${params.reference})`;
   const html = `
     <div style="font-family: Georgia, serif; color:#0F172A; max-width:600px; margin:auto; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden">
-      <div style="background:#003366; color:#fff; padding:28px 32px">
-        <p style="margin:0; font-size:12px; letter-spacing:2px; color:#C59B27">UNIVERSITY OF PORT HARCOURT FOUNDATION • RC 61670</p>
+      <div style="background:#26206B; color:#fff; padding:28px 32px">
+        <p style="margin:0; font-size:12px; letter-spacing:2px; color:#D6A419">UNIVERSITY OF PORT HARCOURT FOUNDATION • RC 61670</p>
         <h1 style="margin:8px 0 0; font-size:26px">Thank you, ${escapeHtml(params.donorName)}.</h1>
       </div>
       <div style="padding:28px 32px; font-family: Inter, Arial, sans-serif; font-size:14px; line-height:1.7">

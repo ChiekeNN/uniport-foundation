@@ -43,7 +43,7 @@ export default async function AboutPage() {
 
   return (
     <div>
-      <section className="bg-[#003366] text-white">
+      <section className="bg-[#26206B] text-white">
         <div className="mx-auto max-w-7xl px-4 py-14 md:py-20">
           <div className="flex flex-wrap items-center gap-2">
             <Badge tone="gold">About the Foundation • RC 61670</Badge>
@@ -65,8 +65,8 @@ export default async function AboutPage() {
       <section className="mx-auto max-w-7xl px-4 py-14 md:py-18">
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <div>
-            <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#C59B27]">Our History</p>
-            <h2 className="mt-3 font-serif text-3xl text-[#003366]">2002: the MacArthur catalyst</h2>
+            <p className="text-xs font-bold tracking-[0.22em] uppercase text-[#D6A419]">Our History</p>
+            <h2 className="mt-3 font-serif text-3xl text-[#26206B]">2002: the MacArthur catalyst</h2>
             <div className="mt-5 space-y-4 text-slate-700 leading-relaxed text-[15px]">
               <p>
                 In 2002, the MacArthur Foundation selected the University of Port
@@ -85,7 +85,7 @@ export default async function AboutPage() {
                 permanence and fiduciary independence, the University moved to
                 incorporate a dedicated trust.
               </p>
-              <h3 className="font-serif text-2xl text-[#003366] pt-2">June 5, 2013: RC 61670</h3>
+              <h3 className="font-serif text-2xl text-[#26206B] pt-2">June 5, 2013: RC 61670</h3>
               <p>
                 On <strong>June 5, 2013</strong>, the Corporate Affairs Commission
                 formally incorporated the <strong>University of Port Harcourt
@@ -102,7 +102,7 @@ export default async function AboutPage() {
                 (benefactor), Rev. (Dr.) Walter Patrick Eneji and Mrs. Matilda
                 Nnodim (Former Registrar).
               </p>
-              <h3 className="font-serif text-2xl text-[#003366] pt-2">2013 to today: the directors</h3>
+              <h3 className="font-serif text-2xl text-[#26206B] pt-2">2013 to today: the directors</h3>
               <p>
                 Six directors have carried the Foundation since incorporation:{" "}
                 <strong>Prof. (Mrs.) Ngozi Nma Odu</strong> as the first Acting
@@ -124,24 +124,24 @@ export default async function AboutPage() {
             </div>
           </div>
           <div className="space-y-4">
-            <Card className="p-6 border-l-4 !border-l-[#C59B27]">
-              <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#003366]"><Eye className="h-4 w-4 text-[#C59B27]" /> Vision</p>
-              <p className="mt-2 font-serif text-lg text-[#003366] leading-snug">
+            <Card className="p-6 border-l-4 !border-l-[#D6A419]">
+              <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#26206B]"><Eye className="h-4 w-4 text-[#D6A419]" /> Vision</p>
+              <p className="mt-2 font-serif text-lg text-[#26206B] leading-snug">
                 A world-class African university, sustainably resourced by its own
                 community of alumni, friends, and partners — a{" "}
                 <em>globally respected university</em>.
               </p>
             </Card>
-            <Card className="p-6 border-l-4 !border-l-[#0055A5]">
-              <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#003366]"><Target className="h-4 w-4 text-[#0055A5]" /> Mission</p>
+            <Card className="p-6 border-l-4 !border-l-[#0C76B4]">
+              <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#26206B]"><Target className="h-4 w-4 text-[#0C76B4]" /> Mission</p>
               <p className="mt-2 text-sm text-slate-700 leading-relaxed">
                 To mobilise, invest, and steward philanthropic capital for
                 scholarships, endowments, infrastructure, and research — with
                 absolute fiduciary discipline and transparent public accountability.
               </p>
             </Card>
-            <Card className="p-6 bg-[#003366] !border-[#003366] text-white">
-              <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#C59B27]"><ShieldCheck className="h-4 w-4" /> Fiduciary Promise</p>
+            <Card className="p-6 bg-[#26206B] !border-[#26206B] text-white">
+              <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#D6A419]"><ShieldCheck className="h-4 w-4" /> Fiduciary Promise</p>
               <ul className="mt-3 space-y-2 text-sm text-white/85">
                 <li>• Ring-fenced accounts per fund — never co-mingled</li>
                 <li>• Independent external audit, published annually</li>
@@ -164,17 +164,17 @@ export default async function AboutPage() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {AGENDA_ALIGNMENT.map((a) => (
               <Card key={a.title} className="p-6 hover:shadow-lg transition">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#003366] text-[#C59B27]">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#26206B] text-[#D6A419]">
                   <a.icon className="h-5 w-5" />
                 </span>
-                <h3 className="mt-4 font-serif text-lg text-[#003366]">{a.title}</h3>
+                <h3 className="mt-4 font-serif text-lg text-[#26206B]">{a.title}</h3>
                 <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{a.body}</p>
               </Card>
             ))}
           </div>
-          <Card className="mt-8 border-l-4 !border-l-[#C59B27] p-6">
-            <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#003366]">
-              <Sparkles className="h-4 w-4 text-[#C59B27]" /> Eight-Point Strategic Agenda
+          <Card className="mt-8 border-l-4 !border-l-[#D6A419] p-6">
+            <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#26206B]">
+              <Sparkles className="h-4 w-4 text-[#D6A419]" /> Eight-Point Strategic Agenda
             </p>
             <p className="mt-2 text-sm text-slate-700 leading-relaxed">
               The 2026 administration is organised around an{" "}
@@ -185,8 +185,8 @@ export default async function AboutPage() {
             </p>
           </Card>
           <Card className="mt-5 p-6">
-            <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#003366]">
-              <Building2 className="h-4 w-4 text-[#0055A5]" /> Host Community & Town-and-Gown Synergy
+            <p className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#26206B]">
+              <Building2 className="h-4 w-4 text-[#0C76B4]" /> Host Community & Town-and-Gown Synergy
             </p>
             <p className="mt-2 text-sm text-slate-700 leading-relaxed">
               UPHF also supports host-community development and bilateral partnerships
@@ -194,7 +194,7 @@ export default async function AboutPage() {
               working alongside corporate and international donors so that the
               University&apos;s growth remains socially rooted and mutually beneficial.
             </p>
-            <Link href="/partnerships" className="mt-4 inline-flex text-sm font-bold text-[#0055A5] hover:text-[#003366]">
+            <Link href="/partnerships" className="mt-4 inline-flex text-sm font-bold text-[#0C76B4] hover:text-[#26206B]">
               Explore partnership pathways →
             </Link>
           </Card>
@@ -206,10 +206,10 @@ export default async function AboutPage() {
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {PILLARS.map((p, i) => (
             <Card key={p.title} className="p-5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#003366]/8 text-[#003366] font-serif font-black">
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#26206B]/8 text-[#26206B] font-serif font-black">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <p className="mt-3 flex items-center gap-1.5 text-sm font-bold text-[#003366]"><p.icon className="h-4 w-4 text-[#C59B27]" />{p.title}</p>
+              <p className="mt-3 flex items-center gap-1.5 text-sm font-bold text-[#26206B]"><p.icon className="h-4 w-4 text-[#D6A419]" />{p.title}</p>
               <p className="mt-2 text-[13px] leading-relaxed text-slate-600">{p.body}</p>
             </Card>
           ))}
