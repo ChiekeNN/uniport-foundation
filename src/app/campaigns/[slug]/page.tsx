@@ -36,7 +36,7 @@ export default async function CampaignDetailPage({
 
   return (
     <div>
-      <section className="bg-[#26206B] text-white">
+      <section className="bg-[#173377] text-white">
         <div className="mx-auto max-w-7xl px-4 py-12">
           <Link href="/campaigns" className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-[#D6A419]">
             <ArrowLeft className="h-4 w-4" /> All campaigns
@@ -58,7 +58,7 @@ export default async function CampaignDetailPage({
                 <p className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-slate-500">
                   <Target className="h-4 w-4 text-[#0C76B4]" /> Live progress
                 </p>
-                <p className="mt-2 font-serif text-3xl text-[#26206B]">
+                <p className="mt-2 font-serif text-3xl text-[#173377]">
                   {formatNgn(campaign.amountRaisedNgn)}
                   <span className="text-base text-slate-500 font-sans"> of {formatNgn(campaign.targetAmountNgn)}</span>
                 </p>
@@ -69,20 +69,20 @@ export default async function CampaignDetailPage({
             </div>
             <div className="mt-4 h-3 overflow-hidden rounded-full bg-slate-100">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-[#26206B] via-[#0C76B4] to-[#D6A419]"
+                className="h-full rounded-full bg-gradient-to-r from-[#173377] via-[#0C76B4] to-[#D6A419]"
                 style={{ width: `${pct}%` }}
               />
             </div>
-            <p className="mt-2 text-sm font-bold text-[#26206B]">{pct.toFixed(1)}% funded</p>
+            <p className="mt-2 text-sm font-bold text-[#173377]">{pct.toFixed(1)}% funded</p>
 
             <div className="prose prose-slate mt-6 max-w-none">
-              <h3 className="font-serif text-xl text-[#26206B]">About this campaign</h3>
+              <h3 className="font-serif text-xl text-[#173377]">About this campaign</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-slate-700 whitespace-pre-line">{campaign.description}</p>
             </div>
           </Card>
 
           <Card className="mt-6 p-7">
-            <h3 className="flex items-center gap-2 font-serif text-xl text-[#26206B]">
+            <h3 className="flex items-center gap-2 font-serif text-xl text-[#173377]">
               <Crown className="h-5 w-5 text-[#D6A419]" /> Naming Opportunities
             </h3>
             <p className="mt-2 text-sm text-slate-600">
@@ -94,7 +94,7 @@ export default async function CampaignDetailPage({
               <div className="mt-5 overflow-hidden rounded-xl border border-slate-200">
                 <table className="w-full text-sm">
                   <thead>
-                    <tr className="bg-[#26206B] text-left text-white">
+                    <tr className="bg-[#173377] text-left text-white">
                       <th className="px-4 py-3 font-semibold">Tier</th>
                       <th className="px-4 py-3 font-semibold">Minimum Gift</th>
                       <th className="px-4 py-3 font-semibold hidden sm:table-cell">Recognition</th>
@@ -103,7 +103,7 @@ export default async function CampaignDetailPage({
                   <tbody>
                     {campaign.namingTiers.map((t, i) => (
                       <tr key={t.tier} className={i % 2 ? "bg-slate-50" : "bg-white"}>
-                        <td className="px-4 py-3 font-bold text-[#26206B]">{t.tier}</td>
+                        <td className="px-4 py-3 font-bold text-[#173377]">{t.tier}</td>
                         <td className="px-4 py-3 font-semibold text-[#7a5f14]">{formatNgn(t.min_ngn)}</td>
                         <td className="px-4 py-3 text-slate-600 hidden sm:table-cell">{t.benefit}</td>
                       </tr>
@@ -120,7 +120,7 @@ export default async function CampaignDetailPage({
 
         <div className="lg:sticky lg:top-32 self-start">
           <QuickPledge campaignSlug={campaign.slug} campaignTitle={campaign.title} />
-          <Card className="mt-4 p-5 bg-[#26206B] !border-[#26206B] text-white text-sm">
+          <Card className="mt-4 p-5 bg-[#173377] !border-[#173377] text-white text-sm">
             <p className="font-bold text-[#D6A419]">Prefer a bank wire?</p>
             <p className="mt-1 text-white/75">Institutions and diaspora donors can wire directly and receive a pledge reference instantly.</p>
             <Link href={`/donate?campaign=${campaign.slug}&gateway=wire`} className="mt-3 inline-block font-bold text-white underline decoration-[#D6A419] decoration-2 underline-offset-4 hover:text-[#D6A419]">

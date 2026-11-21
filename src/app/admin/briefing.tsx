@@ -94,21 +94,21 @@ function KpiCard({
       <div
         className={cn(
           "absolute inset-x-0 top-0 h-1",
-          tone === "gold" ? "bg-gradient-to-r from-[#D6A419] to-[#e0bb56]" : "bg-gradient-to-r from-[#26206B] to-[#0C76B4]"
+          tone === "gold" ? "bg-gradient-to-r from-[#D6A419] to-[#e0bb56]" : "bg-gradient-to-r from-[#173377] to-[#0C76B4]"
         )}
       />
       <div className="flex items-start justify-between">
         <span
           className={cn(
             "flex h-9 w-9 items-center justify-center rounded-lg",
-            tone === "gold" ? "bg-[#D6A419]/12 text-[#96700F]" : "bg-[#26206B]/8 text-[#26206B]"
+            tone === "gold" ? "bg-[#D6A419]/12 text-[#96700F]" : "bg-[#173377]/8 text-[#173377]"
           )}
         >
           <Icon className="h-4.5 w-4.5" />
         </span>
         {delta != null ? <Delta value={delta} /> : null}
       </div>
-      <p className="mt-3 font-serif text-2xl leading-tight text-[#26206B]">{children}</p>
+      <p className="mt-3 font-serif text-2xl leading-tight text-[#173377]">{children}</p>
       <p className="mt-0.5 text-[11px] font-bold uppercase tracking-widest text-slate-500">{label}</p>
       {spark ? <Sparkline values={spark} className="mt-2" stroke={tone === "gold" ? "#D6A419" : "#0C76B4"} /> : null}
     </Card>
@@ -119,7 +119,7 @@ function SectionTitle({ icon: Icon, title, hint }: { icon: React.ComponentType<{
   return (
     <div className="flex items-start justify-between gap-3">
       <div>
-        <p className="flex items-center gap-2 text-sm font-bold text-[#26206B]">
+        <p className="flex items-center gap-2 text-sm font-bold text-[#173377]">
           <Icon className="h-4 w-4 text-[#D6A419]" /> {title}
         </p>
         {hint ? <p className="mt-1 text-xs text-slate-500">{hint}</p> : null}
@@ -140,7 +140,7 @@ const ACTIVITY_TONE = {
   gift: "bg-emerald-50 text-emerald-700",
   partnership: "bg-[#0C76B4]/10 text-[#0C76B4]",
   programme: "bg-[#D6A419]/15 text-[#96700F]",
-  governance: "bg-[#26206B]/8 text-[#26206B]",
+  governance: "bg-[#173377]/8 text-[#173377]",
   compliance: "bg-violet-50 text-violet-700",
 } as const;
 
@@ -270,7 +270,7 @@ export function BoardBriefing() {
   return (
     <div className="space-y-6">
       {/* ── header strip ─────────────────────────────────────────── */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1B1650] via-[#26206B] to-[#0C76B4] p-6 text-white shadow-lg animate-fade-up">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#10275C] via-[#173377] to-[#0C76B4] p-6 text-white shadow-lg animate-fade-up">
         <div
           className="pointer-events-none absolute inset-0 opacity-30"
           style={{
@@ -310,7 +310,7 @@ export function BoardBriefing() {
                   onClick={() => setPeriod(p)}
                   className={cn(
                     "rounded-lg px-3 py-1.5 text-xs font-bold transition",
-                    period === p ? "bg-[#D6A419] text-[#26206B] shadow" : "text-white/80 hover:bg-white/10"
+                    period === p ? "bg-[#D6A419] text-[#173377] shadow" : "text-white/80 hover:bg-white/10"
                   )}
                 >
                   {p}
@@ -369,7 +369,7 @@ export function BoardBriefing() {
               { l: "Bank wire", v: t.wire },
             ].map((c) => (
               <div key={c.l}>
-                <p className="text-sm font-bold text-[#26206B]">{shortNgn(c.v)}</p>
+                <p className="text-sm font-bold text-[#173377]">{shortNgn(c.v)}</p>
                 <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{c.l}</p>
               </div>
             ))}
@@ -383,7 +383,7 @@ export function BoardBriefing() {
               segments={CAMPAIGNS.map((c, i) => ({
                 label: c.category,
                 value: c.raisedNgn,
-                color: ["#26206B", "#D6A419", "#0C76B4", "#7aa7d4"][i],
+                color: ["#173377", "#D6A419", "#0C76B4", "#7aa7d4"][i],
               }))}
               centerLabel="Total verified"
               centerValue={shortNgn(TOTAL_RAISED_NGN)}
@@ -391,7 +391,7 @@ export function BoardBriefing() {
           </div>
           <div className="mt-4 rounded-xl bg-slate-50 p-3">
             <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Endowment corpus ring-fenced</p>
-            <p className="mt-0.5 font-serif text-lg text-[#26206B]">₦1.15bn</p>
+            <p className="mt-0.5 font-serif text-lg text-[#173377]">₦1.15bn</p>
             <p className="text-[11px] text-slate-500">Principal untouched — only audited investment income is released.</p>
           </div>
         </Card>
@@ -407,7 +407,7 @@ export function BoardBriefing() {
               series={[
                 { name: "Online", color: "#0C76B4" },
                 { name: "Corporate CSR", color: "#D6A419" },
-                { name: "Bank wire", color: "#26206B" },
+                { name: "Bank wire", color: "#173377" },
               ]}
             />
           </div>
@@ -420,7 +420,7 @@ export function BoardBriefing() {
           </div>
           <div className="mt-4 rounded-xl border border-[#D6A419]/40 bg-[#D6A419]/8 p-3">
             <p className="text-[11px] font-bold uppercase tracking-wider text-[#96700F]">Open pipeline value</p>
-            <p className="mt-0.5 font-serif text-lg text-[#26206B]">₦486.5m</p>
+            <p className="mt-0.5 font-serif text-lg text-[#173377]">₦486.5m</p>
             <p className="text-[11px] text-slate-600">176 pledges awaiting verification or tranche release.</p>
           </div>
         </Card>
@@ -440,11 +440,11 @@ export function BoardBriefing() {
               <div key={c.slug} className="group">
                 <div className="flex flex-wrap items-end justify-between gap-2">
                   <div>
-                    <p className="text-sm font-bold text-[#26206B]">{c.name}</p>
+                    <p className="text-sm font-bold text-[#173377]">{c.name}</p>
                     <p className="text-[11px] font-semibold uppercase tracking-wider text-[#D6A419]">{c.category}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-bold tabular-nums text-[#26206B]">
+                    <p className="text-sm font-bold tabular-nums text-[#173377]">
                       {shortNgn(c.raisedNgn)} <span className="text-xs font-medium text-slate-400">of {shortNgn(c.targetNgn)}</span>
                     </p>
                     <p className="text-[11px] font-bold text-slate-500">
@@ -488,7 +488,7 @@ export function BoardBriefing() {
                     <Icon className="h-4 w-4" />
                   </span>
                   <div className="min-w-0">
-                    <p className="text-[13px] font-bold leading-snug text-[#26206B]">
+                    <p className="text-[13px] font-bold leading-snug text-[#173377]">
                       {a.title} <span className="ml-1 text-[10px] font-semibold uppercase tracking-wider text-slate-400">{prettyDate(a.date)}</span>
                     </p>
                     <p className="text-[11.5px] leading-relaxed text-slate-600">{a.detail}</p>
@@ -503,7 +503,7 @@ export function BoardBriefing() {
               {UPCOMING.map((u) => (
                 <li key={u.label} className="flex items-start justify-between gap-2 text-[12px]">
                   <span className="text-slate-700">
-                    <span className="font-semibold text-[#26206B]">{u.label}</span>
+                    <span className="font-semibold text-[#173377]">{u.label}</span>
                     <span className="block text-[10.5px] text-slate-500">{u.place}</span>
                   </span>
                   <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-600">
@@ -525,7 +525,7 @@ export function BoardBriefing() {
               <div key={u.label}>
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="text-[12px] font-semibold text-slate-700">{u.label}</p>
-                  <p className="text-[12px] font-bold tabular-nums text-[#26206B]">{u.value}%</p>
+                  <p className="text-[12px] font-bold tabular-nums text-[#173377]">{u.value}%</p>
                 </div>
                 <div className="mt-1">
                   <ProgressBar value={u.value} delay={i * 90} tone={i === 0 ? "navy" : i === 1 ? "gold" : "emerald"} />
@@ -567,7 +567,7 @@ export function BoardBriefing() {
               <li key={p.name}>
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="text-[12px] font-semibold text-slate-700">{p.name}</p>
-                  <p className="text-[12px] font-bold tabular-nums text-[#26206B]">{shortNgn(p.amountNgn)}</p>
+                  <p className="text-[12px] font-bold tabular-nums text-[#173377]">{shortNgn(p.amountNgn)}</p>
                 </div>
                 <div className="mt-1">
                   <ProgressBar
@@ -591,7 +591,7 @@ export function BoardBriefing() {
             {CHAPTERS.map((c, i) => (
               <div key={c.name} className="rounded-xl border border-slate-100 bg-slate-50/60 p-3">
                 <div className="flex items-baseline justify-between">
-                  <p className="text-[12px] font-bold text-[#26206B]">{c.name}</p>
+                  <p className="text-[12px] font-bold text-[#173377]">{c.name}</p>
                   <p className="text-[12px] font-bold tabular-nums text-slate-600">{c.donors}</p>
                 </div>
                 <div className="mt-1.5">
@@ -602,7 +602,7 @@ export function BoardBriefing() {
           </div>
         </Card>
 
-        <Card className="relative overflow-hidden bg-[#26206B] p-5 text-white !border-[#26206B]">
+        <Card className="relative overflow-hidden bg-[#173377] p-5 text-white !border-[#173377]">
           <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-[#D6A419]">
             <FlaskConical className="h-4 w-4" /> Programme delivery
           </p>
@@ -632,7 +632,7 @@ export function BoardBriefing() {
         <ArrowDownRight className="h-3.5 w-3.5" />
         <strong className="font-bold text-slate-600">Illustrative board briefing.</strong>
         Figures on this tab are a demonstration dataset for presentation purposes; the
-        <em className="mx-1 not-italic font-semibold text-[#26206B]">Live operations</em> tab always reflects the
+        <em className="mx-1 not-italic font-semibold text-[#173377]">Live operations</em> tab always reflects the
         connected database.
       </p>
     </div>
@@ -695,7 +695,7 @@ function GiftTable({
         />
         <button
           onClick={onReload}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 transition hover:border-[#D6A419] hover:text-[#26206B]"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-2.5 py-1.5 text-[11px] font-bold text-slate-600 transition hover:border-[#D6A419] hover:text-[#173377]"
         >
           <RefreshCw className={cn("h-3.5 w-3.5", syncing ? "animate-spin" : "")} /> Sync
         </button>
@@ -742,7 +742,7 @@ function GiftTable({
             onClick={() => setStatus(s)}
             className={cn(
               "rounded-full border px-3 py-1.5 text-[11px] font-bold transition",
-              status === s ? "border-[#26206B] bg-[#26206B] text-white" : "border-slate-200 bg-white text-slate-600 hover:border-[#D6A419]"
+              status === s ? "border-[#173377] bg-[#173377] text-white" : "border-slate-200 bg-white text-slate-600 hover:border-[#D6A419]"
             )}
           >
             {s === "ALL" ? "All" : s === "LIVE" ? "Portal" : s.charAt(0) + s.slice(1).toLowerCase()}
@@ -754,15 +754,15 @@ function GiftTable({
         <table className="w-full min-w-[620px] border-collapse text-[12.5px]">
           <thead>
             <tr className="border-b border-slate-200 text-left text-[10px] uppercase tracking-wider text-slate-400">
-              <th className="cursor-pointer py-2 pr-2 font-bold hover:text-[#26206B]" onClick={() => toggle("donor")}>
+              <th className="cursor-pointer py-2 pr-2 font-bold hover:text-[#173377]" onClick={() => toggle("donor")}>
                 Donor {sort.key === "donor" ? (sort.dir === "asc" ? "↑" : "↓") : ""}
               </th>
               <th className="py-2 pr-2 font-bold">Fund</th>
-              <th className="cursor-pointer py-2 pr-2 text-right font-bold hover:text-[#26206B]" onClick={() => toggle("amount")}>
+              <th className="cursor-pointer py-2 pr-2 text-right font-bold hover:text-[#173377]" onClick={() => toggle("amount")}>
                 Amount {sort.key === "amount" ? (sort.dir === "asc" ? "↑" : "↓") : ""}
               </th>
               <th className="py-2 pr-2 font-bold">Channel</th>
-              <th className="cursor-pointer py-2 text-right font-bold hover:text-[#26206B]" onClick={() => toggle("date")}>
+              <th className="cursor-pointer py-2 text-right font-bold hover:text-[#173377]" onClick={() => toggle("date")}>
                 Date {sort.key === "date" ? (sort.dir === "asc" ? "↑" : "↓") : ""}
               </th>
             </tr>
@@ -778,7 +778,7 @@ function GiftTable({
                 style={{ animationDelay: `${Math.min(i, 12) * 35}ms` }}
               >
                 <td className="py-2.5 pr-2">
-                  <p className="flex items-center gap-1.5 font-semibold text-[#26206B]">
+                  <p className="flex items-center gap-1.5 font-semibold text-[#173377]">
                     {g.live ? <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" /> : null}
                     {g.donor}
                   </p>
@@ -786,7 +786,7 @@ function GiftTable({
                   {g.email ? <p className="text-[10px] text-slate-400">{g.email}</p> : null}
                 </td>
                 <td className="py-2.5 pr-2 text-slate-600">{g.campaign}</td>
-                <td className="py-2.5 pr-2 text-right font-bold tabular-nums text-[#26206B]">{formatNgn(g.amountNgn)}</td>
+                <td className="py-2.5 pr-2 text-right font-bold tabular-nums text-[#173377]">{formatNgn(g.amountNgn)}</td>
                 <td className="py-2.5 pr-2">
                   <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-slate-600">{g.channel}</span>
                   {g.live && g.demo ? (
@@ -822,7 +822,7 @@ function GiftTable({
           Showing <strong className="text-slate-700">{rows.length}</strong> of {all.length} entries
         </span>
         <span>
-          Sub-total <strong className="font-bold text-[#26206B]">{formatNgn(total)}</strong>
+          Sub-total <strong className="font-bold text-[#173377]">{formatNgn(total)}</strong>
         </span>
       </div>
     </Card>
@@ -878,7 +878,7 @@ function DemoControls({ onChanged }: { onChanged: () => void }) {
 
   return (
     <Card className="border-dashed p-5">
-      <p className="flex items-center gap-2 text-sm font-bold text-[#26206B]">
+      <p className="flex items-center gap-2 text-sm font-bold text-[#173377]">
         <DatabaseZap className="h-4 w-4 text-[#D6A419]" /> Demo controls
       </p>
       <p className="mt-1 text-xs text-slate-500">
@@ -890,7 +890,7 @@ function DemoControls({ onChanged }: { onChanged: () => void }) {
         <button
           onClick={() => run("setup")}
           disabled={busy !== ""}
-          className="inline-flex items-center gap-1.5 rounded-lg bg-[#26206B] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#1B1650] disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 rounded-lg bg-[#173377] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#10275C] disabled:opacity-50"
         >
           {busy === "setup" ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <DatabaseZap className="h-3.5 w-3.5" />}
           Prepare database
@@ -898,7 +898,7 @@ function DemoControls({ onChanged }: { onChanged: () => void }) {
         <button
           onClick={() => run("demo")}
           disabled={busy !== ""}
-          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-[#26206B] transition hover:border-[#D6A419] disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-2 text-xs font-bold text-[#173377] transition hover:border-[#D6A419] disabled:opacity-50"
         >
           {busy === "demo" ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <RotateCcw className="h-3.5 w-3.5" />}
           Reset demo gifts

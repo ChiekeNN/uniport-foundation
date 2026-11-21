@@ -55,8 +55,8 @@ export function WallAndReports({
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filteredWall.map((w) => (
             <Card key={w.id} className="relative overflow-hidden p-5">
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#26206B] via-[#0C76B4] to-[#D6A419]" />
-              <p className="font-serif text-lg text-[#26206B]">{w.donorName}</p>
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#173377] via-[#0C76B4] to-[#D6A419]" />
+              <p className="font-serif text-lg text-[#173377]">{w.donorName}</p>
               {w.organization ? <p className="text-xs font-semibold text-slate-500">{w.organization}</p> : null}
               <p className="mt-2 text-sm font-bold text-[#7a5f14]">{formatNgn(w.amountNgnEquivalent)}</p>
               {w.campaignTitle ? <p className="mt-1 text-xs text-slate-500">→ {w.campaignTitle}</p> : null}
@@ -69,19 +69,19 @@ export function WallAndReports({
       <div className="mt-12 flex flex-wrap gap-2 items-center">
         <span className="text-xs font-bold uppercase tracking-widest text-slate-500">Filter reports:</span>
         {years.map((y) => (
-          <button key={y} onClick={() => setYear(y)} className={cn("rounded-full px-3.5 py-1.5 text-xs font-bold cursor-pointer border", year === y ? "bg-[#26206B] text-white border-[#26206B]" : "bg-white text-slate-600 border-slate-200")}>
+          <button key={y} onClick={() => setYear(y)} className={cn("rounded-full px-3.5 py-1.5 text-xs font-bold cursor-pointer border", year === y ? "bg-[#173377] text-white border-[#173377]" : "bg-white text-slate-600 border-slate-200")}>
             {y === "ALL" ? "All years" : `FY ${y}`}
           </button>
         ))}
         <span className="mx-1 text-slate-300">|</span>
         {types.map((t) => (
-          <button key={t} onClick={() => setType(t)} className={cn("rounded-full px-3.5 py-1.5 text-xs font-bold cursor-pointer border", type === t ? "bg-[#D6A419] text-[#26206B] border-[#D6A419]" : "bg-white text-slate-600 border-slate-200")}>
+          <button key={t} onClick={() => setType(t)} className={cn("rounded-full px-3.5 py-1.5 text-xs font-bold cursor-pointer border", type === t ? "bg-[#D6A419] text-[#173377] border-[#D6A419]" : "bg-white text-slate-600 border-slate-200")}>
             {t === "ALL" ? "All types" : t.replaceAll("_", " ")}
           </button>
         ))}
       </div>
       <p className="mt-3 text-sm text-slate-500">
-        Showing <strong className="text-[#26206B]">{filteredReports.length}</strong> of {reports.length} reports. Full archive below ↓
+        Showing <strong className="text-[#173377]">{filteredReports.length}</strong> of {reports.length} reports. Full archive below ↓
       </p>
     </div>
   );

@@ -19,7 +19,7 @@ export default async function StewardshipPage() {
 
   return (
     <div>
-      <section className="bg-[#26206B] text-white">
+      <section className="bg-[#173377] text-white">
         <div className="mx-auto max-w-7xl px-4 py-14">
           <Badge tone="gold">Accountability & Donor Recognition</Badge>
           <h1 className="mt-4 max-w-3xl font-serif text-4xl md:text-5xl leading-tight">Stewardship you can audit.</h1>
@@ -32,9 +32,9 @@ export default async function StewardshipPage() {
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {CHARTER.map((c, i) => (
             <Card key={c.t} className="p-6 flex gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#26206B] text-[#D6A419] font-serif font-black">{i + 1}</span>
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#173377] text-[#D6A419] font-serif font-black">{i + 1}</span>
               <span>
-                <span className="flex items-center gap-1.5 font-bold text-[#26206B]"><ShieldCheck className="h-4 w-4 text-[#D6A419]" />{c.t}</span>
+                <span className="flex items-center gap-1.5 font-bold text-[#173377]"><ShieldCheck className="h-4 w-4 text-[#D6A419]" />{c.t}</span>
                 <span className="mt-1.5 block text-sm leading-relaxed text-slate-600">{c.d}</span>
               </span>
             </Card>
@@ -53,7 +53,7 @@ export default async function StewardshipPage() {
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="flex items-center gap-2 text-xs font-bold tracking-[0.22em] uppercase text-[#D6A419]"><FileText className="h-4 w-4" /> Repository</p>
-            <h2 className="mt-2 font-serif text-3xl text-[#26206B]">Annual Impact & Audited Financial Reports</h2>
+            <h2 className="mt-2 font-serif text-3xl text-[#173377]">Annual Impact & Audited Financial Reports</h2>
           </div>
           <p className="text-sm text-slate-500 flex items-center gap-1.5"><Medal className="h-4 w-4 text-[#D6A419]" /> {reports.length} documents • {wall.length} honorees • {formatNgn(wall.reduce((s, w) => s + w.amountNgnEquivalent, 0))} wall-visible</p>
         </div>
@@ -71,14 +71,14 @@ export default async function StewardshipPage() {
                 </Badge>
                 <span className="text-xs font-bold text-slate-500">FY {r.fiscalYear}</span>
               </div>
-              <h3 className="mt-3 font-serif text-base text-[#26206B] leading-snug">{r.title}</h3>
+              <h3 className="mt-3 font-serif text-base text-[#173377] leading-snug">{r.title}</h3>
               {r.summary ? <p className="mt-1.5 text-[13px] text-slate-600">{r.summary}</p> : null}
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-xs text-slate-500">{r.fileSize ?? "PDF"}</span>
                 <a
                   href={r.fileUrl}
                   download
-                  className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0C76B4] hover:text-[#26206B]"
+                  className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0C76B4] hover:text-[#173377]"
                 >
                   <Download className="h-4 w-4" /> Download
                 </a>

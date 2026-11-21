@@ -37,8 +37,8 @@ function LoginInner() {
   return (
     <section className="mx-auto max-w-md px-4 py-16">
       <Card className="p-8">
-        <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#26206B] text-[#D6A419]"><Lock className="h-6 w-6" /></span>
-        <h1 className="mt-4 font-serif text-2xl text-[#26206B]">Advancement CMS</h1>
+        <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#173377] text-[#D6A419]"><Lock className="h-6 w-6" /></span>
+        <h1 className="mt-4 font-serif text-2xl text-[#173377]">Advancement CMS</h1>
         <p className="mt-1 text-sm text-slate-600">
           Protected area for UPHF staff. In production this gate is Supabase Auth;
           this deployment also accepts the <code className="rounded bg-slate-100 px-1">ADMIN_PASSWORD</code> gate.

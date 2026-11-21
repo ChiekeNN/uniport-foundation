@@ -16,7 +16,7 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     orientation: "portrait-primary",
     background_color: "#F8FAFC",
-    theme_color: "#26206B",
+    theme_color: "#173377",
     lang: "en-NG",
     dir: "ltr",
     categories: ["education", "nonprofit", "philanthropy"],
